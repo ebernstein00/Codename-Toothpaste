@@ -38,9 +38,6 @@ Multiple data structures will be used.
 * Up to three players can play at the same time.
 * The GUI and any information given will be mirrored onto all computers.
 * All central information will be calculated on one computer and then sent.
-### Signals:
-* Used to close the game.
-* Used to send directions to other clients about what to do
 
 ## Timeline
 **Week 1 Goals** : 2020-01-05 to 2020-01-11
@@ -49,7 +46,6 @@ Multiple data structures will be used.
 * Basic fighting functionality in working condition
 * Random monster generation
 * CPU fighting algorithm in place
-* Signal catching implemented
 
 **Week 2 Goals** : 2020-01-12 to 2020-01-17
 * Networking between computers (host and clients)
