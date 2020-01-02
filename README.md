@@ -46,13 +46,14 @@ Multiple data structures will be used.
 **Week 1 Goals** : 2020-01-05 to 2020-01-11
 * Bare-bones GUI in working condition
 * Hero / Monster / Item structs in working condition
-* User creation and save slots using files.
 * Basic fighting functionality in working condition
 * Random monster generation
 * CPU fighting algorithm in place
+* Signal catching implemented
 
 **Week 2 Goals** : 2020-01-12 to 2020-01-17
-* Level-up system
-* Navigation with mouse and keyboard (click on a region to travel to it)
-* Item shop before every battle
-* Class system where user can select a class with each new character
+* Networking between computers (host and clients)
+* Visual representation of combat through images
+* User creation and save slots using files.
+* Progression and difficulty implementation
+* Checking for proper allocation and freeing of memory
