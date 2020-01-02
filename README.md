@@ -27,9 +27,8 @@ Multiple data structures will be used.
 * Hero /  Monster defend method.
 * Hero / Monster heal method.
 * Hero purchase method.
-* 
-## Timeline
 
+## Timeline
 **Week 1 Goals** : 2019-01-05 to 2019-01-11
 * Bare-bones GUI in working condition
 * Hero / Monster / Item structs in working condition
