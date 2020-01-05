@@ -29,7 +29,7 @@ struct mage {
 	level = 1,
 	status = NULL,
 	ability = "burned"
-    }
+    };
 };
 
 
@@ -42,7 +42,7 @@ struct knight {
 	level = 1,
 	status = NULL,
 	ability = "bleeding",
-    }
+    };
 };
 
 
@@ -55,7 +55,7 @@ struct rogue {
 	level = 1,
 	status = NULL,
 	ability = "poisoned"
-    }
+    };
 };
 
 /*---------- MONSTERS ---------- */
@@ -69,7 +69,7 @@ struct slime {
 	level = 1,
 	status = NULL,
 	ability = "sticky"
-    }
+    };
 
 };
 
@@ -82,7 +82,7 @@ struct zombie {
 	level = 1,
 	status = NULL,
 	ability = "lazy"
-    }
+    };
 };
 
 struct bat {
@@ -94,7 +94,7 @@ struct bat {
 	level = 1,
 	status = NULL,
 	ability = "confused"
-    }
+    };
 };
 
 
