@@ -1,0 +1,5 @@
+### NEW ENTRIES AT TOP ###
+
+yusufovJos -- 2020-01-07 0:30
+Finished character.c and character.h files to instantiate new beings, allocate memory for them,
+and print them.
