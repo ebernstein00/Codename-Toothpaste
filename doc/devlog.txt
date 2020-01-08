@@ -1,5 +1,9 @@
 ### NEW ENTRIES AT TOP ###
 
-yusufovJos -- 2020-01-07 0:30
+yusufovJos -- 2020-01-07 00:30
 Finished character.c and character.h files to instantiate new beings, allocate memory for them,
 and print them.
+
+yusufovJos -- 2020-01-07 20:00
+perused network.c and network.h files, I think I understand them. Server and
+client files still make absoultely no sense to me.
