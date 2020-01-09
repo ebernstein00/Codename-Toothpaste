@@ -1,5 +1,8 @@
 ### NEW ENTRIES AT TOP ###
 
+yusufovJos -- 2020-01-09 10:20
+began working on items.c file.
+
 yusufovJos -- 2020-01-07 00:30
 Finished character.c and character.h files to instantiate new beings, allocate memory for them,
 and print them.
