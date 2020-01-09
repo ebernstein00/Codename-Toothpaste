@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "SDL2-2.0.10/include/SDL.h"
+#include <SDL2/SDL.h>
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -52,7 +52,7 @@ bool loadMedia()
 	bool success = true;
 
 	//Load splash image
-	gHelloWorld = SDL_LoadBMP( "02_getting_an_image_on_the_screen/hello_world.bmp" );
+	gHelloWorld = SDL_LoadBMP( "hello_world.bmp" );
 	if( gHelloWorld == NULL )
 	{
 		printf( "Unable to load image %s! SDL Error: %s\n", "02_getting_an_image_on_the_screen/hello_world.bmp", SDL_GetError() );
@@ -62,7 +62,7 @@ bool loadMedia()
 	return success;
 }
 
-void close()
+void windowClose()
 {
 	//Deallocate surface
 	SDL_FreeSurface( gHelloWorld );
@@ -76,7 +76,7 @@ void close()
 	SDL_Quit();
 }
 
-int main( int argc, char* args[] ){
+int main( int argc, char* args[] ) {
 	//Start up SDL and create window
 	if( !init() )
 	{
@@ -91,19 +91,26 @@ int main( int argc, char* args[] ){
 		}
 		else
 		{
+			bool quit = false;
+			SDL_Event e;
+			while (!quit) {
+				while (SDL_PollEvent( &e) != 0) {
+					if (e.type == SDL_QUIT) {
+						quit = true;
+					}
+				}
 			//Apply the image
 			SDL_BlitSurface( gHelloWorld, NULL, gScreenSurface, NULL );
 
 			//Update the surface
 			SDL_UpdateWindowSurface( gWindow );
+			}
 
-			//Wait two seconds
-			SDL_Delay( 2000 );
 		}
-	}
 
 	//Free resources and close SDL
-	close();
+	windowClose();
 
 	return 0;
+	}
 }
