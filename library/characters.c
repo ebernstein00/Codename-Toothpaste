@@ -161,6 +161,6 @@ struct being * print_being( struct being *pointer) {
 int main() {
     struct being *knight = create_knight(1);
     print_being(knight);
-    free_being(knight)
+    free_being(knight);
     return 0;
 }
