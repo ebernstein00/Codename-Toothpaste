@@ -81,6 +81,9 @@ struct being * create_rogue( int level ) {
 
 }
 
+
+/*---------- ANTAGONISTS ----------*/
+
 struct being * create_slime( int level ) {
     struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
     char **status_array = (char **)calloc(3, sizeof(char [25]));
