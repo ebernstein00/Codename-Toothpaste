@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "SDL2-2.0.10/include/SDL.h"
+#include <SDL2/SDL.h>
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -52,7 +52,7 @@ bool loadMedia()
 	bool success = true;
 
 	//Load splash image
-	gHelloWorld = SDL_LoadBMP( "02_getting_an_image_on_the_screen/hello_world.bmp" );
+	gHelloWorld = SDL_LoadBMP( "hello_world.bmp" );
 	if( gHelloWorld == NULL )
 	{
 		printf( "Unable to load image %s! SDL Error: %s\n", "02_getting_an_image_on_the_screen/hello_world.bmp", SDL_GetError() );
@@ -62,7 +62,7 @@ bool loadMedia()
 	return success;
 }
 
-void close()
+void windowClose()
 {
 	//Deallocate surface
 	SDL_FreeSurface( gHelloWorld );
@@ -103,7 +103,7 @@ int main( int argc, char* args[] ){
 	}
 
 	//Free resources and close SDL
-	close();
+	windowClose();
 
 	return 0;
 }
