@@ -139,6 +139,7 @@ struct being * create_bat( int level ) {
 struct being * free_being( struct being *pointer ) {
     free(pointer->status);
     free(pointer);
+    return pointer;
 }
 
 struct being * print_being( struct being *pointer) {
@@ -151,7 +152,8 @@ struct being * print_being( struct being *pointer) {
     printf("\t[%s]\n", pointer->status[0]);
     printf("\t[%s]\n", pointer->status[1]);
     printf("\t[%s]\n", pointer->status[2]);
-    printf("Ability: [%s]\n", pointer->ability);    
+    printf("Ability: [%s]\n", pointer->ability);
+    return pointer;
 }
 
 
@@ -159,4 +161,6 @@ struct being * print_being( struct being *pointer) {
 int main() {
     struct being *knight = create_knight(1);
     print_being(knight);
+    free_being(knight)
+    return 0;
 }
