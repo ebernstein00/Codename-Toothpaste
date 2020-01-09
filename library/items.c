@@ -18,6 +18,6 @@ struct item {
 };
 
 struct item * create_backpack () {
-
+    
     return backpack;
 }  
