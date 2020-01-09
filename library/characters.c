@@ -16,6 +16,7 @@ struct being {
     int attack;
     int defense;
     int level;
+    struct item backpack[15]; 
     char **status;
     char *ability;
 };
@@ -35,6 +36,7 @@ struct being * create_mage( int level ) {
     being_pointer->attack = 20;
     being_pointer->defense = 5;
     being_pointer->level = level;
+    /* being_pointer->backpack = new_backpack(); */
     being_pointer->status = status_array;
     being_pointer->ability = "burned";
 
