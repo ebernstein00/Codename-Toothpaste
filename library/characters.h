@@ -4,7 +4,7 @@ struct being {
     int attack;
     int defense;
     int level;
-    struct item *backpack[5]; 
+    struct item **backpack; 
     char **status;
     char *ability;
 };
@@ -17,3 +17,5 @@ struct being * create_slime( int level );
 struct being * create_zombie( int level );
 struct being * create_bat( int level );
 struct being * free_being( struct being *pointer );
+
+struct being * print_being( struct being *pointer);
