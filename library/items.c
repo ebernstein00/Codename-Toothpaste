@@ -259,11 +259,11 @@ void print_item( struct item *item_ptr ) {
            item_ptr->hp_buff,
            item_ptr->attack_buff,
            item_ptr->defense_buff,
-           item_ptr->isconsumable_buff
+           item_ptr->isconsumable
         );
 }
 
-struct item * free_item( struct item *item_ptr ) {
+void free_item( struct item *item_ptr ) {
     free(item_ptr);
 }
 
@@ -273,8 +273,7 @@ struct item ** create_backpack () {
     return backpack;
 }
 
-
-struct item ** free_backpack( struct item **backpack_ptr ) {
+void free_backpack( struct item **backpack_ptr ) {
     free_item( backpack_ptr[0] );
     free_item( backpack_ptr[1] );
     free_item( backpack_ptr[2] );
@@ -294,7 +293,7 @@ void print_backpack( struct item **backpack_ptr ) {
                backpack_ptr[i]->hp_buff,
                backpack_ptr[i]->attack_buff,
                backpack_ptr[i]->defense_buff,
-               backpack_ptr[i]->isconsumable_buff
+               backpack_ptr[i]->isconsumable
             );
     }
 }

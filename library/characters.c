@@ -17,7 +17,7 @@ struct being {
     int attack;
     int defense;
     int level;
-    struct item *backpack[5]; 
+    struct item **backpack; 
     char **status;
     char *ability;
 };
@@ -37,7 +37,7 @@ struct being * create_mage( int level ) {
     being_pointer->attack = 20;
     being_pointer->defense = 5;
     being_pointer->level = level;
-    being_pointer->backpack = new_backpack();
+    being_pointer->backpack = create_backpack();
     being_pointer->status = status_array;
     being_pointer->ability = "burned";
 
@@ -56,7 +56,7 @@ struct being * create_knight( int level ) {
     being_pointer->attack = 10;
     being_pointer->defense = 10;
     being_pointer->level = level;
-    being_pointer->backpack = new_backpack();
+    being_pointer->backpack = create_backpack();
     being_pointer->status = status_array;
     being_pointer->ability = "bleeding";
 
@@ -76,7 +76,7 @@ struct being * create_rogue( int level ) {
     being_pointer->attack = 5;
     being_pointer->defense = 15;
     being_pointer->level = level;
-    being_pointer->backpack = new_backpack();
+    being_pointer->backpack = create_backpack();
     being_pointer->status = status_array;
     being_pointer->ability = "poisoned";
 
@@ -99,7 +99,7 @@ struct being * create_slime( int level ) {
     being_pointer->attack = 10;
     being_pointer->defense = 5;
     being_pointer->level = level;
-    being_pointer->backpack = new_backpack();
+    being_pointer->backpack = create_backpack();
     being_pointer->status = status_array;
     being_pointer->ability = "sticky";
 
@@ -119,7 +119,7 @@ struct being * create_zombie( int level ) {
     being_pointer->attack = 5;
     being_pointer->defense = 15;
     being_pointer->level = level;
-    being_pointer->backpack = new_backpack();        
+    being_pointer->backpack = create_backpack();        
     being_pointer->status = status_array;
     being_pointer->ability = "lazy";
 
@@ -139,7 +139,7 @@ struct being * create_bat( int level ) {
     being_pointer->attack = 15;
     being_pointer->defense = 5;
     being_pointer->level = level;
-    being_pointer->backpack = new_backpack();        
+    being_pointer->backpack = create_backpack();        
     being_pointer->status = status_array;
     being_pointer->ability = "confused";
 
@@ -149,6 +149,7 @@ struct being * create_bat( int level ) {
 
 struct being * free_being( struct being *pointer ) {
     free(pointer->status);
+    free_backpack(pointer->backpack);
     free(pointer);
     return pointer;
 }
@@ -170,10 +171,3 @@ struct being * print_being( struct being *pointer) {
 }
 
 
-// ---------- MAIN (TESTING FUNCTION) ----------
-int main() {
-    struct being *knight = create_knight(1);
-    print_being(knight);
-    free_being(knight);
-    return 0;
-}
