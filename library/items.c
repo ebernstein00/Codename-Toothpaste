@@ -287,14 +287,18 @@ void print_backpack( struct item **backpack_ptr ) {
     printf("Backpack:\n");
 
     int i = 0;
-    for (; i < 4; i++) {
-        printf("\t%s: hp[%d] a[%d] d[%d] cons?[%d]\n",
-               backpack_ptr[i]->name,
-               backpack_ptr[i]->hp_buff,
-               backpack_ptr[i]->attack_buff,
-               backpack_ptr[i]->defense_buff,
-               backpack_ptr[i]->isconsumable
-            );
+    for (; i < 5; i++) {
+        if (backpack_ptr[i] == NULL) {
+            printf("\t[]");
+        } else {
+            printf("\t%s: hp[%d] a[%d] d[%d] cons?[%d]\n",
+                   backpack_ptr[i]->name,
+                   backpack_ptr[i]->hp_buff,
+                   backpack_ptr[i]->attack_buff,
+                   backpack_ptr[i]->defense_buff,
+                   backpack_ptr[i]->isconsumable
+                );
+        }
     }
 }
 
