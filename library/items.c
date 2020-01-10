@@ -14,10 +14,18 @@ struct item {
     char *name;
     int hp_buff;
     int attack_buff;
-    int defense_buff;    
+    int defense_buff;
 };
 
 struct item * create_backpack () {
-
+    struct item *backpack = (struct item *)calloc(1, sizeof(struct item));
     return backpack;
-}  
+}
+
+struct item * free_backpack( struct item *pointer ) {
+    free(pointer);
+}
+
+void print_backpack() {
+
+}

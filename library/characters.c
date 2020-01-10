@@ -36,7 +36,7 @@ struct being * create_mage( int level ) {
     being_pointer->attack = 20;
     being_pointer->defense = 5;
     being_pointer->level = level;
-    /* being_pointer->backpack = new_backpack(); */
+    being_pointer->backpack = new_backpack();
     being_pointer->status = status_array;
     being_pointer->ability = "burned";
 
@@ -55,6 +55,7 @@ struct being * create_knight( int level ) {
     being_pointer->attack = 10;
     being_pointer->defense = 10;
     being_pointer->level = level;
+    being_pointer->backpack = new_backpack();
     being_pointer->status = status_array;
     being_pointer->ability = "bleeding";
 
@@ -74,6 +75,7 @@ struct being * create_rogue( int level ) {
     being_pointer->attack = 5;
     being_pointer->defense = 15;
     being_pointer->level = level;
+    being_pointer->backpack = new_backpack();
     being_pointer->status = status_array;
     being_pointer->ability = "poisoned";
 
@@ -93,6 +95,7 @@ struct being * create_slime( int level ) {
     being_pointer->attack = 10;
     being_pointer->defense = 5;
     being_pointer->level = level;
+    being_pointer->backpack = new_backpack();
     being_pointer->status = status_array;
     being_pointer->ability = "sticky";
 
@@ -112,6 +115,7 @@ struct being * create_zombie( int level ) {
     being_pointer->attack = 5;
     being_pointer->defense = 15;
     being_pointer->level = level;
+    being_pointer->backpack = new_backpack();        
     being_pointer->status = status_array;
     being_pointer->ability = "lazy";
 
@@ -131,6 +135,7 @@ struct being * create_bat( int level ) {
     being_pointer->attack = 15;
     being_pointer->defense = 5;
     being_pointer->level = level;
+    being_pointer->backpack = new_backpack();        
     being_pointer->status = status_array;
     being_pointer->ability = "confused";
 
@@ -150,6 +155,8 @@ struct being * print_being( struct being *pointer) {
     printf("Attack: [%d]\n", pointer->attack);
     printf("Defense: [%d]\n", pointer->defense);
     printf("Level: [%d]\n", pointer->level);
+    print_backpack( pointer->backpack );
+    
     printf("Status:\n");
     printf("\t[%s]\n", pointer->status[0]);
     printf("\t[%s]\n", pointer->status[1]);
