@@ -4,7 +4,8 @@ struct being {
     int attack;
     int defense;
     int level;
-    char *status[3];
+    struct item *backpack[5]; 
+    char **status;
     char *ability;
 };
 
