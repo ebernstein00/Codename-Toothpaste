@@ -286,8 +286,8 @@ void free_backpack( struct item **backpack_ptr ) {
 void print_backpack( struct item **backpack_ptr ) {
     printf("Backpack:\n");
 
-    int i;
-    for (; backpack_ptr[i] != NULL; i++) {
+    int i = 0;
+    for (; i < 4; i++) {
         printf("\t%s: hp[%d] a[%d] d[%d] cons?[%d]\n",
                backpack_ptr[i]->name,
                backpack_ptr[i]->hp_buff,
