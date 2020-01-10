@@ -18,10 +18,10 @@ int attack(struct being * attacker, struct being * target){
 }
 
 int use_item(struct being * user, int item_index){
-  if (strcmp(backpack[item_index]->name, "Health Potion") ||
-      strcmp(backpack[item_index]->name, "Strength Potion")) == 0){
-    user->hp += backpack[item_index]->hp_buff;
-    user->attack += backpack[item_index]->attack_buff;
+  if (strcmp(user->backpack[item_index]->name, "Health Potion") ||
+      strcmp(user->backpack[item_index]->name, "Strength Potion")) == 0){
+    user->hp += user->backpack[item_index]->hp_buff;
+    user->attack += user->backpack[item_index]->attack_buff;
   }
   remove_item(user, item_index);
 }
