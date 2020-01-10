@@ -235,7 +235,7 @@ struct item * create_strength_mithril_armor(){
 
 struct item * create_health_potion(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Health Potion");
+    item_ptr->name = "Health Potion";
     item_ptr->hp_buff = 20;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 0;
