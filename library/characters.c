@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <errno.h>
 #include <fcntl.h>
+#include "items.h"
 
 struct being {
     char *type;
@@ -16,7 +17,7 @@ struct being {
     int attack;
     int defense;
     int level;
-    struct item backpack[15]; 
+    struct item *backpack[5]; 
     char **status;
     char *ability;
 };
@@ -82,6 +83,9 @@ struct being * create_rogue( int level ) {
     return being_pointer;
 
 }
+
+
+/*---------- ANTAGONISTS ----------*/
 
 struct being * create_slime( int level ) {
     struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
