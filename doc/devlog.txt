@@ -1,5 +1,8 @@
 ### NEW ENTRIES AT TOP ###
 
+yusufovJod -- 2020-01-09 22:00
+basic game functionality works. Character has stats, backpack full of items, etc. Now, all thats left is the actual game mechanics. Possibly mechanics.c?
+
 yusufovJos -- 2020-01-09 10:20
 began working on items.c file.
 
