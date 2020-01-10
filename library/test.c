@@ -17,11 +17,12 @@ int main() {
     printf("\n ----- NEW KNIGHT ----- \n");
     print_being(knight);
 
+    // Adding health potion to inventory
     struct item *healthpot = create_health_potion();
     knight->backpack[1] = healthpot;
-
     printf("\n ----- WITH HEALTHPOT ----- \n");
     print_being(knight);
 
+    // Adding sword to inventory
     free_being(knight);
 }

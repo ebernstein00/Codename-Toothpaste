@@ -170,4 +170,16 @@ struct being * print_being( struct being *pointer) {
     return pointer;
 }
 
+struct item * add_item( struct being *being_ptr, struct item *item ) {
+
+    switch( item->type ) {
+    case 0:
+        
+    }
+}
+
+/* struct item * remove_item ( struct being *being_pts, struct item *item ) { */
+
+
+/* }  */
 
