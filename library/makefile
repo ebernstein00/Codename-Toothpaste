@@ -11,6 +11,7 @@ items.o: items.c items.h
 	gcc -c -g items.c
 
 clean:
+	rm *.o
 	rm test
 	rm *~
 run:

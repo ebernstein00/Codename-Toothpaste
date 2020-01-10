@@ -18,7 +18,7 @@ int main() {
     print_being(knight);
 
     struct item *healthpot = create_health_potion();
-    knight->backpack[i] = healthpot;
+    knight->backpack[1] = healthpot;
 
     printf("\n ----- WITH HEALTHPOT ----- \n");
     print_being(knight);
