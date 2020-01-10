@@ -289,7 +289,7 @@ void print_backpack( struct item **backpack_ptr ) {
     int i = 0;
     for (; i < 5; i++) {
         if (backpack_ptr[i] == NULL) {
-            printf("\t[]");
+            printf("\t[]\n");
         } else {
             printf("\t%s: hp[%d] a[%d] d[%d] cons?[%d]\n",
                    backpack_ptr[i]->name,
