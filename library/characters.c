@@ -174,12 +174,50 @@ struct item * add_item( struct being *being_ptr, struct item *item ) {
 
     switch( item->type ) {
     case 0:
-        
-    }
+	int i = 0;
+	for (; i < 3; i++) {
+	    if (being_ptr->backpack[i] != NULL) {
+		// DO NOTHING
+	    } else {
+		being_ptr->backpack[i] = item;
+	    }
+	}
+    case 1:
+	
 }
 
-/* struct item * remove_item ( struct being *being_pts, struct item *item ) { */
-
-
-/* }  */
+int remove_item ( struct being *being_ptr, int item_index ) {
+    switch( item_index )
+    {
+    case 0:
+	free_item( being_ptr->backpack[item_index] );
+	being_ptr->backpack[item_index] = NULL;
+	return 1;
+	break;
+    case 1: 
+	free_item( being_ptr->backpack[item_index] );
+	being_ptr->backpack[item_index] = NULL;
+	return 1;
+	break;
+    case 2: 
+	free_item( being_ptr->backpack[item_index] );
+	being_ptr->backpack[item_index] = NULL;
+	return 1;
+	break;
+    case 3:
+	being_ptr->hp -= being_ptr->backpack[item_index]->hp_buff;
+	being_ptr->attack -= being_ptr->backpack[item_index]->attack_buff;
+	being_ptr->defense -= being_ptr->backpack[item_index]->defense_buff;
+	free_item( being_ptr->backpack[item_index] );
+	return 1;
+	break;
+    case 4: 
+	being_ptr->hp -= being_ptr->backpack[item_index]->hp_buff;
+	being_ptr->attack -= being_ptr->backpack[item_index]->attack_buff;
+	being_ptr->defense -= being_ptr->backpack[item_index]->defense_buff;
+	free_item( being_ptr->backpack[item_index] );
+	return 1;
+	break;
+    default: return -1;
+}
 
