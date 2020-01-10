@@ -15,7 +15,10 @@ struct item {
     int hp_buff;
     int attack_buff;
     int defense_buff;
-    int isconsumable;
+    int type;
+    // 0: consumable
+    // 1: sword
+    // 2: armor
 };
 
 //SWORDS
@@ -24,8 +27,8 @@ struct item * create_wood_sword(){
     strcpy(item_ptr->name, "Wooden Sword");
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
-    item_ptr->defense_buff = 0;
-    item_ptr->isconsumable = 0;
+    item_ptr->defense_buff = 1;
+    item_ptr->type = 0;
     return item_ptr;
 }
 
@@ -35,7 +38,7 @@ struct item * create_iron_sword(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 10;
     item_ptr->defense_buff = 0;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 1;
     return item_ptr;
 }
 
@@ -45,7 +48,7 @@ struct item * create_steel_sword(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 15;
     item_ptr->defense_buff = 0;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 1;
     return item_ptr;
 }
 
@@ -55,7 +58,7 @@ struct item * create_armoring_wooden_sword(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 3;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 1;
     return item_ptr;
 }
 
@@ -65,7 +68,7 @@ struct item * create_armoring_iron_sword(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 10;
     item_ptr->defense_buff = 3;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 1;
     return item_ptr;
 }
 
@@ -75,7 +78,7 @@ struct item * create_armoring_steel_sword(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 15;
     item_ptr->defense_buff = 3;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 1;
     return item_ptr;
 }
 
@@ -85,7 +88,7 @@ struct item * create_rigidity_wooden_sword(){
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 0;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 1;
     return item_ptr;
 }
 
@@ -95,7 +98,7 @@ struct item * create_rigidity_iron_sword(){
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 10;
     item_ptr->defense_buff = 0;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 1;
     return item_ptr;
 }
 
@@ -106,7 +109,7 @@ struct item * create_rigidity_steel_sword(){
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 15;
     item_ptr->defense_buff = 0;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 1;
     return item_ptr;
 }
 
@@ -117,7 +120,7 @@ struct item * create_leather_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 5;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 2;
     return item_ptr;
 }
 
@@ -127,7 +130,7 @@ struct item * create_iron_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 10;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 2;
     return item_ptr;
 }
 
@@ -137,7 +140,7 @@ struct item * create_steel_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 15;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 2;
     return item_ptr;
 }
 
@@ -147,7 +150,7 @@ struct item * create_mithril_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 25;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 2;
     return item_ptr;
 }
 
@@ -157,7 +160,7 @@ struct item * create_rigidity_leather_armor(){
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 5;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 2;
     return item_ptr;
 }
 
@@ -167,7 +170,7 @@ struct item * create_rigidity_iron_armor(){
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 10;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 2;
     return item_ptr;
 }
 
@@ -177,7 +180,7 @@ struct item * create_rigidity_steel_armor(){
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 15;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 2;
     return item_ptr;
 }
 
@@ -187,7 +190,7 @@ struct item * create_rigidity_mithril_armor(){
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 25;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 2;
     return item_ptr;
 }
 
@@ -197,7 +200,7 @@ struct item * create_strength_leather_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 5;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 2;
     return item_ptr;
 }
 
@@ -207,7 +210,7 @@ struct item * create_strength_iron_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 10;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 2;
     return item_ptr;
 }
 
@@ -217,7 +220,7 @@ struct item * create_strength_steel_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 15;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 2;
     return item_ptr;
 }
 
@@ -227,7 +230,7 @@ struct item * create_strength_mithril_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 25;
-    item_ptr->isconsumable = 0;
+    item_ptr->type = 2;
     return item_ptr;
 }
 
@@ -239,7 +242,7 @@ struct item * create_health_potion(){
     item_ptr->hp_buff = 20;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 0;
-    item_ptr->isconsumable = 1;
+    item_ptr->type = 0;
     return item_ptr;
 }
 
@@ -249,23 +252,24 @@ struct item * create_strength_potion(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 10;
     item_ptr->defense_buff = 0;
-    item_ptr->isconsumable = 1;
+    item_ptr->type = 0;
     return item_ptr;
 }
 
 void print_item( struct item *item_ptr ) {
-    printf("\t%s: hp[%d] a[%d] d[%d] cons?[%d]\n",
+    printf("\t%s: hp[%d] a[%d] d[%d] type[%d]\n",
            item_ptr->name,
            item_ptr->hp_buff,
            item_ptr->attack_buff,
            item_ptr->defense_buff,
-           item_ptr->isconsumable
+           item_ptr->type
         );
 }
 
 void free_item( struct item *item_ptr ) {
     free(item_ptr);
 }
+
 
 // Backpack
 struct item ** create_backpack () {
@@ -291,13 +295,7 @@ void print_backpack( struct item **backpack_ptr ) {
         if (backpack_ptr[i] == NULL) {
             printf("\t[]\n");
         } else {
-            printf("\t%s: hp[%d] a[%d] d[%d] cons?[%d]\n",
-                   backpack_ptr[i]->name,
-                   backpack_ptr[i]->hp_buff,
-                   backpack_ptr[i]->attack_buff,
-                   backpack_ptr[i]->defense_buff,
-                   backpack_ptr[i]->isconsumable
-                );
+            print_item( backpack_ptr[i] );
         }
     }
 }

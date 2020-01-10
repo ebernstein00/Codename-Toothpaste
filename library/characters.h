@@ -18,4 +18,6 @@ struct being * create_zombie( int level );
 struct being * create_bat( int level );
 struct being * free_being( struct being *pointer );
 
-struct being * print_being( struct being *pointer);
+/* struct being * print_being( struct being *pointer); */
+
+/* struct item * add_item( struct being *being_ptr, struct item *item ) { */
