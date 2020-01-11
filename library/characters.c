@@ -219,7 +219,8 @@ int add_item( struct being *being_ptr, struct item *item ) {
             }
 	}
 
-        remove_item( being_ptr, item );
+        remove_item( being_ptr, 0 );
+        being_ptr->backpack[i] = item;
         return 1;
         break;
     case 1:
