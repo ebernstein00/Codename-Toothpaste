@@ -214,10 +214,12 @@ int add_item( struct being *being_ptr, struct item *item ) {
 	for (; i < 3; i++) {
 	    if (being_ptr->backpack[i] == NULL) {
 		being_ptr->backpack[i] = item;
-	    } else {
-                // Do Nothing
-	    }
+                return 1;
+                break;
+            }
 	}
+
+        remove_item( being_ptr, item );
         return 1;
         break;
     case 1:
