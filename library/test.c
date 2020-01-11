@@ -19,8 +19,14 @@ int main() {
 
     // Adding health potion to inventory
     struct item *healthpot = create_health_potion();
+    struct item *strengthpot = create_strength_potion();
+    struct item *ironsword = create_iron_sword();
+    struct item *ironarmor = create_iron_armor();
     add_item(knight, healthpot);
-    printf("\n ----- WITH HEALTHPOT ----- \n");
+    add_item(knight, strengthpot);
+    add_item(knight, ironsword);
+    add_item(knight, ironarmor);
+    printf("\n ----- WITH ITEMS ----- \n");
     print_being(knight);
 
     // Adding sword to inventory
