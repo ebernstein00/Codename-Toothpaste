@@ -24,7 +24,7 @@ struct item {
 //SWORDS
 struct item * create_wood_sword(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Wooden Sword");
+    item_ptr->name = "Wooden Sword";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 1;
@@ -34,7 +34,7 @@ struct item * create_wood_sword(){
 
 struct item * create_iron_sword(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Iron Sword");
+    item_ptr->name = "Iron Sword";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 10;
     item_ptr->defense_buff = 0;
@@ -44,7 +44,7 @@ struct item * create_iron_sword(){
 
 struct item * create_steel_sword(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Steel Sword");
+    item_ptr->name = "Steel Sword";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 15;
     item_ptr->defense_buff = 0;
@@ -54,7 +54,7 @@ struct item * create_steel_sword(){
 
 struct item * create_armoring_wooden_sword(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Wooden Sword of Armoring");
+    item_ptr->name = "Wooden Sword of Armoring";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 3;
@@ -64,7 +64,7 @@ struct item * create_armoring_wooden_sword(){
 
 struct item * create_armoring_iron_sword(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Iron Sword of Armoring");
+    item_ptr->name = "Iron Sword of Armoring";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 10;
     item_ptr->defense_buff = 3;
@@ -74,7 +74,7 @@ struct item * create_armoring_iron_sword(){
 
 struct item * create_armoring_steel_sword(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Steel Sword of Armoring");
+    item_ptr->name = "Steel Sword of Armoring";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 15;
     item_ptr->defense_buff = 3;
@@ -84,7 +84,7 @@ struct item * create_armoring_steel_sword(){
 
 struct item * create_rigidity_wooden_sword(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Wooden Sword of Rigidity");
+    item_ptr->name = "Wooden Sword of Rigidity";
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 0;
@@ -94,7 +94,7 @@ struct item * create_rigidity_wooden_sword(){
 
 struct item * create_rigidity_iron_sword(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Iron Sword of Rigidity");
+    item_ptr->name = "Iron Sword of Rigidity";
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 10;
     item_ptr->defense_buff = 0;
@@ -105,7 +105,7 @@ struct item * create_rigidity_iron_sword(){
 
 struct item * create_rigidity_steel_sword(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Steel Sword of Rigidity");
+    item_ptr->name = "Steel Sword of Rigidity";
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 15;
     item_ptr->defense_buff = 0;
@@ -116,7 +116,7 @@ struct item * create_rigidity_steel_sword(){
 //ARMORS
 struct item * create_leather_armor(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Leather Armor");
+    item_ptr->name = "Leather Armor";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 5;
@@ -126,7 +126,7 @@ struct item * create_leather_armor(){
 
 struct item * create_iron_armor(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Iron Armor");
+    item_ptr->name = "Iron Armor";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 10;
@@ -136,7 +136,7 @@ struct item * create_iron_armor(){
 
 struct item * create_steel_armor(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Steel Armor");
+    item_ptr->name = "Steel Armor";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 15;
@@ -146,7 +146,7 @@ struct item * create_steel_armor(){
 
 struct item * create_mithril_armor(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Mithril Armor");
+    item_ptr->name = "Mithril Armor";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 25;
@@ -156,7 +156,7 @@ struct item * create_mithril_armor(){
 
 struct item * create_rigidity_leather_armor(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Leather Armor of Rigidity");
+    item_ptr->name = "Leather Armor of Rigidity";
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 5;
@@ -166,7 +166,7 @@ struct item * create_rigidity_leather_armor(){
 
 struct item * create_rigidity_iron_armor(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Iron Armor of Rigidity");
+    item_ptr->name = "Iron Armor of Rigidity";
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 10;
@@ -176,7 +176,7 @@ struct item * create_rigidity_iron_armor(){
 
 struct item * create_rigidity_steel_armor(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Steel Armor of Rigidity");
+    item_ptr->name = "Steel Armor of Rigidity";
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 15;
@@ -186,7 +186,7 @@ struct item * create_rigidity_steel_armor(){
 
 struct item * create_rigidity_mithril_armor(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Mithril Armor of Rigidity");
+    item_ptr->name = "Mithril Armor of Rigidity";
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 25;
@@ -196,7 +196,7 @@ struct item * create_rigidity_mithril_armor(){
 
 struct item * create_strength_leather_armor(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Leather Armor of Strength");
+    item_ptr->name = "Leather Armor of Strength";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 5;
@@ -206,7 +206,7 @@ struct item * create_strength_leather_armor(){
 
 struct item * create_strength_iron_armor(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Iron Armor of Strength");
+    item_ptr->name = "Iron Armor of Strength";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 10;
@@ -216,7 +216,7 @@ struct item * create_strength_iron_armor(){
 
 struct item * create_strength_steel_armor(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Steel Armor of Strength");
+    item_ptr->name = "Steel Armor of Strength";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 15;
@@ -226,7 +226,7 @@ struct item * create_strength_steel_armor(){
 
 struct item * create_strength_mithril_armor(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Mithril Armor of Strength");
+    item_ptr->name = "Mithril Armor of Strength";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 25;
@@ -248,7 +248,7 @@ struct item * create_health_potion(){
 
 struct item * create_strength_potion(){
     struct item * item_ptr = (struct item *)calloc(1, sizeof(struct item));
-    strcpy(item_ptr->name, "Strength Potion");
+    item_ptr->name ="Strength Potion";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 10;
     item_ptr->defense_buff = 0;
