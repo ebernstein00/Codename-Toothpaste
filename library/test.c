@@ -13,22 +13,29 @@
 #include "characters.h"
 
 int main() {
-    struct being *knight = create_knight(1);
-    printf("\n ----- NEW KNIGHT ----- \n");
-    print_being(knight);
+  struct being *mage = create_mage(1);
+    printf("\n ----- NEW MAGE ----- \n");
+    print_being(mage);
 
     // Adding health potion to inventory
     struct item *healthpot = create_health_potion();
+    struct item *healthpot2 = create_health_potion();    
     struct item *strengthpot = create_strength_potion();
+    struct item *strengthpot2 = create_strength_potion();    
+    struct item *steelsword = create_steel_sword();
+
     struct item *ironsword = create_iron_sword();
     struct item *ironarmor = create_iron_armor();
-    add_item(knight, healthpot);
-    add_item(knight, strengthpot);
-    add_item(knight, ironsword);
-    add_item(knight, ironarmor);
+    add_item(mage, healthpot);
+    add_item(mage, strengthpot);
+    add_item(mage, healthpot2);
+    add_item(mage, strengthpot2);
+    add_item(mage, steelsword);
+    add_item(mage, ironsword);
+    add_item(mage, ironarmor);
     printf("\n ----- WITH ITEMS ----- \n");
-    print_being(knight);
+    print_being(mage);
 
     // Adding sword to inventory
-    free_being(knight);
+    free_being(mage);
 }
