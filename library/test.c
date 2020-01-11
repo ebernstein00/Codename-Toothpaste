@@ -19,7 +19,7 @@ int main() {
 
     // Adding health potion to inventory
     struct item *healthpot = create_health_potion();
-    knight->backpack[1] = healthpot;
+    add_item(knight, healthpot);
     printf("\n ----- WITH HEALTHPOT ----- \n");
     print_being(knight);
 
