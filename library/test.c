@@ -22,16 +22,13 @@ int main() {
     struct item *healthpot2 = create_health_potion();    
     struct item *strengthpot = create_strength_potion();
     struct item *strengthpot2 = create_strength_potion();    
-    struct item *steelsword = create_steel_sword();
-
-    struct item *ironsword = create_iron_sword();
+    struct item *rigid_ironsword = create_rigidity_iron_sword();
     struct item *ironarmor = create_iron_armor();
     add_item(mage, healthpot);
     add_item(mage, strengthpot);
     add_item(mage, healthpot2);
     add_item(mage, strengthpot2);
-    add_item(mage, steelsword);
-    add_item(mage, ironsword);
+    add_item(mage, rigid_ironsword);
     add_item(mage, ironarmor);
     printf("\n ----- WITH ITEMS ----- \n");
     print_being(mage);
