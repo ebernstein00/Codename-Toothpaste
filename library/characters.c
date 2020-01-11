@@ -170,21 +170,6 @@ struct being * print_being( struct being *pointer) {
     return pointer;
 }
 
-struct item * add_item( struct being *being_ptr, struct item *item ) {
-
-    switch( item->type ) {
-    case 0:
-	int i = 0;
-	for (; i < 3; i++) {
-	    if (being_ptr->backpack[i] != NULL) {
-		// DO NOTHING
-	    } else {
-		being_ptr->backpack[i] = item;
-	    }
-	}
-    case 1:
-	
-}
 
 int remove_item ( struct being *being_ptr, int item_index ) {
     switch( item_index )
@@ -219,5 +204,60 @@ int remove_item ( struct being *being_ptr, int item_index ) {
 	return 1;
 	break;
     default: return -1;
+    }
 }
 
+int add_item( struct being *being_ptr, struct item *item ) {
+    int i = 0;
+    switch( item->type ) {
+    case 0:
+	for (; i < 3; i++) {
+	    if (being_ptr->backpack[i] == NULL) {
+		being_ptr->backpack[i] = item;
+	    } else {
+                // Do Nothing
+	    }
+	}
+        return 1;
+        break;
+    case 1:
+        if( being_ptr->backpack[3] == NULL ) {
+            being_ptr->backpack[3] = item;
+            being_ptr->hp += item->hp_buff;
+            being_ptr->attack += item->attack_buff;
+            being_ptr->defense += item->defense_buff;            
+        } else {
+            int r = remove_item( being_ptr, 3);
+            if (r == -1) {
+                printf("error: remove item\n");
+            }
+            being_ptr->backpack[3] = item;
+            being_ptr->hp += item->hp_buff;
+            being_ptr->attack += item->attack_buff;
+            being_ptr->defense += item->defense_buff;            
+        }
+        return 1;
+        break;
+    case 2:
+        if( being_ptr->backpack[4] == NULL ) {
+            being_ptr->backpack[4] = item;
+            being_ptr->hp += item->hp_buff;
+            being_ptr->attack += item->attack_buff;
+            being_ptr->defense += item->defense_buff;            
+
+        } else {
+            int r = remove_item( being_ptr, 4);
+            if (r == -1) {
+                printf("error: remove item\n");
+            }
+            being_ptr->backpack[4] = item;
+            being_ptr->hp += item->hp_buff;
+            being_ptr->attack += item->attack_buff;
+            being_ptr->defense += item->defense_buff;            
+        }
+        return 1;
+        break;
+    default:
+        return -1;
+    }        	
+}

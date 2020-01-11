@@ -4,7 +4,10 @@ struct item {
     int hp_buff;
     int attack_buff;
     int defense_buff;
-    int isconsumable;
+    int type;
+        // 0: Consumable
+        // 1: Sword
+        // 2: Armor
 };
 
 //SWORDS

@@ -19,5 +19,7 @@ struct being * create_bat( int level );
 struct being * free_being( struct being *pointer );
 
 /* struct being * print_being( struct being *pointer); */
-
+struct being * print_being( struct being *pointer);
+int remove_item ( struct being *being_ptr, int item_index );
+int add_item( struct being *being_ptr, struct item *item );
 /* struct item * add_item( struct being *being_ptr, struct item *item ) { */
