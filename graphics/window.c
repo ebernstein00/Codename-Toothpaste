@@ -2,19 +2,19 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include "./fighter/fighterIdle.h"
+#include "./fighter/fighterKick.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
 //The window we'll be rendering to
-SDL_Window* gWindow = NULL;
+SDL_Window* window = NULL;
 
-//The surface contained by the window
-SDL_Surface* gScreenSurface = NULL;
+SDL_Renderer* gRenderer = NULL;
 
-//The image we will load and show on the screen
-SDL_Surface* gHelloWorld = NULL;
 
 bool init()
 {
@@ -22,61 +22,74 @@ bool init()
 	bool success = true;
 
 	//Initialize SDL
-	if(SDL_Init( SDL_INIT_VIDEO ) < 0 )
+	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
 	{
-		printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
+		printf( "SDL could not initialize! SDL Error: %s\n", SDL_GetError() );
 		success = false;
 	}
 	else
 	{
-		//Create window
-		gWindow = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
-		if( gWindow == NULL )
+		//Set texture filtering to linear
+		if( !SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ) )
 		{
-			printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
+			printf( "Warning: Linear texture filtering not enabled!" );
+		}
+
+		//Create window
+		window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+		if( window == NULL )
+		{
+			printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
 			success = false;
 		}
 		else
 		{
-			//Get window surface
-			gScreenSurface = SDL_GetWindowSurface( gWindow );
+			//Create vsynced gRenderer for window
+			gRenderer = SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
+			if( gRenderer == NULL )
+			{
+				printf( "gRenderer could not be created! SDL Error: %s\n", SDL_GetError() );
+				success = false;
+			}
+			else
+			{
+				//Initialize gRenderer color
+				SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+
+				//Initialize PNG loading
+				int imgFlags = IMG_INIT_PNG;
+				if( !( IMG_Init( imgFlags ) & imgFlags ) )
+				{
+					printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
+					success = false;
+				}
+				initFighterKick(gRenderer);
+				initFighterIdle(gRenderer);
+				// This is where you load all the animations in!
+			}
 		}
 	}
 
 	return success;
 }
 
-bool loadMedia()
-{
-	//Loading success flag
-	bool success = true;
-
-	//Load splash image
-	gHelloWorld = SDL_LoadBMP( "hello_world.bmp" );
-	if( gHelloWorld == NULL )
-	{
-		printf( "Unable to load image %s! SDL Error: %s\n", "02_getting_an_image_on_the_screen/hello_world.bmp", SDL_GetError() );
-		success = false;
-	}
-
-	return success;
-}
 
 void windowClose()
 {
-	//Deallocate surface
-	SDL_FreeSurface( gHelloWorld );
-	gHelloWorld = NULL;
 
 	//Destroy window
-	SDL_DestroyWindow( gWindow );
-	gWindow = NULL;
-
+	SDL_DestroyRenderer( gRenderer );
+	SDL_DestroyWindow( window );
+	window = NULL;
+	gRenderer = NULL;
+	destroyFighterIdle();
 	//Quit SDL subsystems
+	IMG_Quit();
 	SDL_Quit();
 }
 
-int main( int argc, char* args[] ) {
+int main( int argc, char* args[] )
+{
 	//Start up SDL and create window
 	if( !init() )
 	{
@@ -85,32 +98,52 @@ int main( int argc, char* args[] ) {
 	else
 	{
 		//Load media
-		if( !loadMedia() )
-		{
-			printf( "Failed to load media!\n" );
-		}
-		else
-		{
+		// if( !loadMedia() )
+		// {
+		// 	printf( "Failed to load media!\n" );
+		// }
+		// else
+		// {
+			//Main loop flag
 			bool quit = false;
+
+			//Event handler
 			SDL_Event e;
-			while (!quit) {
-				while (SDL_PollEvent( &e) != 0) {
-					if (e.type == SDL_QUIT) {
+
+			//Current animation frame
+
+			//While application is running
+			while( !quit )
+			{
+				//Handle events on queue
+				while( SDL_PollEvent( &e ) != 0 )
+				{
+					//User requests quit
+					if( e.type == SDL_QUIT )
+					{
 						quit = true;
 					}
 				}
-			//Apply the image
-			SDL_BlitSurface( gHelloWorld, NULL, gScreenSurface, NULL );
 
-			//Update the surface
-			SDL_UpdateWindowSurface( gWindow );
+				//Clear screen
+				// SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+				SDL_RenderClear( gRenderer );
+
+				//Render current frame
+				displayFighterIdle();
+
+				//Update screen
+				SDL_RenderPresent( gRenderer );
+
+				//Go to next frame
+
+				//Cycle animation
 			}
-
 		}
+	// }
 
 	//Free resources and close SDL
 	windowClose();
 
 	return 0;
-	}
 }
