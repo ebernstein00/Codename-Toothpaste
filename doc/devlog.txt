@@ -1,5 +1,14 @@
 ### NEW ENTRIES AT TOP ###
 
+yusufovJos -- 2020-01-10 22:10
+add_item() and remove_item() functions in character.c work with limited functionality. Bug where swords don't actually buff defense, needs to be looked into, and adding a potion when potion slots are already full only empties one slot. Next up: networking.
+
+yusufovJos -- 2020-01-09 22:00
+basic game functionality works. Character has stats, backpack full of items, etc. Now, all thats left is the actual game mechanics. Possibly mechanics.c?
+
+yusufovJos -- 2020-01-09 10:20
+began working on items.c file.
+
 yusufovJos -- 2020-01-07 00:30
 Finished character.c and character.h files to instantiate new beings, allocate memory for them,
 and print them.
