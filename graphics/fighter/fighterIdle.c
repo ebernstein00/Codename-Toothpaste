@@ -1,43 +1,44 @@
 #include "fighterIdle.h"
 
-SDL_Rect srcrect = { 13, 10, 25, 25 };
-SDL_Rect dstrect = { 10, 10, 75, 75 };
-int frames = 4;
-int xval[4] = {13,52,90,52};
-int sprite = 0;
-SDL_Renderer* renderer = NULL;
-SDL_Surface* image = NULL;
-SDL_Texture* texture = NULL;
+SDL_Rect FIsrcrect = { 13, 10, 35, 35 };
+SDL_Rect FIdstrect = { 30, 30, 140, 140 };
+int FIframes = 4;
+int FIxval[4] = {13,52,90,52};
+int FIsprite = 0;
+SDL_Renderer* FIrenderer = NULL;
+SDL_Surface* FIimage = NULL;
+SDL_Texture* FItexture = NULL;
 
 void initFighterIdle(SDL_Renderer* sdlRenderer)
 {
     SDL_Init(SDL_INIT_VIDEO);
     IMG_Init(IMG_INIT_PNG);
-    renderer = sdlRenderer;
-    image = IMG_Load("fighter.png");
-    texture = SDL_CreateTextureFromSurface(renderer, image);
+    FIrenderer = sdlRenderer;
+    FIimage = IMG_Load("./fighter/fighter.png");
+    SDL_SetColorKey(FIimage, SDL_TRUE, SDL_MapRGB (FIimage->format, 0x78, 0xB8, 0x70));
+    FItexture = SDL_CreateTextureFromSurface(FIrenderer, FIimage);
 
 }
 
 void displayFighterIdle() {
-    sprite++;
-    sprite %=240;
-    if (sprite < 225) {
-        srcrect.x = xval[0];
+    FIsprite++;
+    FIsprite %=240;
+    if (FIsprite < 225) {
+        FIsrcrect.x = FIxval[0];
     }
-    else if (sprite < 230) {
-        srcrect.x = xval[1];
+    else if (FIsprite < 230) {
+        FIsrcrect.x = FIxval[1];
     }
-    else if (sprite < 235){
-        srcrect.x = xval[2];
+    else if (FIsprite < 235){
+        FIsrcrect.x = FIxval[2];
     }
     else {
-        srcrect.x = xval[1];
+        FIsrcrect.x = FIxval[1];
     }
-    SDL_RenderCopy(renderer, texture, &srcrect, &dstrect);
+    SDL_RenderCopy(FIrenderer, FItexture, &FIsrcrect, &FIdstrect);
 }
 
 void destroyFighterIdle() {
-    SDL_DestroyTexture(texture);
-    SDL_FreeSurface(image);
+    SDL_DestroyTexture(FItexture);
+    SDL_FreeSurface(FIimage);
 }

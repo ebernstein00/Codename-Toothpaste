@@ -7,21 +7,23 @@
 #include "./fighter/fighterKick.h"
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+#define SCREEN_WIDTH 1600
+#define SCREEN_HEIGHT 900
 
 //The window we'll be rendering to
 SDL_Window* window = NULL;
 
-SDL_Renderer* gRenderer = NULL;
+SDL_Renderer* renderer = NULL;
 
-
+SDL_Rect field = {0, 0 , SCREEN_WIDTH, SCREEN_HEIGHT/2 };
+SDL_Rect gui = {0, SCREEN_HEIGHT/2, SCREEN_WIDTH/2, SCREEN_HEIGHT/2};
+SDL_Rect text = {SCREEN_WIDTH/2, SCREEN_HEIGHT/2, SCREEN_WIDTH/2, SCREEN_HEIGHT/2};
 bool init()
 {
 	//Initialization flag
 	bool success = true;
 
-	//Initialize SDL
+	//Initialframesize SDL
 	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
 	{
 		printf( "SDL could not initialize! SDL Error: %s\n", SDL_GetError() );
@@ -44,17 +46,17 @@ bool init()
 		}
 		else
 		{
-			//Create vsynced gRenderer for window
-			gRenderer = SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
-			if( gRenderer == NULL )
+			//Create vsynced renderer for window
+			renderer = SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
+			if( renderer == NULL )
 			{
-				printf( "gRenderer could not be created! SDL Error: %s\n", SDL_GetError() );
+				printf( "renderer could not be created! SDL Error: %s\n", SDL_GetError() );
 				success = false;
 			}
 			else
-			{
-				//Initialize gRenderer color
-				SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+				{
+				//Initialize renderer color
+				SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
 
 				//Initialize PNG loading
 				int imgFlags = IMG_INIT_PNG;
@@ -63,8 +65,8 @@ bool init()
 					printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
 					success = false;
 				}
-				initFighterKick(gRenderer);
-				initFighterIdle(gRenderer);
+				// initFighterKick(renderer);
+				initFighterIdle(renderer);
 				// This is where you load all the animations in!
 			}
 		}
@@ -78,10 +80,10 @@ void windowClose()
 {
 
 	//Destroy window
-	SDL_DestroyRenderer( gRenderer );
+	SDL_DestroyRenderer( renderer );
 	SDL_DestroyWindow( window );
 	window = NULL;
-	gRenderer = NULL;
+	renderer = NULL;
 	destroyFighterIdle();
 	//Quit SDL subsystems
 	IMG_Quit();
@@ -97,14 +99,7 @@ int main( int argc, char* args[] )
 	}
 	else
 	{
-		//Load media
-		// if( !loadMedia() )
-		// {
-		// 	printf( "Failed to load media!\n" );
-		// }
-		// else
-		// {
-			//Main loop flag
+
 			bool quit = false;
 
 			//Event handler
@@ -124,16 +119,20 @@ int main( int argc, char* args[] )
 						quit = true;
 					}
 				}
-
 				//Clear screen
-				// SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
-				SDL_RenderClear( gRenderer );
-
+				SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+				SDL_RenderClear( renderer );
+				SDL_RenderSetViewport(renderer, &field);
 				//Render current frame
 				displayFighterIdle();
+				// displayFighterKick();
 
+				SDL_RenderSetViewport(renderer, &gui);
+				SDL_Rect button = {50,50, 200, 200};
+				SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
+				SDL_RenderFillRect(renderer, &button);
 				//Update screen
-				SDL_RenderPresent( gRenderer );
+				SDL_RenderPresent( renderer );
 
 				//Go to next frame
 

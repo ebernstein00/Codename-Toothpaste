@@ -1,51 +1,52 @@
 #include "fighterKick.h"
 
-SDL_Rect srcrect = {713, 10, 25, 25 };
-SDL_Rect dstrect = { 100, 100, 75, 75 };
-int frames = 5;
-int xval[5] = {713,756,795,840,888};
-int yval[5] = {163, 163, 160, 160, 160};
-int sprite = 0;
-SDL_Renderer* renderer = NULL;
-SDL_Surface* image = NULL;
-SDL_Texture* texture = NULL;
+SDL_Rect FKsrcrect = {713, 10, 25, 25 };
+SDL_Rect FKdstrect = { 100, 100, 75, 75 };
+int FKframes = 5;
+int FKxval[5] = {713,756,795,840,888};
+int FKyval[5] = {163, 163, 160, 160, 160};
+int FKsprite = 0;
+SDL_Renderer* FKrenderer = NULL;
+SDL_Surface* FKimage = NULL;
+SDL_Texture* FKtexture = NULL;
 
 void initFighterKick(SDL_Renderer* sdlRenderer)
 {
     SDL_Init(SDL_INIT_VIDEO);
     IMG_Init(IMG_INIT_PNG);
-    renderer = sdlRenderer;
-    image = IMG_Load("fighter.png");
-    texture = SDL_CreateTextureFromSurface(renderer, image);
+    FKrenderer = sdlRenderer;
+    FKimage = IMG_Load("./fighter/fighter.png");
+    FKtexture = SDL_CreateTextureFromSurface(FKrenderer, FKimage);
 
 }
 
 void displayFighterKick() {
-    sprite++;
-    sprite %=120;
+    FKsprite++;
+    FKsprite %=120;
     int x = 0;
-    if (sprite < 25) {
+    if (FKsprite < 25) {
         x = 0;
     }
-    else if (sprite < 50) {
+    else if (FKsprite < 50) {
         x = 1;
     }
-    else if (sprite < 75) {
+    else if (FKsprite < 75) {
         x = 2;
     }
-    else if (sprite < 100) {
+    else if (FKsprite < 100) {
         x = 3;
     }
-    else if (sprite < 125) {
+    else if (FKsprite < 125) {
         x = 4;
     }
-    srcrect.x = x;
+    FKsrcrect.x = FKxval[x];
+    FKsrcrect.y = FKyval[x];
 
 
-    SDL_RenderCopy(renderer, texture, &srcrect, &dstrect);
+    SDL_RenderCopy(FKrenderer, FKtexture, &FKsrcrect, &FKdstrect);
 }
 
 void destroyFighterKick() {
-    SDL_DestroyTexture(texture);
-    SDL_FreeSurface(image);
+    SDL_DestroyTexture(FKtexture);
+    SDL_FreeSurface(FKimage);
 }
