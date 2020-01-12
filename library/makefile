@@ -13,9 +13,10 @@ items.o: items.c items.h
 clean:
 	rm *.o
 	rm test
+	rm -rf *.dsYM
 	rm *~
 run:
 	./test
 
 memtest:
-	valgrind ./test --leak-check=yes
+	valgrind ./test --leak-check=yes --dsmyutil=no
