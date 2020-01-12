@@ -1,3 +1,5 @@
+all: fighterIdle.o fighterKick.o
+	
 fighterIdle.o: fighterIdle.c
 	gcc -c -g fighterIdle.c
 
