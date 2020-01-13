@@ -225,13 +225,15 @@ int add_item( struct being *being_ptr, struct item *item ) {
         break;
     case 1:
         if( being_ptr->backpack[3] == NULL ) {
-            being_ptr->backpack[3] = item;
+	    printf("is null\n");
+	    being_ptr->backpack[3] = item;
             being_ptr->hp += item->hp_buff;
             /* printf( "[%d]\n",item->attack_buff ); */
             /* printf( "[%d]\n",item->hp_buff ); */
             being_ptr->attack += item->attack_buff;
             being_ptr->defense += item->defense_buff;            
         } else {
+	    print_backpack( being_ptr->backpack );
             int r = remove_item( being_ptr, 3);
             if (r == -1) {
                 printf("error: remove item\n");
