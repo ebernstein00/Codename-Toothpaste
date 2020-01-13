@@ -36,3 +36,19 @@ int guard_end(struct being * user){
     target->defense -= 20;
     return 0;
 }
+
+int playerturn( struct being *player ) {
+    char *input = (char *)calloc(12, sizeof( char ));
+    printf("Potion 1: [0]");
+    printf("Potion 2: [1]");
+    printf("Potion 3: [2]");
+    printf("  Attack: [3]");
+    printf("   Guard: [4]");
+    
+    fgets( input, 12, stdin );
+    *strchr( input, '\n' ) = 0;
+    
+    // convert string to int.
+
+    }
+}
