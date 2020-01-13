@@ -210,20 +210,19 @@ int remove_item ( struct being *being_ptr, int item_index ) {
 int add_item( struct being *being_ptr, struct item *item ) {
     int i = 0;
     switch( item->type ) {
-    case 0:
+    case 1:
 	for (; i < 3; i++) {
 	    if (being_ptr->backpack[i] == NULL) {
 		being_ptr->backpack[i] = item;
                 return 1;
-                break;
             }
 	}
 
         remove_item( being_ptr, 0 );
-        being_ptr->backpack[i] = item;
+        being_ptr->backpack[0] = item;
         return 1;
         break;
-    case 1:
+    case 2:
         if( being_ptr->backpack[3] == NULL ) {
 	    printf("is null\n");
 	    being_ptr->backpack[3] = item;
@@ -233,6 +232,7 @@ int add_item( struct being *being_ptr, struct item *item ) {
             being_ptr->attack += item->attack_buff;
             being_ptr->defense += item->defense_buff;            
         } else {
+            printf("not-null\n");
 	    print_backpack( being_ptr->backpack );
             int r = remove_item( being_ptr, 3);
             if (r == -1) {
@@ -248,7 +248,7 @@ int add_item( struct being *being_ptr, struct item *item ) {
         }
         return 1;
         break;
-    case 2:
+    case 3:
         if( being_ptr->backpack[4] == NULL ) {
             being_ptr->backpack[4] = item;
             being_ptr->hp += item->hp_buff;

@@ -1,3 +1,6 @@
+#define CONSUM_TYPE 1;
+#define SWORD_TYPE 2;
+#define ARMOR_TYPE 3;
 
 struct item {
     char *name;
@@ -5,9 +8,9 @@ struct item {
     int attack_buff;
     int defense_buff;
     int type;
-        // 0: Consumable
-        // 1: Sword
-        // 2: Armor
+        // 1: Consumable
+        // 2: Sword
+        // 3: Armor
 };
 
 //SWORDS
