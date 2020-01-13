@@ -23,7 +23,7 @@ int main() {
     struct item *strengthpot = create_strength_potion();
     struct item *strengthpot2 = create_strength_potion();    
     struct item *rigid_ironsword = create_rigidity_iron_sword();
-    print_item(rigid_ironsword); 
+    print_item(rigid_ironsword);
     struct item *ironarmor = create_iron_armor();
     add_item(mage, healthpot);
     add_item(mage, strengthpot);
