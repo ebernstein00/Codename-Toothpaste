@@ -33,6 +33,5 @@ int main() {
     printf("\n ----- WITH ITEMS ----- \n");
     print_being(mage);
 
-    // Adding sword to inventory
     free_being(mage);
 }

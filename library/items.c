@@ -10,15 +10,19 @@
 #include <errno.h>
 #include <fcntl.h>
 
+#define CONSUM_TYPE 1;
+#define SWORD_TYPE 2;
+#define ARMOR_TYPE 3;
+
 struct item {
     char *name;
     int hp_buff;
     int attack_buff;
     int defense_buff;
     int type;
-    // 0: consumable
-    // 1: sword
-    // 2: armor
+    // 1: consumable
+    // 2: sword
+    // 3: armor
 };
 
 //SWORDS
@@ -28,7 +32,7 @@ struct item * create_wood_sword(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 1;
-    item_ptr->type = 0;
+    item_ptr->type = SWORD_TYPE;
     return item_ptr;
 }
 
@@ -38,7 +42,7 @@ struct item * create_iron_sword(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 10;
     item_ptr->defense_buff = 0;
-    item_ptr->type = 1;
+    item_ptr->type = SWORD_TYPE;
     return item_ptr;
 }
 
@@ -48,7 +52,7 @@ struct item * create_steel_sword(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 15;
     item_ptr->defense_buff = 0;
-    item_ptr->type = 1;
+    item_ptr->type = SWORD_TYPE;
     return item_ptr;
 }
 
@@ -58,7 +62,7 @@ struct item * create_armoring_wooden_sword(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 3;
-    item_ptr->type = 1;
+    item_ptr->type = SWORD_TYPE;
     return item_ptr;
 }
 
@@ -68,7 +72,7 @@ struct item * create_armoring_iron_sword(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 10;
     item_ptr->defense_buff = 3;
-    item_ptr->type = 1;
+    item_ptr->type = SWORD_TYPE;
     return item_ptr;
 }
 
@@ -78,7 +82,7 @@ struct item * create_armoring_steel_sword(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 15;
     item_ptr->defense_buff = 3;
-    item_ptr->type = 1;
+    item_ptr->type = SWORD_TYPE;
     return item_ptr;
 }
 
@@ -88,7 +92,7 @@ struct item * create_rigidity_wooden_sword(){
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 0;
-    item_ptr->type = 1;
+    item_ptr->type = SWORD_TYPE;
     return item_ptr;
 }
 
@@ -98,7 +102,7 @@ struct item * create_rigidity_iron_sword(){
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 10;
     item_ptr->defense_buff = 0;
-    item_ptr->type = 1;
+    item_ptr->type = SWORD_TYPE;
     return item_ptr;
 }
 
@@ -109,7 +113,7 @@ struct item * create_rigidity_steel_sword(){
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 15;
     item_ptr->defense_buff = 0;
-    item_ptr->type = 1;
+    item_ptr->type = SWORD_TYPE;
     return item_ptr;
 }
 
@@ -120,7 +124,7 @@ struct item * create_leather_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 5;
-    item_ptr->type = 2;
+    item_ptr->type = ARMOR_TYPE;
     return item_ptr;
 }
 
@@ -130,7 +134,7 @@ struct item * create_iron_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 10;
-    item_ptr->type = 2;
+    item_ptr->type = ARMOR_TYPE;
     return item_ptr;
 }
 
@@ -140,7 +144,7 @@ struct item * create_steel_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 15;
-    item_ptr->type = 2;
+    item_ptr->type = ARMOR_TYPE;
     return item_ptr;
 }
 
@@ -150,7 +154,7 @@ struct item * create_mithril_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 25;
-    item_ptr->type = 2;
+    item_ptr->type = ARMOR_TYPE;
     return item_ptr;
 }
 
@@ -160,7 +164,7 @@ struct item * create_rigidity_leather_armor(){
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 5;
-    item_ptr->type = 2;
+    item_ptr->type = ARMOR_TYPE;
     return item_ptr;
 }
 
@@ -170,7 +174,7 @@ struct item * create_rigidity_iron_armor(){
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 10;
-    item_ptr->type = 2;
+    item_ptr->type = ARMOR_TYPE;
     return item_ptr;
 }
 
@@ -180,7 +184,7 @@ struct item * create_rigidity_steel_armor(){
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 15;
-    item_ptr->type = 2;
+    item_ptr->type = ARMOR_TYPE;
     return item_ptr;
 }
 
@@ -190,7 +194,7 @@ struct item * create_rigidity_mithril_armor(){
     item_ptr->hp_buff = 5;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 25;
-    item_ptr->type = 2;
+    item_ptr->type = ARMOR_TYPE;
     return item_ptr;
 }
 
@@ -200,7 +204,7 @@ struct item * create_strength_leather_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 5;
-    item_ptr->type = 2;
+    item_ptr->type = ARMOR_TYPE;
     return item_ptr;
 }
 
@@ -210,7 +214,7 @@ struct item * create_strength_iron_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 10;
-    item_ptr->type = 2;
+    item_ptr->type = ARMOR_TYPE;
     return item_ptr;
 }
 
@@ -220,7 +224,7 @@ struct item * create_strength_steel_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 15;
-    item_ptr->type = 2;
+    item_ptr->type = ARMOR_TYPE;
     return item_ptr;
 }
 
@@ -230,7 +234,7 @@ struct item * create_strength_mithril_armor(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
     item_ptr->defense_buff = 25;
-    item_ptr->type = 2;
+    item_ptr->type = ARMOR_TYPE;
     return item_ptr;
 }
 
@@ -242,7 +246,7 @@ struct item * create_health_potion(){
     item_ptr->hp_buff = 20;
     item_ptr->attack_buff = 0;
     item_ptr->defense_buff = 0;
-    item_ptr->type = 0;
+    item_ptr->type = CONSUM_TYPE;
     return item_ptr;
 }
 
@@ -252,7 +256,7 @@ struct item * create_strength_potion(){
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 10;
     item_ptr->defense_buff = 0;
-    item_ptr->type = 0;
+    item_ptr->type = CONSUM_TYPE;
     return item_ptr;
 }
 
