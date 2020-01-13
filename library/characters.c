@@ -49,7 +49,6 @@ struct being * create_knight( int level ) {
 
 struct being * create_rogue( int level ) {
     struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
-
     being_pointer->type = "rogue";
     being_pointer->hp = 100;
     being_pointer->attack = 5;
