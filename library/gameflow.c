@@ -58,6 +58,8 @@ int playerturn( struct being *player, struct game *game ) {
     int player_move;
     int selected_enemy;
 
+    /* printf("--- Attacking Player ---\n"); */
+    /* print_being( player ); */
     if( player->is_guarding ) {
 	guard_end( player );
     }
