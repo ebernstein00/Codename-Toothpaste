@@ -282,25 +282,29 @@ struct item ** create_backpack () {
 }
 
 void free_backpack( struct item **backpack_ptr ) {
-    free_item( backpack_ptr[0] );
-    free_item( backpack_ptr[1] );
-    free_item( backpack_ptr[2] );
-    free_item( backpack_ptr[3] );
-    free_item( backpack_ptr[4] );
-    free(backpack_ptr);
-    
+    if(backpack_ptr != NULL){
+	free_item( backpack_ptr[0] );
+	free_item( backpack_ptr[1] );
+	free_item( backpack_ptr[2] );
+	free_item( backpack_ptr[3] );
+	free_item( backpack_ptr[4] );
+    } 
+    free(backpack_ptr);    
 }
 
 void print_backpack( struct item **backpack_ptr ) {
     printf("Backpack:\n");
-
-    int i = 0;
-    for (; i < 5; i++) {
-        if (backpack_ptr[i] == NULL) {
-            printf("\t[]\n");
-        } else {
-            print_item( backpack_ptr[i] );
-        }
+    if ( backpack_ptr == NULL ){
+	printf("\t[]\n");	
+    } else {
+	int i = 0;
+	for (; i < 5; i++) {
+	    if (backpack_ptr[i] == NULL) {
+		printf("\t[]\n");
+	    } else {
+		print_item( backpack_ptr[i] );
+	    }
+	}
     }
 }
 

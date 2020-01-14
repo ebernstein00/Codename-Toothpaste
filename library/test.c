@@ -35,4 +35,24 @@ int main() {
     /* print_being(mage); */
     
     /* free_being(mage); */
+
+    struct game *game = newgame();
+    struct being *p1 = create_mage(1);
+    struct being *p2 = create_knight(1);
+    struct being *m1 = create_slime(1);
+    struct being *m2 = create_zombie(1);
+
+    game->player1 = p1;
+    game->player2 = p2;
+    game->monster1 = m1;
+    game->monster2 = m2;
+    printgame( game );
+    freegame ( game );
+
+    int s;
+    s = playerturn( game->player1, game );
+    if (s == 1) {
+      s = playerturn ( game->player1, game );
+    }
+    return 0;
 }

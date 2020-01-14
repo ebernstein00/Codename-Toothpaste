@@ -4,7 +4,8 @@ struct being {
     int attack;
     int defense;
     int level;
-    struct item **backpack; 
+    struct item **backpack;
+    int is_guarding;
 };
 
 /* ---------- CREATING CHARACTERS ---------- */
