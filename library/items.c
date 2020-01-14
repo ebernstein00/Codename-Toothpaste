@@ -13,6 +13,7 @@
 #define CONSUM_TYPE 1;
 #define SWORD_TYPE 2;
 #define ARMOR_TYPE 3;
+#define NUM_ITEMS 23;
 
 struct item {
     char *name;
@@ -24,6 +25,42 @@ struct item {
     // 2: sword
     // 3: armor
 };
+
+//ITEM POOL
+struct item ** make_item_pool(){
+	struct item **item_pool = malloc(sizeof(struct item) * 23);
+	item_pool[0] = create_wood_sword();
+	item_pool[1] = create_iron_sword();
+	item_pool[2] = create_steel_sword();
+	item_pool[3] = create_armoring_wooden_sword();
+	item_pool[4] = create_armoring_iron_sword();
+	item_pool[5] = create_armoring_steel_sword();
+	item_pool[6] = create_rigidity_wooden_sword();
+	item_pool[7] = create_rigidity_iron_sword();
+	item_pool[8] = create_rigidity_steel_sword();
+	item_pool[9] = create_iron_sword();
+	item_pool[10] = create_iron_sword();
+	item_pool[11] = create_iron_sword();
+	item_pool[12] = create_iron_sword();
+	item_pool[13] = create_iron_sword();
+	item_pool[14] = create_iron_sword();
+	item_pool[15] = create_iron_sword();
+	item_pool[16] = create_iron_sword();
+	item_pool[17] = create_iron_sword();
+	item_pool[18] = create_iron_sword();
+	item_pool[19] = create_iron_sword();
+	item_pool[20] = create_iron_sword();
+	item_pool[21] = create_iron_sword();
+	item_pool[22] = create_iron_sword();
+	item_pool[23] = create_iron_sword();
+	//item_pool[1] = create_iron_sword();
+	//item_pool[1] = create_iron_sword();
+	//item_pool[1] = create_iron_sword();
+	//item_pool[1] = create_iron_sword();
+	//item_pool[1] = create_iron_sword();
+	//item_pool[1] = create_iron_sword();
+	//item_pool[1] = create_iron_sword();
+	
 
 //SWORDS
 struct item * create_wood_sword(){
