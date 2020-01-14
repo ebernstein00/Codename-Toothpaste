@@ -54,5 +54,6 @@ int main() {
     if (s == 1) {
       s = playerturn ( game->player1, game );
     }
+    playerturn( game->player1, game );
     return 0;
 }

@@ -31,7 +31,6 @@ struct being * create_mage( int level ) {
     being_pointer->level = level;
     being_pointer->backpack = create_backpack();
     being_pointer->is_guarding = 0;
-
     return being_pointer;
 }
 
