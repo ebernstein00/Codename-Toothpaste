@@ -17,7 +17,8 @@ struct being {
     int attack;
     int defense;
     int level;
-    struct item **backpack; 
+    struct item **backpack;
+    int is_guarding;
 };
 
 /*---------- PROTAGONISTS ----------*/
@@ -29,6 +30,7 @@ struct being * create_mage( int level ) {
     being_pointer->defense = 5;
     being_pointer->level = level;
     being_pointer->backpack = create_backpack();
+    being_pointer->is_guarding = 0;
 
     return being_pointer;
 }
@@ -42,6 +44,7 @@ struct being * create_knight( int level ) {
     being_pointer->defense = 10;
     being_pointer->level = level;
     being_pointer->backpack = create_backpack();
+    being_pointer->is_guarding = 0;
 
     return being_pointer;
 
@@ -55,6 +58,7 @@ struct being * create_rogue( int level ) {
     being_pointer->defense = 15;
     being_pointer->level = level;
     being_pointer->backpack = create_backpack();
+    being_pointer->is_guarding = 0;
 
     return being_pointer;
 }
@@ -73,6 +77,7 @@ struct being * create_slime( int level ) {
 
     //BEASTS HAVE NULL BACKPACKS
     being_pointer->backpack = NULL;
+    being_pointer->is_guarding = 0;
     
     return being_pointer;
 }
@@ -85,7 +90,8 @@ struct being * create_zombie( int level ) {
     being_pointer->attack = 5;
     being_pointer->defense = 15;
     being_pointer->level = level;
-    being_pointer->backpack = create_backpack();        
+    being_pointer->backpack = NULL;
+    being_pointer->is_guarding = 0;
 
     return being_pointer;
 
@@ -99,7 +105,8 @@ struct being * create_bat( int level ) {
     being_pointer->attack = 15;
     being_pointer->defense = 5;
     being_pointer->level = level;
-    being_pointer->backpack = create_backpack();        
+    being_pointer->backpack = NULL;
+    being_pointer->is_guarding = 0;
 
     return being_pointer;
 
@@ -117,6 +124,7 @@ struct being * print_being( struct being *pointer) {
     printf("Attack: [%d]\n", pointer->attack);
     printf("Defense: [%d]\n", pointer->defense);
     printf("Level: [%d]\n", pointer->level);
+    printf("Is Guarding? [%d]\n", pointer->is_guarding);
     print_backpack( pointer->backpack );
     return pointer;
 }
@@ -188,6 +196,7 @@ int add_item( struct being *being_ptr, struct item *item ) {
             int r = remove_item( being_ptr, 3);
             if (r == -1) {
                 printf("error: remove item\n");
+		return 1;
             }
             being_ptr->backpack[3] = item;
             being_ptr->hp += item->hp_buff;
@@ -210,6 +219,7 @@ int add_item( struct being *being_ptr, struct item *item ) {
             int r = remove_item( being_ptr, 4);
             if (r == -1) {
                 printf("error: remove item\n");
+		return 1;
             }
             being_ptr->backpack[4] = item;
             being_ptr->hp += item->hp_buff;
