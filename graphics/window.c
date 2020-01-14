@@ -16,8 +16,8 @@ SDL_Window* window = NULL;
 
 SDL_Renderer* renderer = NULL;
 
-SDL_Rect field = {0, 0 , 1200, SCREEN_HEIGHT };
-SDL_Rect gui = {1200, 0, 400, SCREEN_HEIGHT};
+SDL_Rect field = {0, 0 , 1100, SCREEN_HEIGHT };
+SDL_Rect gui = {1100, 0, 500, SCREEN_HEIGHT};
 bool init()
 {
 	//Initialization flag
@@ -103,7 +103,7 @@ int main( int argc, char* args[] )
 	{
 
 			bool quit = false;
-
+			int inputClick = 0;
 			//Event handler
 			SDL_Event e;
 
@@ -120,6 +120,10 @@ int main( int argc, char* args[] )
 					{
 						quit = true;
 					}
+					inputClick = inputGUI(e);
+					if (inputClick) {
+						printf("GUI input: %d \n", inputClick);
+					}
 				}
 				//Clear screen
 				SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
@@ -133,7 +137,7 @@ int main( int argc, char* args[] )
 				// SDL_Rect button = {50,50, 200, 200};
 				// SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
 				// SDL_RenderFillRect(renderer, &gui);
-				displayGUI();
+				displayGUI(inputClick);
 				// SDL_RenderClear(renderer);
 				//Update screen
 				SDL_RenderPresent( renderer );

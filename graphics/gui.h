@@ -6,4 +6,8 @@
 
 void initGUI(SDL_Renderer* sdlRenderer);
 
-void displayGUI();
+void displayGUI(int index);
+
+int inputGUI(SDL_Event e);
+
+void resetButtons(); 
