@@ -1,10 +1,14 @@
-all: window.o
-	cd fighter && make
-	gcc -I./fighter -o  program window.o ./fighter/fighterIdle.o ./fighter/fighterKick.o -lSDL2 -lSDL2_image
+all: window.o gui.o
+	cd classes && make
+	gcc -o program window.o $(files) -lSDL2 -lSDL2_image
+
+files =  ./classes/fighterIdle.o ./classes/fighterKick.o gui.o
 
 window.o: window.c
 	gcc -c -g window.c
 
+gui.o: gui.c
+	gcc -c -g gui.c
 run:
 	./program
 
