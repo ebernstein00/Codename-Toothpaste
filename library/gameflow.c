@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <time.h>
 
 #include <sys/ipc.h>
 #include <sys/shm.h>
@@ -23,7 +24,7 @@ int attack(struct being * attacker, struct being * target){
     int damage;
     damage = attacker->attack - target->defense;
     target->hp -= damage;    
-    printf("%s attacked %s for %d damage!", attacker->type, target->type, damage);
+    printf("%s attacked %s for %d damage!\n", attacker->type, target->type, damage);
     return 0;
 }
 
@@ -43,14 +44,22 @@ int use_item(struct being * user, int item_index){
 
 int guard_start(struct being * user){
     user->defense += 20;
+    user->is_guarding = 1;
     printf("Guard Initiated (Defense +20)\n");
     return 0;
 }
 
 int guard_end(struct being * user){
     user->defense -= 20;
+    user->is_guarding = 0;
     printf("Guard Ended (Defense -20)\n");
     return 0;
+}
+
+int monsterturn( struct being *monster, struct game *game ) {
+
+    int randomBit = rand() % 2;
+    printf("%d\n", randomBit);
 }
 
 int playerturn( struct being *player, struct game *game ) {

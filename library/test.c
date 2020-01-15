@@ -14,6 +14,7 @@
 #include "gameflow.h"
 
 int main() {
+    srand(time(NULL));
     /* struct being *mage = create_mage(1); */
     /* printf("\n ----- NEW MAGE ----- \n"); */
     /* print_being(mage); */
@@ -47,13 +48,12 @@ int main() {
     game->monster1 = m1;
     game->monster2 = m2;
     printgame( game );
-    freegame ( game );
 
-    int s;
-    s = playerturn( game->player1, game );
-    if (s == 1) {
-      s = playerturn ( game->player1, game );
-    }
+
+
     playerturn( game->player1, game );
+    monsterturn( game->monster1, game );
+
+    freegame ( game );
     return 0;
 }

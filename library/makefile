@@ -22,4 +22,4 @@ run:
 	./test
 
 memtest:
-	valgrind ./test --leak-check=yes --dsmyutil=no
+	valgrind ./test --leak-check=full
