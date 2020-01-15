@@ -16,8 +16,6 @@ SDL_Texture* GUItexture = NULL;
 int GUIticks = 0;
 
 void initGUI(SDL_Renderer* sdlRenderer) {
-    SDL_Init(SDL_INIT_VIDEO);
-    IMG_Init(IMG_INIT_PNG);
     GUIrenderer = sdlRenderer;
     GUIimage = IMG_Load("./sprites/buttons.png");
     GUItexture = SDL_CreateTextureFromSurface(GUIrenderer, GUIimage);
