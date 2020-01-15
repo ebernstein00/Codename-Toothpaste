@@ -1,10 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "./classes/fighterIdle.h"
-#include "./classes/fighterKick.h"
+#include "./classes/mageIdle.h"
+#include "./classes/rogueIdle.h"
+#include "./classes/knightIdle.h"
+#include "background.h"
 #include "gui.h"
 
 //Screen dimension constants
@@ -22,7 +26,7 @@ bool init()
 {
 	//Initialization flag
 	bool success = true;
-
+	srand(time(NULL));
 	//Initialframesize SDL
 	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
 	{
@@ -67,6 +71,10 @@ bool init()
 				}
 				// initFighterKick(renderer);
 				initFighterIdle(renderer);
+				initMageIdle(renderer);
+				initKnightIdle(renderer);
+				initRogueIdle(renderer);
+				initBackground(renderer);
 				initGUI(renderer);
 
 				// This is where you load all the animations in!
@@ -130,9 +138,11 @@ int main( int argc, char* args[] )
 				SDL_RenderClear( renderer );
 				SDL_RenderSetViewport(renderer, &field);
 				//Render current frame
-				displayFighterIdle();
-				// displayFighterKick();
-
+				displayBackground();
+				displayFighterIdle(100,300);
+				displayMageIdle(220,420);
+				displayKnightIdle(100,500);
+				displayRogueIdle(250,700);
 				SDL_RenderSetViewport(renderer, &gui);
 				// SDL_Rect button = {50,50, 200, 200};
 				// SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
