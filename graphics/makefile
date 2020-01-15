@@ -1,16 +1,18 @@
-all: window.o gui.o
+all: window.o gui.o background.o
 	cd classes && make
 	gcc -o program window.o $(files) -lSDL2 -lSDL2_image
 
-files =  ./classes/fighterIdle.o ./classes/fighterKick.o gui.o
-all: window.o
-	gcc -o program window.o -lSDL2
+files =  ./classes/fighterIdle.o ./classes/mageIdle.o ./classes/rogueIdle.o ./classes/knightIdle.o \
+ 		gui.o background.o
 
 window.o: window.c
 	gcc -c -g window.c
 
 gui.o: gui.c
 	gcc -c -g gui.c
+
+background.o: background.c
+	gcc -c -g background.c
 run:
 	./program
 

@@ -4,5 +4,5 @@
 #include <string.h>
 
 void initFighterIdle(SDL_Renderer* sdlRenderer);
-void displayFighterIdle();
+void displayFighterIdle(int x, int y);
 void destroyFighterIdle();
