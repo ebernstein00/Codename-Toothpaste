@@ -149,7 +149,7 @@ int main( int argc, char* args[] )
 				displayMageIdle(220,420);
 				displayKnightIdle(100,500);
 				displayRogueIdle(250,700);
-				displayGalactaIdle(1000,500);
+				displayGalactaIdle(700,500);
 				displayHealth(0.6, FIdstrect, renderer);
 				SDL_RenderSetViewport(renderer, &gui);
 				// SDL_Rect button = {50,50, 200, 200};
