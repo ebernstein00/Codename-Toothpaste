@@ -8,8 +8,10 @@
 #include "./classes/mageIdle.h"
 #include "./classes/rogueIdle.h"
 #include "./classes/knightIdle.h"
+#include "./enemies/galactaIdle.h"
 #include "background.h"
 #include "gui.h"
+#include "health.h"
 
 //Screen dimension constants
 #define SCREEN_WIDTH 1600
@@ -74,6 +76,7 @@ bool init()
 				initMageIdle(renderer);
 				initKnightIdle(renderer);
 				initRogueIdle(renderer);
+				initGalactaIdle(renderer);
 				initBackground(renderer);
 				initGUI(renderer);
 
@@ -95,6 +98,9 @@ void windowClose()
 	window = NULL;
 	renderer = NULL;
 	destroyFighterIdle();
+	destroyKnightIdle();
+	destroyMageIdle();
+	destroyRogueIdle();
 	//Quit SDL subsystems
 	IMG_Quit();
 	SDL_Quit();
@@ -143,6 +149,8 @@ int main( int argc, char* args[] )
 				displayMageIdle(220,420);
 				displayKnightIdle(100,500);
 				displayRogueIdle(250,700);
+				displayGalactaIdle(1000,500);
+				displayHealth(0.6, FIdstrect, renderer);
 				SDL_RenderSetViewport(renderer, &gui);
 				// SDL_Rect button = {50,50, 200, 200};
 				// SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);

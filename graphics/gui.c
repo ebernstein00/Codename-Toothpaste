@@ -62,7 +62,7 @@ int inputGUI(SDL_Event e) {
         SDL_GetMouseState(&mouseX, &mouseY);
         // printf("%d,%d", mouseX, mouseY);
         int index = 1;
-        for (; index ++; index < 5) {
+        for (; index < 6; index++ ) {
             if (mouseX > 1158 && mouseX < 1542 && mouseY > (30+ index * 120) && mouseY < (122+ index * 120)) {
                 printf("%d \n", index);
                 if (index > 5) {
