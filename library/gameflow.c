@@ -57,9 +57,41 @@ int guard_end(struct being * user){
 }
 
 int monsterturn( struct being *monster, struct game *game ) {
-
-    int randomBit = rand() % 2;
-    printf("%d\n", randomBit);
+    int move;
+    int target;
+    move = coinflip();
+    // 0: attack
+    // 1: defend
+    if( move == 0 ){
+        guard_start( monster );
+        return 0;
+    }
+    
+    // Otherwise, If Both players are still alive
+    if (( game->player1 != NULL ) && (game->player2 != NULL)) {
+        target = coinflip();
+        switch( target ){
+        case 0:
+            attack( monster, game->player1 );
+            break;
+        case 1:
+            attack( monster, game->player2 );
+            break;
+        default:
+            printf("error: monster turn\n");
+            return 1;
+        }
+        return 0;
+    } else if (( game->player1 != NULL ) && ( game->player2 == NULL )) {
+        attack( monster, game->player1 );
+        return 0;        
+    } else if (( game->player1 == NULL ) && ( game->player2 != NULL )) {
+        attack( monster, game->player2 );
+        return 0;
+    } else {
+        printf("error: monster turn: all players dead\n");
+        return 0;
+    }
 }
 
 int playerturn( struct being *player, struct game *game ) {
@@ -147,3 +179,13 @@ void printgame( struct game *game ) {
     print_being( game->monster1 );
     print_being( game->monster2 );
 }
+
+int coinflip() {
+    int randomBit;    
+    int i;   
+    randomBit = rand() % 2;
+    /* printf("%d\n", randomBit); */
+    return randomBit;
+}
+
+/* int garbage_collector() */
