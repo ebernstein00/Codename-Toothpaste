@@ -16,4 +16,4 @@ int freegame( struct game *game);
 struct game *newgame();
 void printgame( struct game *game );
 int coinflip();
-int monsterturn( struct being *monster, struct game *game );
+int garbage_collector( struct game *game );

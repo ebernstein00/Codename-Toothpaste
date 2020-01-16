@@ -189,4 +189,22 @@ void printgame( struct game *game ) {
 }
 
 
-/* int garbage_collector() */
+int garbage_collector( struct game *game) {
+    if (game->player1->health <= 0) {
+	free_being( game->player1 );
+	game->player1 = NULL;
+    }
+    if (game->player2->health <= 0) {
+	free_being( game->player2 );
+	game->player2 = NULL;
+    }
+    if (game->monster1->health <= 0) {
+	free_being( game->monster1 );
+	game->monster1 = NULL;
+    }
+    if (game->monster2->health <= 0) {
+	free_being( game->monster2 );
+	game->monster2 = NULL;
+    }
+
+}
