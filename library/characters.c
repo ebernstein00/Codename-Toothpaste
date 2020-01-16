@@ -31,9 +31,10 @@ struct being {
 struct being * create_mage( int level ) {
     struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
     being_pointer->type = "mage";
+	being_pointer->id = 0;
     being_pointer->hp = 50;
-    being_pointer->attack = 20;
-    being_pointer->defense = 5;
+    being_pointer->attack = 25;
+    being_pointer->defense = 0;
     being_pointer->level = level;
     being_pointer->backpack = create_backpack();
     being_pointer->is_guarding = 0;
@@ -42,54 +43,50 @@ struct being * create_mage( int level ) {
 
 struct being * create_knight( int level ) {
     struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
-
     being_pointer->type = "knight";
-    being_pointer->hp = 75;
+	being_pointer->id = 1;
+    being_pointer->hp = 100;
     being_pointer->attack = 10;
-    being_pointer->defense = 10;
+    being_pointer->defense = 0;
     being_pointer->level = level;
     being_pointer->backpack = create_backpack();
     being_pointer->is_guarding = 0;
-
     return being_pointer;
-
 }
 
 struct being * create_rogue( int level ) {
     struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
     being_pointer->type = "rogue";
-    being_pointer->hp = 100;
-    being_pointer->attack = 5;
-    being_pointer->defense = 15;
+	being_pointer->id = 2;
+    being_pointer->hp = 70;
+    being_pointer->attack = 20;
+    being_pointer->defense = 0;
     being_pointer->level = level;
     being_pointer->backpack = create_backpack();
     being_pointer->is_guarding = 0;
-
     return being_pointer;
 }
 
 struct being * create_fighter( int level ) {
     struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
     being_pointer->type = "fighter";
-
-    // not balanced, copied from rogue
-    /* being_pointer->hp = 100; */
-    /* being_pointer->attack = 5; */
-    /* being_pointer->defense = 15; */
-    /* being_pointer->level = level; */
-    /* being_pointer->backpack = create_backpack(); */
-    /* being_pointer->is_guarding = 0; */
-
+	being_pointer->id = 3;
+    being_pointer->hp = 85;
+    being_pointer->attack = 15;
+    being_pointer->defense = 0;
+    being_pointer->level = level;
+    being_pointer->backpack = create_backpack();
+    being_pointer->is_guarding = 0;
     return being_pointer;
 }
 
 
 /*---------- ANTAGONISTS ----------*/
 
-struct being * create_slime( int level ) {
+struct being * create_dedede( int level ) {
     struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
 
-    being_pointer->type = "slime";
+    being_pointer->type = "dedede";
     being_pointer->hp = 100;
     being_pointer->attack = 10;
     being_pointer->defense = 5;
@@ -102,10 +99,10 @@ struct being * create_slime( int level ) {
     return being_pointer;
 }
 
-struct being * create_zombie( int level ) {
+struct being * create_waddledee( int level ) {
     struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
 
-    being_pointer->type = "zombie";
+    being_pointer->type = "waddledee";
     being_pointer->hp = 75;
     being_pointer->attack = 5;
     being_pointer->defense = 15;
@@ -117,10 +114,10 @@ struct being * create_zombie( int level ) {
 
 }
 
-struct being * create_bat( int level ) {
+struct being * create_waddledoo( int level ) {
     struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
 
-    being_pointer->type = "bat";
+    being_pointer->type = "waddledoo";
     being_pointer->hp = 50;
     being_pointer->attack = 15;
     being_pointer->defense = 5;
