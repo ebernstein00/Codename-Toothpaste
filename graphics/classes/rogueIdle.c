@@ -17,7 +17,6 @@ void initRogueIdle(SDL_Renderer* sdlRenderer)
     SDL_SetColorKey(RIimage, SDL_TRUE, SDL_MapRGB (RIimage->format, 96, 152, 96));
     RItexture = SDL_CreateTextureFromSurface(RIrenderer, RIimage);
     RIframeTime = rand()%120 + 240;
-    printf("frametime: RIframeTime %d \n", RIframeTime);
 
 }
 

@@ -10,6 +10,7 @@
 #include "./classes/knightIdle.h"
 #include "./enemies/galactaIdle.h"
 #include "./enemies/dededeIdle.h"
+#include "./enemies/waddledeeIdle.h"
 #include "background.h"
 #include "gui.h"
 #include "health.h"
@@ -79,6 +80,7 @@ bool init()
 				initRogueIdle(renderer);
 				initGalactaIdle(renderer);
 				initDededeIdle(renderer);
+				initWaddledeeIdle(renderer);
 				initBackground(renderer);
 				initGUI(renderer);
 
@@ -154,6 +156,8 @@ int main( int argc, char* args[] )
 				displayRogueIdle(250,700);
 				displayGalactaIdle(700,500);
 				displayDededeIdle(800,200);
+				displayWaddledeeIdle(700,100);
+				displayHealth(0.1, WIdstrect, renderer);
 				displayHealth(0.6, FIdstrect, renderer);
 				SDL_RenderSetViewport(renderer, &gui);
 				// SDL_Rect button = {50,50, 200, 200};
