@@ -8,15 +8,10 @@
 #include "./classes/mageIdle.h"
 #include "./classes/rogueIdle.h"
 #include "./classes/knightIdle.h"
-<<<<<<< HEAD
 #include "./enemies/galactaIdle.h"
 #include "background.h"
 #include "gui.h"
 #include "health.h"
-=======
-#include "background.h"
-#include "gui.h"
->>>>>>> 6fac653d6eafd6dd5fa29bbbe6f98482dff7b7c5
 
 //Screen dimension constants
 #define SCREEN_WIDTH 1600
@@ -81,10 +76,7 @@ bool init()
 				initMageIdle(renderer);
 				initKnightIdle(renderer);
 				initRogueIdle(renderer);
-<<<<<<< HEAD
 				initGalactaIdle(renderer);
-=======
->>>>>>> 6fac653d6eafd6dd5fa29bbbe6f98482dff7b7c5
 				initBackground(renderer);
 				initGUI(renderer);
 
@@ -106,12 +98,9 @@ void windowClose()
 	window = NULL;
 	renderer = NULL;
 	destroyFighterIdle();
-<<<<<<< HEAD
 	destroyKnightIdle();
 	destroyMageIdle();
 	destroyRogueIdle();
-=======
->>>>>>> 6fac653d6eafd6dd5fa29bbbe6f98482dff7b7c5
 	//Quit SDL subsystems
 	IMG_Quit();
 	SDL_Quit();
@@ -160,11 +149,8 @@ int main( int argc, char* args[] )
 				displayMageIdle(220,420);
 				displayKnightIdle(100,500);
 				displayRogueIdle(250,700);
-<<<<<<< HEAD
 				displayGalactaIdle(700,500);
 				displayHealth(0.6, FIdstrect, renderer);
-=======
->>>>>>> 6fac653d6eafd6dd5fa29bbbe6f98482dff7b7c5
 				SDL_RenderSetViewport(renderer, &gui);
 				// SDL_Rect button = {50,50, 200, 200};
 				// SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);

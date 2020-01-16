@@ -1,11 +1,7 @@
 #include "fighterIdle.h"
 
 SDL_Rect FIsrcrect = { 13, 10, 26, 23 };
-<<<<<<< HEAD
 SDL_Rect FIdstrect = { 300, 300, 104, 92 };
-=======
-SDL_Rect FIdstrect = { 30, 30, 104, 92 };
->>>>>>> 6fac653d6eafd6dd5fa29bbbe6f98482dff7b7c5
 int FIframes = 4;
 int FIxval[4] = {13,52,90,52};
 int FIsprite = 0;

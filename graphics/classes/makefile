@@ -16,4 +16,4 @@ run:
 	./program
 
 clean:
-	rm *.o *.gch
+	rm -f *.o *.gch
