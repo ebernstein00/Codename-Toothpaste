@@ -53,7 +53,6 @@ void resetButtons() {
     GUIsrcrect5.x = 0;
 }
 int inputGUI(SDL_Event e) {
-    GUIticks ++;
     if (e.type == SDL_MOUSEBUTTONUP) {
         resetButtons();
     }

@@ -11,6 +11,7 @@
 #include "./enemies/galactaIdle.h"
 #include "./enemies/dededeIdle.h"
 #include "./enemies/waddledeeIdle.h"
+#include "./enemies/waddledooIdle.h"
 #include "background.h"
 #include "gui.h"
 #include "health.h"
@@ -40,7 +41,7 @@ bool init()
 	else
 	{
 		//Set texture filtering to linear
-		if( !SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ) )
+		if( !SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "0" ) )
 		{
 			printf( "Warning: Linear texture filtering not enabled!" );
 		}
@@ -81,6 +82,7 @@ bool init()
 				initGalactaIdle(renderer);
 				initDededeIdle(renderer);
 				initWaddledeeIdle(renderer);
+				initWaddledooIdle(renderer);
 				initBackground(renderer);
 				initGUI(renderer);
 
@@ -157,6 +159,7 @@ int main( int argc, char* args[] )
 				displayGalactaIdle(700,500);
 				displayDededeIdle(800,200);
 				displayWaddledeeIdle(700,100);
+				displayWaddledooIdle(700,300);
 				displayHealth(0.1, WIdstrect, renderer);
 				displayHealth(0.6, FIdstrect, renderer);
 				SDL_RenderSetViewport(renderer, &gui);

@@ -4,7 +4,7 @@ all: window.o gui.o background.o health.o
 	gcc -o program  $(files) -lSDL2 -lSDL2_image
 
 files =  ./classes/fighterIdle.o ./classes/mageIdle.o ./classes/rogueIdle.o ./classes/knightIdle.o \
-		./enemies/galactaIdle.o ./enemies/dededeIdle.o ./enemies/waddledeeIdle.o \
+		./enemies/galactaIdle.o ./enemies/dededeIdle.o ./enemies/waddledeeIdle.o ./enemies/waddledooIdle.o \
  		gui.o background.o health.o window.o
 
 window.o: window.c
