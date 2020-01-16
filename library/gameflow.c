@@ -20,6 +20,14 @@ struct game {
     struct being *monster2;
 };
 
+int coinflip() {
+    int randomBit;    
+    int i;   
+    randomBit = rand() % 2;
+    /* printf("%d\n", randomBit); */
+    return randomBit;
+}
+
 int attack(struct being * attacker, struct being * target){
     int damage;
     damage = attacker->attack - target->defense;
@@ -180,12 +188,5 @@ void printgame( struct game *game ) {
     print_being( game->monster2 );
 }
 
-int coinflip() {
-    int randomBit;    
-    int i;   
-    randomBit = rand() % 2;
-    /* printf("%d\n", randomBit); */
-    return randomBit;
-}
 
 /* int garbage_collector() */

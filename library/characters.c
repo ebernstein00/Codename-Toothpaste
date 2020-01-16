@@ -13,6 +13,12 @@
 
 struct being {
     char *type;
+    int id;
+    // 0: mage
+    // 1: knight
+    // 2: rogue
+    // 3: fighter
+    
     int hp;
     int attack;
     int defense;
@@ -58,6 +64,21 @@ struct being * create_rogue( int level ) {
     being_pointer->level = level;
     being_pointer->backpack = create_backpack();
     being_pointer->is_guarding = 0;
+
+    return being_pointer;
+}
+
+struct being * create_fighter( int level ) {
+    struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
+    being_pointer->type = "fighter";
+
+    // not balanced, copied from rogue
+    /* being_pointer->hp = 100; */
+    /* being_pointer->attack = 5; */
+    /* being_pointer->defense = 15; */
+    /* being_pointer->level = level; */
+    /* being_pointer->backpack = create_backpack(); */
+    /* being_pointer->is_guarding = 0; */
 
     return being_pointer;
 }

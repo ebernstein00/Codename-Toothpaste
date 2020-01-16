@@ -12,6 +12,7 @@ struct being {
 struct being * create_mage( int level );
 struct being * create_knight( int level );
 struct being * create_rogue( int level );
+struct being * create_fighter( int level );
 struct being * create_slime( int level );
 struct being * create_zombie( int level );
 struct being * create_bat( int level );
