@@ -9,6 +9,7 @@
 #include "./classes/rogueIdle.h"
 #include "./classes/knightIdle.h"
 #include "./enemies/galactaIdle.h"
+#include "./enemies/dededeIdle.h"
 #include "background.h"
 #include "gui.h"
 #include "health.h"
@@ -77,6 +78,7 @@ bool init()
 				initKnightIdle(renderer);
 				initRogueIdle(renderer);
 				initGalactaIdle(renderer);
+				initDededeIdle(renderer);
 				initBackground(renderer);
 				initGUI(renderer);
 
@@ -101,6 +103,7 @@ void windowClose()
 	destroyKnightIdle();
 	destroyMageIdle();
 	destroyRogueIdle();
+	destroyDededeIdle();
 	//Quit SDL subsystems
 	IMG_Quit();
 	SDL_Quit();
@@ -150,6 +153,7 @@ int main( int argc, char* args[] )
 				displayKnightIdle(100,500);
 				displayRogueIdle(250,700);
 				displayGalactaIdle(700,500);
+				displayDededeIdle(800,200);
 				displayHealth(0.6, FIdstrect, renderer);
 				SDL_RenderSetViewport(renderer, &gui);
 				// SDL_Rect button = {50,50, 200, 200};

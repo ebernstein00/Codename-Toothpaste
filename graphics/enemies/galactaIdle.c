@@ -9,12 +9,15 @@ int GIsprite = 0;
 SDL_Renderer* GIrenderer = NULL;
 SDL_Surface* GIimage = NULL;
 SDL_Texture* GItexture = NULL;
+int GIframeTime  = 0;
+
 void initGalactaIdle(SDL_Renderer* sdlRenderer)
 {
     GIrenderer = sdlRenderer;
     GIimage = IMG_Load("./sprites/galacta.png");
     SDL_SetColorKey(GIimage, SDL_TRUE, SDL_MapRGB (GIimage->format, 79, 151, 66));
     GItexture = SDL_CreateTextureFromSurface(GIrenderer, GIimage);
+    GIframeTime = rand()%30 + 60;
 
 }
 
@@ -22,22 +25,22 @@ void displayGalactaIdle(int x, int y) {
     GIdstrect.x = x;
     GIdstrect.y = y;
     GIsprite++;
-    GIsprite%= 32;
-    if (GIsprite < 8) {
+    GIsprite%= GIframeTime;
+    if (GIsprite < GIframeTime-21) {
         GIdstrect.x = x;
         GIdstrect.y = y;
         GIdstrect.w = 316;
         GIdstrect.h = 188;
         SDL_RenderCopy(GIrenderer, GItexture, &GIframe1, &GIdstrect);
     }
-    else if (GIsprite < 16 ) {
+    else if (GIsprite < GIframeTime-14) {
         GIdstrect.x = x;
         GIdstrect.y = y-20;
         GIdstrect.w = 304;
         GIdstrect.h = 208;
         SDL_RenderCopy(GIrenderer, GItexture, &GIframe2, &GIdstrect);
     }
-    else if (GIsprite < 24 ) {
+    else if (GIsprite < GIframeTime-7) {
         GIdstrect.x = x;
         GIdstrect.y = y-24;
         GIdstrect.w = 292;
@@ -65,12 +68,6 @@ void displayGalactaIdle(int x, int y) {
         GIdstrect.h = 208;
         SDL_RenderCopy(GIrenderer, GItexture, &GIframe2, &GIdstrect);
     }
-    // else if (GIsprite < GIframeTime - 5){
-    //     SDL_RenderCopy(GIrenderer, GItexture, &GIframe3, &GIdstrect);
-    // }
-    // else {
-    //     SDL_RenderCopy(GIrenderer, GItexture, &GIframe2, &GIdstrect);
-    // }
 }
 
 void destroyGalactaIdle() {

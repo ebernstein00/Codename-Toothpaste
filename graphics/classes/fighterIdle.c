@@ -17,7 +17,6 @@ void initFighterIdle(SDL_Renderer* sdlRenderer)
     SDL_SetColorKey(FIimage, SDL_TRUE, SDL_MapRGB (FIimage->format, 0x78, 0xB8, 0x70));
     FItexture = SDL_CreateTextureFromSurface(FIrenderer, FIimage);
     FIframeTime = rand()%120 + 240;
-    printf("frametime: FIframeTime %d \n", FIframeTime);
 
 }
 
