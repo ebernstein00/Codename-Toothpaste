@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <unistd.h>
 
 #include <sys/ipc.h>
@@ -15,6 +16,8 @@
 #define ARMOR_TYPE 3;
 #define NUM_ITEMS 23;
 
+srand(time(NULL));
+
 struct item {
     char *name;
     int hp_buff;
@@ -28,38 +31,49 @@ struct item {
 
 /* //ITEM POOL */
 /* struct item ** make_item_pool(){ */
-/* 	struct item **item_pool = malloc(sizeof(struct item) * 23); */
-/* 	item_pool[0] = create_wood_sword(); */
-/* 	item_pool[1] = create_iron_sword(); */
-/* 	item_pool[2] = create_steel_sword(); */
-/* 	item_pool[3] = create_armoring_wooden_sword(); */
-/* 	item_pool[4] = create_armoring_iron_sword(); */
-/* 	item_pool[5] = create_armoring_steel_sword(); */
-/* 	item_pool[6] = create_rigidity_wooden_sword(); */
-/* 	item_pool[7] = create_rigidity_iron_sword(); */
-/* 	item_pool[8] = create_rigidity_steel_sword(); */
-/* 	item_pool[9] = create_iron_sword(); */
-/* 	item_pool[10] = create_iron_sword(); */
-/* 	item_pool[11] = create_iron_sword(); */
-/* 	item_pool[12] = create_iron_sword(); */
-/* 	item_pool[13] = create_iron_sword(); */
-/* 	item_pool[14] = create_iron_sword(); */
-/* 	item_pool[15] = create_iron_sword(); */
-/* 	item_pool[16] = create_iron_sword(); */
-/* 	item_pool[17] = create_iron_sword(); */
-/* 	item_pool[18] = create_iron_sword(); */
-/* 	item_pool[19] = create_iron_sword(); */
-/* 	item_pool[20] = create_iron_sword(); */
-/* 	item_pool[21] = create_iron_sword(); */
-/* 	item_pool[22] = create_iron_sword(); */
-/* 	item_pool[23] = create_iron_sword(); */
-/* 	//item_pool[1] = create_iron_sword(); */
-/* 	//item_pool[1] = create_iron_sword(); */
-/* 	//item_pool[1] = create_iron_sword(); */
-/* 	//item_pool[1] = create_iron_sword(); */
-/* 	//item_pool[1] = create_iron_sword(); */
-/* 	//item_pool[1] = create_iron_sword(); */
-/* 	//item_pool[1] = create_iron_sword(); */
+/* 		struct item **item_pool = malloc(sizeof(struct item) * 33); */
+/* 		item_pool[0][0] = create_wood_sword(); */
+/* 		item_pool[0][1] = create_iron_sword(); */
+/* 		item_pool[0][2] = create_steel_sword(); */
+/* 		item_pool[0][3] = create_armoring_wooden_sword(); */
+/* 		item_pool[0][4] = create_armoring_iron_sword(); */
+/* 		item_pool[0][5] = create_armoring_steel_sword(); */
+/* 		item_pool[0][6] = create_rigidity_wooden_sword(); */
+/* 		item_pool[0][7] = create_rigidity_iron_sword(); */
+/* 		item_pool[0][8] = create_rigidity_steel_sword(); */
+/* 		item_pool[0][9] = create_leather_armor(); */
+/* 		item_pool[0][10] = create_iron_armor(); */
+/* 		item_pool[0][11] = create_steel_armor(); */
+/* 		item_pool[0][12] = create_mithril_armor(); */
+/* 		item_pool[0][13] = create_rigidity_leather_armor(); */
+/* 		item_pool[0][14] = create_rigidity_iron_armor(); */
+/* 		item_pool[0][15] = create_rigidity_steel_armor(); */
+/* 		item_pool[0][16] = create_rigidity_mithril_armor(); */
+/* 		item_pool[0][17] = create_strength_leather_armor(); */
+/* 		item_pool[0][18] = create_strength_iron_armor(); */
+/* 		item_pool[0][19] = create_strength_steel_armor(); */
+/* 		item_pool[0][20] = create_strength_mithril_armor(); */
+/* 		item_pool[0][21] = create_health_potion(); */
+/* 		item_pool[0][22] = create_health_potion(); */
+/* 		item_pool[0][23] = create_health_potion(); */
+/* 		item_pool[0][24] = create_health_potion(); */
+/* 		item_pool[0][25] = create_health_potion(); */
+/* 		item_pool[0][26] = create_health_potion(); */
+/* 		item_pool[0][27] = create_health_potion(); */
+/* 		item_pool[0][28] = create_health_potion(); */
+/* 		item_pool[0][29] = create_health_potion(); */
+/* 		item_pool[0][30] = create_strength_potion(); */
+/* 		item_pool[0][31] = create_strength_potion(); */
+/* 		item_pool[0][32] = create_strength_potion(); */
+/* 		item_pool[0][33] = create_strength_potion(); */
+/*		return item_pool; */
+/* } */
+
+//RANDOM DROP
+struct item * random_drop(){
+	int n = rand() % 34;
+	return loot_pool[0][n];
+}
 	
 
 //SWORDS
