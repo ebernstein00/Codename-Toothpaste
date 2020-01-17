@@ -13,6 +13,9 @@ struct item {
         // 3: Armor
 };
 
+//RANDOM DROP
+struct item * random_drop();
+
 //SWORDS
 struct item * create_wood_sword();
 struct item * create_iron_sword();
