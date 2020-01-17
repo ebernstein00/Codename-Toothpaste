@@ -1,4 +1,4 @@
-all: galactaIdle.o dededeIdle.o waddledeeIdle.o waddledooIdle.o
+all: galactaIdle.o dededeIdle.o waddledeeIdle.o waddledooIdle.o knucklejoeIdle.o chefIdle.o
 
 galactaIdle.o: galactaIdle.c
 	gcc -c -g galactaIdle.c
@@ -11,6 +11,12 @@ waddledeeIdle.o: waddledeeIdle.c
 
 waddledooIdle.o: waddledooIdle.c
 	gcc -c -g waddledooIdle.c
+
+knucklejoeIdle.o: knucklejoeIdle.c
+	gcc -c -g knucklejoeIdle.c
+
+chefIdle.o: chefIdle.c
+	gcc -c -g chefIdle.c
 
 run:
 	./program
