@@ -81,7 +81,7 @@ struct item * create_wood_sword(){
     item_ptr->name = "Wooden Sword";
     item_ptr->hp_buff = 0;
     item_ptr->attack_buff = 5;
-    item_ptr->defense_buff = 1;
+    item_ptr->defense_buff = 0;
     item_ptr->type = SWORD_TYPE;
     return item_ptr;
 }

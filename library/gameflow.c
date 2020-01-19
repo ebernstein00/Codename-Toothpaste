@@ -37,7 +37,7 @@ int attack(struct being * attacker, struct being * target){
 }
 
 int use_item(struct being *user, int item_index){
-    printf("User health: [%d]\n", user->hp);
+    printf("User is:[%ul]\n", user);
     if( user->backpack[item_index] == NULL ){
 	printf("Nothing in that slot\n");
 	return 1;
@@ -103,10 +103,9 @@ int monsterturn( struct being *monster, struct game *game ) {
     }
 }
 
-int playerturn( struct being *player_param, struct game *game ) {
+int playerturn( struct being *player, struct game *game ) {
     char *input = (char *)calloc(3, sizeof( char ));
     char *target = (char *)calloc(3, sizeof(char));
-    struct being *player = player_param;
     int player_move;
     int selected_enemy;
 
@@ -116,7 +115,7 @@ int playerturn( struct being *player_param, struct game *game ) {
 	guard_end( player );
     }
 
-    printf("%s move:\n", player->type);
+    printf("%s[%ul] move:\n", player->type, player);
     printf("Potion 1: [1]\n");
     printf("Potion 2: [2]\n");
     printf("Potion 3: [3]\n");
@@ -131,25 +130,27 @@ int playerturn( struct being *player_param, struct game *game ) {
     // convert string to int.
     player_move = atoi(input);
     printf("converted input: [%d]\n", player_move);
+    printf("player is: [%ul]\n", player);
 
     switch( player_move ) {
     case(1):
         printf("switched: option 1\n");
-	return use_item( player, 0);	
+        printf("player is: [%ul]\n", player);
+	use_item( player, 0);	
         break;
     case(2):
-	return use_item( player, 1);
+	use_item( player, 1);
         break;
     case(3):
-	return use_item( player, 2);
+	use_item( player, 2);
         break;
     case(4):
 	printf("Choose the enemy you wish to attack:\n");
         printf("%s: [1]\n", game->monster1->type);
         printf("%s: [2]\n", game->monster2->type);
 	printf("> ");
-	fgets( target, 3, stdin );
-	*strchr( target, '\n' ) = 0;
+	fgets( input, 3, stdin );
+	*strchr( input, '\n' ) = 0;
 	selected_enemy = atoi( input );
 	switch( selected_enemy ) {
 	case(1):

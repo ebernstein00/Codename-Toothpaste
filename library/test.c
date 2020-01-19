@@ -24,15 +24,17 @@ int main() {
     /* struct being *m2 = create_waddledee(1); */
 
     game->player1 = create_mage(1);
-    game->player2 = create_mage(1);
+    game->player2 = create_knight(1);
     game->monster1 = create_dedede(1);
     game->monster2 = create_waddledee(1);
+
+    struct item *woodsword = create_wood_sword();
+
+    /* print_being( game->player1 ); */
+    add_item( game->player1, woodsword );
     printgame( game );
-
-
-    print_being( game->player1 );
     playerturn( game->player1, game );
-    monsterturn( game->monster1, game );
+    /* monsterturn( game->monster1, game ); */
 
     freegame ( game );
     return 0;
