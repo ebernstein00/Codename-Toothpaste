@@ -36,8 +36,8 @@ int attack(struct being * attacker, struct being * target){
     return 0;
 }
 
-int use_item(struct being * user, int item_index){
-    printf("Value of the backpack slot: [%ul]\n", user->backpack[item_index]);
+int use_item(struct being *user, int item_index){
+    printf("User health: [%d]\n", user->hp);
     if( user->backpack[item_index] == NULL ){
 	printf("Nothing in that slot\n");
 	return 1;
@@ -103,9 +103,10 @@ int monsterturn( struct being *monster, struct game *game ) {
     }
 }
 
-int playerturn( struct being *player, struct game *game ) {
+int playerturn( struct being *player_param, struct game *game ) {
     char *input = (char *)calloc(3, sizeof( char ));
     char *target = (char *)calloc(3, sizeof(char));
+    struct being *player = player_param;
     int player_move;
     int selected_enemy;
 

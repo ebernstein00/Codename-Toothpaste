@@ -16,27 +16,6 @@
 
 int main() {
     srand(time(NULL));
-    /* struct being *mage = create_mage(1); */
-    /* printf("\n ----- NEW MAGE ----- \n"); */
-    /* print_being(mage); */
-
-    /* // Adding health potion to inventory */
-    /* struct item *healthpot = create_health_potion(); */
-    /* struct item *healthpot2 = create_health_potion();     */
-    /* struct item *strengthpot = create_strength_potion(); */
-    /* struct item *strengthpot2 = create_strength_potion();     */
-    /* struct item *rigid_ironsword = create_rigidity_iron_sword(); */
-    /* struct item *ironarmor = create_iron_armor(); */
-    /* add_item(mage, healthpot); */
-    /* add_item(mage, strengthpot); */
-    /* add_item(mage, healthpot2); */
-    /* add_item(mage, strengthpot2); */
-    /* add_item(mage, rigid_ironsword); */
-    /* add_item(mage, ironarmor); */
-    /* printf("\n ----- WITH ITEMS ----- \n"); */
-    /* print_being(mage); */
-    
-    /* free_being(mage); */
 
     struct game *game = newgame();
     /* struct being *p1 = create_mage(1); */
@@ -51,7 +30,7 @@ int main() {
     printgame( game );
 
 
-
+    print_being( game->player1 );
     playerturn( game->player1, game );
     monsterturn( game->monster1, game );
 
