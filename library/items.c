@@ -16,7 +16,6 @@
 #define ARMOR_TYPE 3;
 #define NUM_ITEMS 23;
 
-srand(time(NULL));
 
 struct item {
     char *name;
@@ -69,11 +68,11 @@ struct item {
 /*		return item_pool; */
 /* } */
 
-//RANDOM DROP
-struct item * random_drop(){
-	int n = rand() % 34;
-	return loot_pool[0][n];
-}
+/* //RANDOM DROP */
+/* struct item * random_drop(){ */
+/* 	int n = rand() % 34; */
+/* 	return loot_pool[0][n]; */
+/* } */
 	
 
 //SWORDS

@@ -31,7 +31,7 @@ struct being {
 struct being * create_mage( int level ) {
     struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
     being_pointer->type = "mage";
-	being_pointer->id = 0;
+    being_pointer->id = 0;
     being_pointer->hp = 50;
     being_pointer->attack = 25;
     being_pointer->defense = 0;
@@ -129,6 +129,12 @@ struct being * create_waddledoo( int level ) {
 
 }
 
+
+// HELPER FUNKS
+
+int is_guarding( struct being *being ) {
+    return being->is_guarding;
+}
 struct being * free_being( struct being *pointer ) {
     free_backpack(pointer->backpack);
     free(pointer);

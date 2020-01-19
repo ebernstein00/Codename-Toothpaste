@@ -37,6 +37,7 @@ int attack(struct being * attacker, struct being * target){
 }
 
 int use_item(struct being * user, int item_index){
+    printf("Value of the backpack slot: [%ul]\n", user->backpack[item_index]);
     if( user->backpack[item_index] == NULL ){
 	printf("Nothing in that slot\n");
 	return 1;
@@ -103,13 +104,14 @@ int monsterturn( struct being *monster, struct game *game ) {
 }
 
 int playerturn( struct being *player, struct game *game ) {
-    char *input = (char *)calloc(12, sizeof( char ));
+    char *input = (char *)calloc(3, sizeof( char ));
+    char *target = (char *)calloc(3, sizeof(char));
     int player_move;
     int selected_enemy;
 
     /* printf("--- Attacking Player ---\n"); */
     /* print_being( player ); */
-    if( player->is_guarding ) {
+    if( is_guarding( player ) ) {
 	guard_end( player );
     }
 
@@ -121,15 +123,17 @@ int playerturn( struct being *player, struct game *game ) {
     printf("   Guard: [5]\n");
     printf("> ");
     
-    fgets( input, 12, stdin );
+    fgets( input, 3, stdin );
     *strchr( input, '\n' ) = 0;
-    
+
+    printf("got input\n");
     // convert string to int.
     player_move = atoi(input);
-
+    printf("converted input: [%d]\n", player_move);
 
     switch( player_move ) {
     case(1):
+        printf("switched: option 1\n");
 	return use_item( player, 0);	
         break;
     case(2):
@@ -143,7 +147,7 @@ int playerturn( struct being *player, struct game *game ) {
         printf("%s: [1]\n", game->monster1->type);
         printf("%s: [2]\n", game->monster2->type);
 	printf("> ");
-	fgets( input, 12, stdin );
+	fgets( target, 3, stdin );
 	*strchr( input, '\n' ) = 0;
 	selected_enemy = atoi( input );
 	switch( selected_enemy ) {
@@ -164,6 +168,8 @@ int playerturn( struct being *player, struct game *game ) {
     default:
 	printf("Not a valid input\n");	
     }
+    free( input );
+    free( target );
     return 0;        
 }
 
@@ -173,6 +179,7 @@ int freegame( struct game *game ) {
     free_being( game->monster1 );
     free_being( game->monster2 );
     free( game );
+    return 0;
 }
 
 struct game *newgame() {
@@ -190,21 +197,21 @@ void printgame( struct game *game ) {
 
 
 int garbage_collector( struct game *game) {
-    if (game->player1->health <= 0) {
+    if (game->player1->hp <= 0) {
 	free_being( game->player1 );
 	game->player1 = NULL;
     }
-    if (game->player2->health <= 0) {
+    if (game->player2->hp <= 0) {
 	free_being( game->player2 );
 	game->player2 = NULL;
     }
-    if (game->monster1->health <= 0) {
+    if (game->monster1->hp <= 0) {
 	free_being( game->monster1 );
 	game->monster1 = NULL;
     }
-    if (game->monster2->health <= 0) {
+    if (game->monster2->hp <= 0) {
 	free_being( game->monster2 );
 	game->monster2 = NULL;
     }
-
+    return 0;
 }

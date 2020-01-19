@@ -39,15 +39,15 @@ int main() {
     /* free_being(mage); */
 
     struct game *game = newgame();
-    struct being *p1 = create_mage(1);
-    struct being *p2 = create_knight(1);
-    struct being *m1 = create_slime(1);
-    struct being *m2 = create_zombie(1);
+    /* struct being *p1 = create_mage(1); */
+    /* struct being *p2 = create_knight(1); */
+    /* struct being *m1 = create_dedede(1); */
+    /* struct being *m2 = create_waddledee(1); */
 
-    game->player1 = p1;
-    game->player2 = p2;
-    game->monster1 = m1;
-    game->monster2 = m2;
+    game->player1 = create_mage(1);
+    game->player2 = create_mage(1);
+    game->monster1 = create_dedede(1);
+    game->monster2 = create_waddledee(1);
     printgame( game );
 
 
