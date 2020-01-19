@@ -125,7 +125,7 @@ int playerturn( struct being *player_param, struct game *game ) {
     printf("> ");
     
     fgets( input, 3, stdin );
-    *strchr( input, '\n' ) = 0;
+    *strchr( input, '\n' ) = '\0';
 
     printf("got input\n");
     // convert string to int.
@@ -149,7 +149,7 @@ int playerturn( struct being *player_param, struct game *game ) {
         printf("%s: [2]\n", game->monster2->type);
 	printf("> ");
 	fgets( target, 3, stdin );
-	*strchr( input, '\n' ) = 0;
+	*strchr( target, '\n' ) = 0;
 	selected_enemy = atoi( input );
 	switch( selected_enemy ) {
 	case(1):
