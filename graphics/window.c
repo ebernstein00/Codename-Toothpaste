@@ -20,7 +20,7 @@
 #include "display.h"
 
 //Screen dimension constants
-#define SCREEN_WIDTH 1600
+#define SCREEN_WIDTH 1300
 #define SCREEN_HEIGHT 900
 
 //The window we'll be rendering to
@@ -28,8 +28,9 @@ SDL_Window* window = NULL;
 
 SDL_Renderer* renderer = NULL;
 
-SDL_Rect field = {0, 0 , 1100, SCREEN_HEIGHT };
-SDL_Rect gui = {1100, 0, 500, SCREEN_HEIGHT};
+SDL_Rect field = {0, 0 , 900, SCREEN_HEIGHT };
+SDL_Rect gui = {900, 0, 500, SCREEN_HEIGHT};
+
 bool init()
 {
 	//Initialization flag
@@ -163,6 +164,7 @@ int main( int argc, char* args[] )
 				// SDL_Rect button = {50,50, 200, 200};
 				// SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
 				// SDL_RenderFillRect(renderer, &gui);
+				displayGUIBackground();
 				displayGUI(inputClick);
 				// SDL_RenderClear(renderer);
 				//Update screen

@@ -7,3 +7,5 @@
 void initBackground(SDL_Renderer* sdlRenderer);
 
 void displayBackground();
+
+void displayGUIBackground();

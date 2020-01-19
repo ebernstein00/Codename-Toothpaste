@@ -5,11 +5,11 @@ SDL_Rect GUIsrcrect2 = { 0, 46, 192, 46 };
 SDL_Rect GUIsrcrect3 = { 0, 92, 192, 46 };
 SDL_Rect GUIsrcrect4 = { 0, 138, 192, 46 };
 SDL_Rect GUIsrcrect5 = { 0, 184, 192, 46 };
-SDL_Rect GUIdstrect1 = { 58, 150, 384, 92 };
-SDL_Rect GUIdstrect2 = { 58, 270, 384, 92 };
-SDL_Rect GUIdstrect3 = { 58, 390, 384, 92 };
-SDL_Rect GUIdstrect4 = { 58, 510, 384, 92 };
-SDL_Rect GUIdstrect5 = { 58, 630, 384, 92 };
+SDL_Rect GUIdstrect1 = { 8, 150, 384, 92 };
+SDL_Rect GUIdstrect2 = { 8, 270, 384, 92 };
+SDL_Rect GUIdstrect3 = { 8, 390, 384, 92 };
+SDL_Rect GUIdstrect4 = { 8, 510, 384, 92 };
+SDL_Rect GUIdstrect5 = { 8, 630, 384, 92 };
 SDL_Renderer* GUIrenderer = NULL;
 SDL_Surface* GUIimage = NULL;
 SDL_Texture* GUItexture = NULL;
@@ -62,7 +62,7 @@ int inputGUI(SDL_Event e) {
         // printf("%d,%d", mouseX, mouseY);
         int index = 1;
         for (; index < 6; index++ ) {
-            if (mouseX > 1158 && mouseX < 1542 && mouseY > (30+ index * 120) && mouseY < (122+ index * 120)) {
+            if (mouseX > 908 && mouseX < 1292 && mouseY > (30+ index * 120) && mouseY < (122+ index * 120)) {
                 printf("%d \n", index);
                 if (index > 5) {
                     return 1;

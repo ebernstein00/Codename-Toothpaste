@@ -33,7 +33,9 @@ void displayCharacter(int id, double health, int x, int y) {
     }
     else if (id == 1) {
         displayKnightIdle(x,y);
-        displayHealth(health, KIdstrect);
+        SDL_Rect KIhealthrect = {x,y, 124,192};
+        KIhealthrect.x = x + 20;
+        displayHealth(health, KIhealthrect);
     }
     else if (id == 2) {
         displayMageIdle(x,y);
@@ -45,15 +47,15 @@ void displayCharacter(int id, double health, int x, int y) {
     }
     else if (id == 4) {
         displayBonkersIdle(x,y);
-        BIhealthrect.x = x;
-        BIhealthrect.y = y;
+        BIhealthrect.x = x+ 40;
+        BIhealthrect.y = y-24;
         BIhealthrect.w = 232;
-        BIhealthrect.h = 228;
+        BIhealthrect.h = 208;
         displayHealth(health, BIhealthrect);
     }
     else if (id == 5) {
         displayDededeIdle(x,y);
-        DIhealthrect.x = x;
+        DIhealthrect.x = x + 60;
         DIhealthrect.y = y;
         DIhealthrect.w = 232;
         DIhealthrect.h = 228;
@@ -77,7 +79,7 @@ void displayCharacter(int id, double health, int x, int y) {
     }
     else if (id == 8) {
         displayWaddledooIdle(x,y);
-        OIhealthrect.x = x;
+        OIhealthrect.x = x-12;
         OIhealthrect.y = y;
         OIhealthrect.w = 96;
         OIhealthrect.h = 108;
