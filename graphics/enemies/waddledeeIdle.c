@@ -4,6 +4,7 @@ SDL_Rect WIframe1 = {689, 5, 35, 46 }; //45 370
 SDL_Rect WIframe2 = {652, 1, 33, 50 };//128 368
 SDL_Rect WIframe3 = {616, 2, 31, 49 };// 211 369
 SDL_Rect WIdstrect = {0,0,2000,150};
+SDL_Rect WIhealthrect = {0,0,0,0};
 int WIsprite = 0;
 SDL_Renderer* WIrenderer = NULL;
 SDL_Surface* WIimage = NULL;
@@ -21,8 +22,6 @@ void initWaddledeeIdle(SDL_Renderer* sdlRenderer)
 }
 
 void displayWaddledeeIdle(int x, int y) {
-    WIdstrect.x = x;
-    WIdstrect.y = y;
     WIsprite++;
     WIsprite%= WIframeTime;
     if (WIsprite < WIframeTime-24) {

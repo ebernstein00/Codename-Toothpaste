@@ -5,6 +5,7 @@ SDL_Rect DIframe2 = {641, 9, 60, 55 };//128 368
 SDL_Rect DIframe3 = {706, 8, 60, 56 };// 211 369
 SDL_Rect DIframe4 = {771, 6, 58, 58 }; //292 370
 SDL_Rect DIdstrect = {0,0,2000,150};
+SDL_Rect DIhealthrect = {0,0,0,0};
 int DIsprite = 0;
 SDL_Renderer* DIrenderer = NULL;
 SDL_Surface* DIimage = NULL;

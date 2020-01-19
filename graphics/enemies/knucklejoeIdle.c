@@ -4,6 +4,7 @@ SDL_Rect JIframe1 = {184, 42, 30, 31 }; //45 370
 SDL_Rect JIframe2 = {149, 41, 30, 31 };//128 368
 SDL_Rect JIframe3 = {113, 42, 31, 31 };// 211 369
 SDL_Rect JIdstrect = {0,0,0,0};
+SDL_Rect JIhealthrect = {0,0,0,0};
 int JIsprite = 0;
 SDL_Renderer* JIrenderer = NULL;
 SDL_Surface* JIimage = NULL;

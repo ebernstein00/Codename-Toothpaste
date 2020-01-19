@@ -14,9 +14,10 @@
 #include "./enemies/waddledooIdle.h"
 #include "./enemies/knucklejoeIdle.h"
 #include "./enemies/chefIdle.h"
+#include "./enemies/bonkersIdle.h"
 #include "background.h"
 #include "gui.h"
-#include "health.h"
+#include "display.h"
 
 //Screen dimension constants
 #define SCREEN_WIDTH 1600
@@ -77,16 +78,7 @@ bool init()
 					success = false;
 				}
 				// initFighterKick(renderer);
-				initFighterIdle(renderer);
-				initMageIdle(renderer);
-				initKnightIdle(renderer);
-				initRogueIdle(renderer);
-				initGalactaIdle(renderer);
-				initDededeIdle(renderer);
-				initWaddledeeIdle(renderer);
-				initWaddledooIdle(renderer);
-				initKnucklejoeIdle(renderer);
-				initChefIdle(renderer);
+				displayInit(renderer);
 				initBackground(renderer);
 				initGUI(renderer);
 
@@ -156,18 +148,17 @@ int main( int argc, char* args[] )
 				SDL_RenderSetViewport(renderer, &field);
 				//Render current frame
 				displayBackground();
-				displayFighterIdle(100,300);
-				displayMageIdle(220,420);
-				displayKnightIdle(100,500);
-				displayRogueIdle(250,700);
-				displayGalactaIdle(700,500);
-				displayDededeIdle(800,200);
-				displayWaddledeeIdle(700,100);
-				displayWaddledooIdle(700,300);
-				displayKnucklejoeIdle(600,700);
-				displayChefIdle(800,700);
-				displayHealth(0.1, WIdstrect, renderer);
-				displayHealth(0.6, FIdstrect, renderer);
+				displayCharacter(0, 0.6, 100,300);
+				displayCharacter(1, 0.7, 220,420);
+				displayCharacter(2, 0.8, 100,500);
+				displayCharacter(3, 0.9, 250,700);
+				displayCharacter(4, 1, 700,500);
+				displayCharacter(5, 0.8, 800,200);
+				displayCharacter(6, 0.7, 700,100);
+				displayCharacter(7, 0.2, 700,300);
+				displayCharacter(8, 0, 600,700);
+				// displayCharacter(800,700);
+				// displayCharacter(600,500);
 				SDL_RenderSetViewport(renderer, &gui);
 				// SDL_Rect button = {50,50, 200, 200};
 				// SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);

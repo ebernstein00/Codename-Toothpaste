@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-extern SDL_Rect JIdstrect;
+extern SDL_Rect JIhealthrect;
 
 void initKnucklejoeIdle(SDL_Renderer* sdlRenderer);
 void displayKnucklejoeIdle(int x, int y);

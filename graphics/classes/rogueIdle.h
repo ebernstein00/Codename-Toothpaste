@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <string.h>
 
+extern SDL_Rect RIdstrect;
+
 void initRogueIdle(SDL_Renderer* sdlRenderer);
 void displayRogueIdle(int x, int y);
 void destroyRogueIdle();

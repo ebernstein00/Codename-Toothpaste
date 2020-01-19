@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-extern SDL_Rect WIdstrect;
+extern SDL_Rect WIhealthrect;
 
 void initWaddledeeIdle(SDL_Renderer* sdlRenderer);
 void displayWaddledeeIdle(int x, int y);

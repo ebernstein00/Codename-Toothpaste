@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-extern SDL_Rect GIdstrect;
+extern SDL_Rect DIhealthrect;
 
 void initDededeIdle(SDL_Renderer* sdlRenderer);
 void displayDededeIdle(int x, int y);
