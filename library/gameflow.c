@@ -52,7 +52,7 @@ struct item * rand_item() {
         rand_item = create_rigidity_iron_sword();
         break;
     case(8):
-        rand_item = create_rigidity_steel_sword();        
+        rand_item = create_rigidity_steel_sword();
         break;
     case(9):
         rand_item = create_leather_armor();
@@ -103,8 +103,8 @@ struct item * rand_item() {
 }
 
 int coinflip() {
-    int randomBit;    
-    int i;   
+    int randomBit;
+    int i;
     randomBit = rand() % 2;
     /* printf("%d\n", randomBit); */
     return randomBit;
@@ -116,7 +116,7 @@ int attack(struct being * attacker, struct being * target){
     damage = get_attack( attacker ) - get_defense( target );
     if(damage <= 0) damage = 0;
     currenthp = get_hp(target);
-    set_hp( target, (currenthp - damage));    
+    set_hp( target, (currenthp - damage));
     printf("*** ATTACK ***\n%s attacked %s for %d damage!\n*** ATTACK ***\n", attacker->type, target->type, damage);
     return 0;
 }
@@ -151,6 +151,7 @@ int guard_end(struct being * user){
 }
 
 int monsterturn( struct being *monster, struct game *game ) {
+    printf("Monster turn! \n");
     int move;
     int target;
     move = coinflip();
@@ -160,7 +161,7 @@ int monsterturn( struct being *monster, struct game *game ) {
         guard_start( monster );
         return 0;
     }
-    
+
     // Otherwise, If Both players are still alive
     if (( game->player1 != NULL ) && (game->player2 != NULL)) {
         target = coinflip();
@@ -192,10 +193,9 @@ int monsterturn( struct being *monster, struct game *game ) {
     }
 }
 
-int playerturn( struct being *player, struct game *game ) {
+int playerturn( struct being *player, struct game *game , int player_move) {
     char *input = (char *)calloc(3, sizeof( char ));
     struct item *dropped_item;
-    int player_move;
     int selected_enemy;
 
     printf("--- Attacking Player ---\n");
@@ -203,25 +203,13 @@ int playerturn( struct being *player, struct game *game ) {
     if( is_guarding( player ) ) {
 	guard_end( player );
     }
-
     /* printf("%s hp[%d] a[%d] d[%d] move:\n", player->type, player->hp, player->attack, player->defense); */
-    printf("Potion 1: [1]\n");
-    printf("Potion 2: [2]\n");
-    printf("Potion 3: [3]\n");
-    printf("  Attack: [4]\n");
-    printf("   Guard: [5]\n");
-    printf("> ");
-    
-    fgets( input, 3, stdin );
-    *strchr( input, '\n' ) = '\0';
-
 
     // convert string to int.
-    player_move = atoi(input);
 
     switch( player_move ) {
     case(1):
-	use_item( player, 0);	
+	use_item( player, 0);
         break;
     case(2):
 	use_item( player, 1);
@@ -239,7 +227,7 @@ int playerturn( struct being *player, struct game *game ) {
 	selected_enemy = atoi( input );
 	switch( selected_enemy ) {
 	case(1):
-	    attack( player, game->monster1); 
+	    attack( player, game->monster1);
 	    break;
 	case(2):
 	    attack( player, game->monster2);
@@ -247,13 +235,13 @@ int playerturn( struct being *player, struct game *game ) {
 	default:
 	    printf("Not a valid input\n");
 	    return 1;
-	}	
+	}
         break;
     case(5):
         guard_start( player );
         break;
     default:
-	printf("Not a valid input\n");	
+	printf("Not a valid input\n");
     }
 
     dropped_item = rand_item();
@@ -271,7 +259,7 @@ int playerturn( struct being *player, struct game *game ) {
         printf("item not added\n");
     }
     free( input );
-    return 0;        
+    return 0;
 }
 
 int freegame( struct game *game ) {
@@ -320,7 +308,3 @@ int garbage_collector( struct game *game ) {
 
     return 0;
 }
-
-
-
-

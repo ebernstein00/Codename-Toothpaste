@@ -15,7 +15,7 @@
 #include "./enemies/chefIdle.h"
 #include "./enemies/bonkersIdle.h"
 
-void displayInit();
+void displayInit(SDL_Renderer* renderer);
 
 void displayHealth(double health, SDL_Rect rect);
 

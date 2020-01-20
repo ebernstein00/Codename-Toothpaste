@@ -13,7 +13,7 @@ int RIframeTime  = 0;
 void initRogueIdle(SDL_Renderer* sdlRenderer)
 {
     RIrenderer = sdlRenderer;
-    RIimage = IMG_Load("./sprites/rogue.png");
+    RIimage = IMG_Load("./graphics/sprites/rogue.png");
     SDL_SetColorKey(RIimage, SDL_TRUE, SDL_MapRGB (RIimage->format, 96, 152, 96));
     RItexture = SDL_CreateTextureFromSurface(RIrenderer, RIimage);
     RIframeTime = rand()%120 + 240;

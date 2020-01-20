@@ -14,7 +14,7 @@ int JIframeTime  = 0;
 void initKnucklejoeIdle(SDL_Renderer* sdlRenderer)
 {
     JIrenderer = sdlRenderer;
-    JIimage = IMG_Load("./sprites/knucklejoe.png");
+    JIimage = IMG_Load("./graphics/sprites/knucklejoe.png");
     SDL_SetColorKey(JIimage, SDL_TRUE, SDL_MapRGB (JIimage->format, 160, 208, 98));
     JItexture = SDL_CreateTextureFromSurface(JIrenderer, JIimage);
     JIframeTime = 36;

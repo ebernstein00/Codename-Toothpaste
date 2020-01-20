@@ -1,10 +1,10 @@
 #include "gui.h"
 
-SDL_Rect GUIsrcrect1 = { 0, 0, 192, 46 };
-SDL_Rect GUIsrcrect2 = { 0, 46, 192, 46 };
-SDL_Rect GUIsrcrect3 = { 0, 92, 192, 46 };
-SDL_Rect GUIsrcrect4 = { 0, 138, 192, 46 };
-SDL_Rect GUIsrcrect5 = { 0, 184, 192, 46 };
+SDL_Rect GUIsrcrect2 = { 0, 138, 192, 46 };
+SDL_Rect GUIsrcrect3 = { 0, 184, 192, 46 };
+SDL_Rect GUIsrcrect4 = { 0, 0, 192, 46 };
+SDL_Rect GUIsrcrect5 = { 0, 46, 192, 46 };
+SDL_Rect GUIsrcrect1 = { 0, 92, 192, 46 };
 SDL_Rect GUIdstrect1 = { 8, 150, 384, 92 };
 SDL_Rect GUIdstrect2 = { 8, 270, 384, 92 };
 SDL_Rect GUIdstrect3 = { 8, 390, 384, 92 };
@@ -17,7 +17,7 @@ int GUIticks = 0;
 
 void initGUI(SDL_Renderer* sdlRenderer) {
     GUIrenderer = sdlRenderer;
-    GUIimage = IMG_Load("./sprites/buttons.png");
+    GUIimage = IMG_Load("./graphics/sprites/buttons.png");
     GUItexture = SDL_CreateTextureFromSurface(GUIrenderer, GUIimage);
     }
 

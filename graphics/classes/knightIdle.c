@@ -13,7 +13,7 @@ int KIframeTime  = 0;
 void initKnightIdle(SDL_Renderer* sdlRenderer)
 {
     KIrenderer = sdlRenderer;
-    KIimage = IMG_Load("./sprites/knight.png");
+    KIimage = IMG_Load("./graphics/sprites/knight.png");
     SDL_SetColorKey(KIimage, SDL_TRUE, SDL_MapRGB (KIimage->format, 144, 208, 136));
     KItexture = SDL_CreateTextureFromSurface(KIrenderer, KIimage);
     KIframeTime = rand()%120 + 240;

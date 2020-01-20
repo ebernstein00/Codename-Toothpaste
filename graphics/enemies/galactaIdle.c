@@ -14,7 +14,7 @@ int GIframeTime  = 0;
 void initGalactaIdle(SDL_Renderer* sdlRenderer)
 {
     GIrenderer = sdlRenderer;
-    GIimage = IMG_Load("./sprites/galacta.png");
+    GIimage = IMG_Load("./graphics/sprites/galacta.png");
     SDL_SetColorKey(GIimage, SDL_TRUE, SDL_MapRGB (GIimage->format, 79, 151, 66));
     GItexture = SDL_CreateTextureFromSurface(GIrenderer, GIimage);
     GIframeTime = rand()%30 + 60;
