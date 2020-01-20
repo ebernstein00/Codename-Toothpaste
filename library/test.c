@@ -27,16 +27,28 @@ int main() {
     game->player2 = create_knight(1);
     game->monster1 = create_dedede(1);
     game->monster2 = create_waddledee(1);
-    /* struct item *woodsword = create_wood_sword(); */
-    /* add_item( game->player1, woodsword ); */
+
     printgame(game);
-    playerturn( game->player1, game );
-    garbage_collector( game );
-    printgame( game );
 
-    /* monsterturn( game->monster1, game ); */
-    /* printgame( game ); */
 
+    while( garbage_collector( game ) == 0 ){
+      playerturn( game->player1, game );
+      garbage_collector( game );
+      printgame( game );
+      
+      playerturn( game->player2, game );
+      garbage_collector( game );
+      printgame( game );
+
+      monsterturn( game->monster1, game );
+      garbage_collector( game );
+      printgame( game );
+
+      monsterturn( game->monster2, game );
+      garbage_collector( game );
+      printgame( game );
+
+    }
     freegame ( game );
 
     return 0;

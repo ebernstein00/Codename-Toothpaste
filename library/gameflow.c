@@ -297,7 +297,7 @@ void printgame( struct game *game ) {
 }
 
 
-int garbage_collector( struct game *game) {
+int garbage_collector( struct game *game ) {
     if (get_hp(game->player1) <= 0) {
 	free_being( game->player1 );
 	game->player1 = NULL;
@@ -314,6 +314,10 @@ int garbage_collector( struct game *game) {
 	free_being( game->monster2 );
 	game->monster2 = NULL;
     }
+    if ((get_hp(game->player1) == NULL) && (get_hp(game->player2) == NULL)) {
+        return 1;
+    }
+
     return 0;
 }
 
