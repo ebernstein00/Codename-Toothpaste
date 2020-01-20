@@ -195,10 +195,8 @@ int monsterturn( struct being *monster, struct game *game ) {
     }
 }
 
-int playerturn( struct being *player, struct game *game , int player_move) {
+int playerturn( struct being *player, struct game *game , int player_move, int selected_enemy) {
     char *input = (char *)calloc(3, sizeof( char ));
-    struct item *dropped_item;
-    int selected_enemy;
 
     printf("--- Attacking Player ---\n");
     print_being( player );
@@ -221,12 +219,6 @@ int playerturn( struct being *player, struct game *game , int player_move) {
         break;
     case(4):
 	printf("Choose the enemy you wish to attack:\n");
-        printf("%s: [1]\n", game->monster1->type);
-        printf("%s: [2]\n", game->monster2->type);
-	printf("> ");
-	fgets( input, 3, stdin );
-	*strchr( input, '\n' ) = 0;
-	selected_enemy = atoi( input );
 	switch( selected_enemy ) {
 	case(1):
 	    attack( player, game->monster1);
@@ -245,23 +237,25 @@ int playerturn( struct being *player, struct game *game , int player_move) {
     default:
 	printf("Not a valid input\n");
     }
+    free( input );
+    return 0;
+}
 
-    dropped_item = rand_item();
+void dropItem(struct item *dropped_item) {
     printf("You Found an Item!\n");
     print_item(dropped_item);
     printf("Pick Up the Item? (y/n) ");
-    fgets(input, 3, stdin);
-    *strchr(input, '\n') = 0;
+}
 
-    if((strcmp(input, "y") == 0)) {
+void addItem(struct being *player, struct item *dropped_item, int input) {
+    if(input) {
         add_item(player, dropped_item);
         printf("item added\n");
-    } else {
+    }
+    else {
         free(dropped_item);
         printf("item not added\n");
     }
-    free( input );
-    return 0;
 }
 
 int freegame( struct game *game ) {
@@ -280,10 +274,18 @@ struct game *newgame() {
 
 void printgame( struct game *game ) {
     printf("Game:\n");
-    print_being( game->player1 );
-    print_being( game->player2 );
-    print_being( game->monster1 );
-    print_being( game->monster2 );
+    if (game->player1 != NULL) {
+        print_being( game->player1 );
+    }
+    if (game->player2 != NULL) {
+        print_being( game->player2 );
+    }
+    if (game->monster1 != NULL) {
+        print_being( game->monster1 );
+    }
+    if (game->monster2 != NULL) {
+        print_being( game->monster2 );
+    }
 }
 
 

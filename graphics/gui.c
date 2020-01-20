@@ -76,6 +76,27 @@ int inputGUI(SDL_Event e) {
     }
     return 0;
 }
+int targetGUI (SDL_Event e, SDL_Rect enemy1, SDL_Rect enemy2) {
+    if (e.type == SDL_MOUSEBUTTONDOWN) {
+        enemy1.x = 650;
+        enemy1.y = 350;
+        enemy2.x = 600;
+        enemy2.y = 625;
+        int mouseX, mouseY;
+        SDL_GetMouseState(&mouseX, &mouseY);
+        printf("Mouse click: %d,%d \n", mouseX, mouseY);
+        printf("enemy1: %d, %d, %d, %d \n", enemy1.x, enemy1.y, enemy1.w, enemy1.h);
+        if (mouseX > enemy1.x && mouseX < enemy1.x + enemy1.w && mouseY > enemy1.y && mouseY < enemy1.y + enemy1.h) {
+            return 1;
+        }
+        if (mouseX > enemy2.x && mouseX < enemy2.x + enemy2.w && mouseY > enemy2.y && mouseY < enemy2.y + enemy2.h) {
+            return 2;
+        }
+    }
+    return 0;
+}
+
+
 
 
 // }

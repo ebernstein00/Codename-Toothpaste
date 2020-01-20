@@ -10,4 +10,6 @@ void displayGUI(int index);
 
 int inputGUI(SDL_Event e);
 
-void resetButtons(); 
+int targetGUI(SDL_Event e, SDL_Rect enemy1, SDL_Rect enemy2);
+
+void resetButtons();

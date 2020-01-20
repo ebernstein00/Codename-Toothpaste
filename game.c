@@ -119,7 +119,6 @@ int main( int argc, char* args[] )
     game->monster1 = create_dedede(1);
     game->monster2 = create_waddledee(1);
 
-
     printgame(game);
 
 	bool quit = false;
@@ -129,7 +128,7 @@ int main( int argc, char* args[] )
 	//Event handler
 	SDL_Event e;
 	//While application is running
-	while( !quit )
+	while( !quit && garbage_collector(game) == 0)
 	{
         while( SDL_PollEvent( &e ) != 0 )
         {
@@ -139,9 +138,17 @@ int main( int argc, char* args[] )
                 quit = true;
             }
             inputClick = inputGUI(e);
-            if (inputClick) {
+            if (inputClick == 4) {
                 printf("GUI input: %d \n", inputClick);
                 printf("Please select a target \n");
+                while (target == 0) {
+                    if ( SDL_PollEvent( &e ) != 0 ) {
+                        target = targetGUI(e, game->monster1->rect, game->monster2->rect);
+                        printf("%d \n", target);
+                    }
+
+                }
+
             }
         }
         //Clear screen
@@ -178,28 +185,71 @@ int main( int argc, char* args[] )
         SDL_RenderPresent( renderer );
         if (inputClick > 0 ) {
             if (stage == 0) {
-                playerturn( game->player1, game, inputClick );
+                playerturn( game->player1, game, inputClick, target);
+                inputClick = 0;
+                target = 0;
+                stage ++;
+                garbage_collector( game );
+                printgame( game );
 
             }
             else if (stage == 1) {
-                playerturn( game->player1, game, inputClick );
+                playerturn( game->player2, game, inputClick, target);
+                inputClick = 0;
+                target = 0;
+                stage ++;
+                garbage_collector( game );
+                printgame( game );
             }
             else if (stage == 2) {
                 printf("We should be getting dicked here \n");
-                monsterturn( game->monster1, game );
-                garbage_collector( game );
-                printgame( game );
+                if (game ->monster1 != NULL) {
+                    monsterturn( game->monster1, game );
+                    garbage_collector( game );
+                    printgame( game );
+                }
 
-                monsterturn( game->monster2, game );
-                garbage_collector( game );
-                printgame( game );
-                stage = 0;
-                // break;
+                if (game ->monster2 != NULL) {
+                    monsterturn( game->monster2, game );
+                    garbage_collector( game );
+                    printgame( game );
+                }
+                stage = 3;
             }
-            inputClick = 0;
-            stage ++;
-            garbage_collector( game );
-            printgame( game );
+            else if (stage == 3 ) {
+                struct item *dropped_item1 = rand_item();
+                struct item *dropped_item2 = rand_item();
+                dropItem(dropped_item1);
+                while (stage == 3) {
+                    if ( SDL_PollEvent( &e ) != 0 ) {
+                        if (e.type == SDL_KEYDOWN) {
+                            if (e.key.keysym.sym == SDLK_RETURN) {
+                                addItem(game->player1, dropped_item1, 1);
+                                stage = 4;
+                            }
+                            else if (e.key.keysym.sym == SDLK_BACKSPACE) {
+                                addItem(game->player1, dropped_item1, 0);
+                                stage = 4;
+                            }
+                        }
+                    }
+                }
+                dropItem(dropped_item2);
+                while (stage == 4) {
+                    if ( SDL_PollEvent( &e ) != 0 ) {
+                        if (e.type == SDL_KEYDOWN) {
+                            if (e.key.keysym.sym == SDLK_RETURN) {
+                                addItem(game->player2, dropped_item1, 1);
+                                stage = 0;
+                            }
+                            else if (e.key.keysym.sym == SDLK_BACKSPACE) {
+                                addItem(game->player2, dropped_item1, 0);
+                                stage = 0;
+                            }
+                        }
+                    }
+                }
+            }
         }
 	}
 
