@@ -17,3 +17,4 @@ struct game *newgame();
 void printgame( struct game *game );
 int coinflip();
 int garbage_collector( struct game *game );
+struct item * rand_item();

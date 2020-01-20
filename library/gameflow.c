@@ -20,6 +20,88 @@ struct game {
     struct being *monster2;
 };
 
+struct item * rand_item() {
+    int i = 0;
+    int num = 0;
+    struct item *rand_item;
+    num = (rand() % 23);
+    printf("random num[%d]\n", num);
+    switch( num ){
+    case(0):
+        rand_item = create_wood_sword();
+        break;
+    case(1):
+        rand_item = create_iron_sword();
+        break;
+    case(2):
+        rand_item = create_steel_sword();
+        break;
+    case(3):
+        rand_item = create_armoring_wooden_sword();
+        break;
+    case(4):
+        rand_item = create_armoring_iron_sword();
+        break;
+    case(5):
+        rand_item = create_armoring_steel_sword();
+        break;
+    case(6):
+        rand_item = create_rigidity_wooden_sword();
+        break;
+    case(7):
+        rand_item = create_rigidity_iron_sword();
+        break;
+    case(8):
+        rand_item = create_rigidity_steel_sword();        
+        break;
+    case(9):
+        rand_item = create_leather_armor();
+        break;
+    case(10):
+        rand_item = create_iron_armor();
+        break;
+    case(11):
+        rand_item = create_steel_armor();
+        break;
+    case(12):
+        rand_item = create_mithril_armor();
+        break;
+    case(13):
+        rand_item = create_rigidity_leather_armor();
+        break;
+    case(14):
+        rand_item = create_rigidity_iron_armor();
+        break;
+    case(15):
+        rand_item = create_rigidity_steel_armor();
+        break;
+    case(16):
+        rand_item = create_rigidity_mithril_armor();
+        break;
+    case(17):
+        rand_item = create_strength_leather_armor();
+        break;
+    case(18):
+        rand_item = create_strength_iron_armor();
+        break;
+    case(19):
+        rand_item = create_strength_steel_armor();
+        break;
+    case(20):
+        rand_item = create_strength_mithril_armor();
+        break;
+    case(21):
+        rand_item = create_health_potion();
+        break;
+    case(22):
+        rand_item = create_strength_potion();
+        break;
+    default:
+        return 1;
+    }
+    return rand_item;
+}
+
 int coinflip() {
     int randomBit;    
     int i;   
@@ -32,6 +114,7 @@ int attack(struct being * attacker, struct being * target){
     int damage;
     int currenthp;
     damage = get_attack( attacker ) - get_defense( target );
+    if(damage <= 0) damage = 0;
     currenthp = get_hp(target);
     set_hp( target, (currenthp - damage));    
     printf("*** ATTACK ***\n%s attacked %s for %d damage!\n*** ATTACK ***\n", attacker->type, target->type, damage);
@@ -56,14 +139,14 @@ int use_item(struct being *user, int item_index){
 int guard_start(struct being * user){
     set_defense( user, (get_defense(user) + 20));
     guard(user);
-    printf("Guard Initiated (Defense +20)\n");
+    printf("*** GUARD ***\nGuard Initiated (Defense +20)\n*** GUARD ***\n");
     return 0;
 }
 
 int guard_end(struct being * user){
     set_defense( user, (get_defense(user) - 20));
     unguard(user);
-    printf("Guard Ended (Defense -20)\n");
+    printf("*** ENDGUARD ***\nGuard Ended (Defense -20)\n*** GUARDEND ***\n");
     return 0;
 }
 
@@ -111,7 +194,7 @@ int monsterturn( struct being *monster, struct game *game ) {
 
 int playerturn( struct being *player, struct game *game ) {
     char *input = (char *)calloc(3, sizeof( char ));
-    char *target = (char *)calloc(3, sizeof(char));
+    struct item *dropped_item;
     int player_move;
     int selected_enemy;
 
@@ -132,16 +215,12 @@ int playerturn( struct being *player, struct game *game ) {
     fgets( input, 3, stdin );
     *strchr( input, '\n' ) = '\0';
 
-    printf("got input\n");
+
     // convert string to int.
     player_move = atoi(input);
-    printf("converted input: [%d]\n", player_move);
-    printf("player is: [%ul]\n", player);
 
     switch( player_move ) {
     case(1):
-        printf("switched: option 1\n");
-        printf("player is: [%ul]\n", player);
 	use_item( player, 0);	
         break;
     case(2):
@@ -176,8 +255,22 @@ int playerturn( struct being *player, struct game *game ) {
     default:
 	printf("Not a valid input\n");	
     }
+
+    dropped_item = rand_item();
+    printf("You Found an Item!\n");
+    print_item(dropped_item);
+    printf("Pick Up the Item? (y/n) ");
+    fgets(input, 3, stdin);
+    *strchr(input, '\n') = 0;
+
+    if((strcmp(input, "y") == 0)) {
+        add_item(player, dropped_item);
+        printf("item added\n");
+    } else {
+        free(dropped_item);
+        printf("item not added\n");
+    }
     free( input );
-    free( target );
     return 0;        
 }
 
@@ -223,3 +316,7 @@ int garbage_collector( struct game *game) {
     }
     return 0;
 }
+
+
+
+
