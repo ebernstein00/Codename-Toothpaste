@@ -4,6 +4,7 @@
 #include <string.h>
 
 extern SDL_Rect DIhealthrect;
+extern SDL_Rect DIdstrect;
 
 void initDededeIdle(SDL_Renderer* sdlRenderer);
 void displayDededeIdle(int x, int y);

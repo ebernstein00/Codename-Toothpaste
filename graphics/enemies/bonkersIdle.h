@@ -4,6 +4,7 @@
 #include <string.h>
 
 extern SDL_Rect BIhealthrect;
+extern SDL_Rect BIdstrect;
 
 void initBonkersIdle(SDL_Renderer* sdlRenderer);
 void displayBonkersIdle(int x, int y);

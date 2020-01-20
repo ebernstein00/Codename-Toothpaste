@@ -16,7 +16,6 @@
 #include "./graphics/background.h"
 #include "./graphics/gui.h"
 #include "./graphics/display.h"
-#include "./library/items.h"
 #include "./library/characters.h"
 #include "./library/gameflow.h"
 
@@ -34,12 +33,6 @@ SDL_Renderer* renderer = NULL;
 
 SDL_Rect field = {0, 0 , 900, SCREEN_HEIGHT };
 SDL_Rect gui = {900, 0, 500, SCREEN_HEIGHT};
-
-struct slot {
-   int x;
-   int y;
-   struct being* character;
-};
 
 bool init()
 {
@@ -126,10 +119,12 @@ int main( int argc, char* args[] )
     game->monster1 = create_dedede(1);
     game->monster2 = create_waddledee(1);
 
+
     printgame(game);
 
 	bool quit = false;
 	int inputClick = 0;
+    int target = 0;
     int stage = 0;
 	//Event handler
 	SDL_Event e;
@@ -146,6 +141,7 @@ int main( int argc, char* args[] )
             inputClick = inputGUI(e);
             if (inputClick) {
                 printf("GUI input: %d \n", inputClick);
+                printf("Please select a target \n");
             }
         }
         //Clear screen
@@ -154,15 +150,22 @@ int main( int argc, char* args[] )
         SDL_RenderSetViewport(renderer, &field);
         //Render current frame
         displayBackground();
-        displayCharacter(0, 1, 100,300);
-        displayCharacter(1, 0.7, 220,420);
-        displayCharacter(2, 0.8, 100,500);
-        displayCharacter(3, 0.9, 250,700);
-        displayCharacter(4, 1, 700,500);
-        displayCharacter(5, 0.8, 800,200);
-        displayCharacter(6, 0.7, 700,100);
-        displayCharacter(7, 0.2, 700,300);
-        displayCharacter(8, 0, 600,700);
+        if (game->player1 != NULL) {
+            displayCharacter(get_id(game->player1),
+                ((double)get_hp(game->player1))/get_maxhp(game->player1), 50,400);
+        }
+        if (game->player2 != NULL) {
+            displayCharacter(get_id(game->player2),
+                ((double)get_hp(game->player2))/get_maxhp(game->player2), 75,600);
+        }
+        if (game->monster1 != NULL) {
+            displayCharacter(get_id(game->monster1),
+                ((double)get_hp(game->monster1))/get_maxhp(game->monster1), 650,350);
+        }
+        if (game->monster2 != NULL) {
+            displayCharacter(get_id(game->monster2),
+                ((double)get_hp(game->monster2))/get_maxhp(game->monster2), 600,625);
+        }
         // displayCharacter(800,700);
         // displayCharacter(600,500);
         SDL_RenderSetViewport(renderer, &gui);
@@ -198,27 +201,6 @@ int main( int argc, char* args[] )
             garbage_collector( game );
             printgame( game );
         }
-        // Go to next frame
-        // Cycle animation
-        // while( garbage_collector( game ) == 0 ){
-        //       playerturn( game->player1, game );
-        //       garbage_collector( game );
-        //       printgame( game );
-        //
-        //       playerturn( game->player2, game );
-        //       garbage_collector( game );
-        //       printgame( game );
-        //
-        //       monsterturn( game->monster1, game );
-        //       garbage_collector( game );
-        //       printgame( game );
-        //
-        //       monsterturn( game->monster2, game );
-        //       garbage_collector( game );
-        //       printgame( game );
-
-		//Handle events on queue
-		// }
 	}
 
 	//Free resources and close SDL

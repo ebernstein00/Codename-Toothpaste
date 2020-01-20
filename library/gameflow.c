@@ -10,7 +10,6 @@
 #include <sys/types.h>
 #include <errno.h>
 #include <fcntl.h>
-#include "items.h"
 #include "characters.h"
 
 struct game {
@@ -154,6 +153,9 @@ int monsterturn( struct being *monster, struct game *game ) {
     printf("Monster turn! \n");
     int move;
     int target;
+    if (is_guarding(monster) == 1) {
+        guard_end(monster);
+    }
     move = coinflip();
     // 0: attack
     // 1: defend
