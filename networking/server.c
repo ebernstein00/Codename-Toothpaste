@@ -13,32 +13,32 @@ int main() {
     client_socket1 = server_connect(listen_socket);
     client_socket2 = server_connect(listen_socket);
     
-  while (1){
-      client_turn(client_socket1);
-      client_turn(client_socket2);
-  }
-  close(client_socket1);
-  close(client_socket2);
+    while (1){
+        client_turn(client_socket1);
+        client_turn(client_socket2);
+    }
+    close(client_socket1);
+    close(client_socket2);
 }
 
 void client_turn(int client_socket) {
-  char buffer[BUFFER_SIZE];
-
-  while (read(client_socket, buffer, sizeof(buffer))) {
-
+    char buffer[BUFFER_SIZE];
+    
+    /* while (read(client_socket, buffer, sizeof(buffer))) { */
+    read(client_socket, buffer, sizeof(buffer));
     printf("[server %d] received: [%s]\n", getpid(), buffer);
     process(buffer);
     write(client_socket, buffer, sizeof(buffer));
-  }//end read loop
-  /* close(client_socket); */
+    /* } // end read loop */
+    /* close(client_socket); */
 }
 
 void process(char * s) {
-  while (*s) {
-    if (*s >= 'a' && *s <= 'z')
-      *s = ((*s - 'a') + 13) % 26 + 'a';
-    else  if (*s >= 'A' && *s <= 'Z')
-      *s = ((*s - 'a') + 13) % 26 + 'a';
-    s++;
-  }
+    while (*s) {
+        if (*s >= 'a' && *s <= 'z')
+            *s = ((*s - 'a') + 13) % 26 + 'a';
+        else  if (*s >= 'A' && *s <= 'Z')
+            *s = ((*s - 'a') + 13) % 26 + 'a';
+        s++;
+    }
 }
