@@ -1,36 +1,36 @@
 #include "networking.h"
 
 void process(char *s);
-void subserver(int from_client);
+void client_turn(int client_socket);
 
 int main() {
 
-  int listen_socket;
-  int f;
-  listen_socket = server_setup();
-
-  while (1) {
-
-    int client_socket = server_connect(listen_socket);
-    f = fork();
-    if (f == 0)
-      subserver(client_socket);
-    else
-      close(client_socket);
+    int listen_socket;
+    int client_socket1;
+    int client_socket2;
+    listen_socket = server_setup();
+    
+    client_socket1 = server_connect(listen_socket);
+    client_socket2 = server_connect(listen_socket);
+    
+  while (1){
+      client_turn(client_socket1);
+      client_turn(client_socket2);
   }
+  close(client_socket1);
+  close(client_socket2);
 }
 
-void subserver(int client_socket) {
+void client_turn(int client_socket) {
   char buffer[BUFFER_SIZE];
 
   while (read(client_socket, buffer, sizeof(buffer))) {
 
-    printf("[subserver %d] received: [%s]\n", getpid(), buffer);
+    printf("[server %d] received: [%s]\n", getpid(), buffer);
     process(buffer);
     write(client_socket, buffer, sizeof(buffer));
   }//end read loop
-  close(client_socket);
-  exit(0);
+  /* close(client_socket); */
 }
 
 void process(char * s) {
