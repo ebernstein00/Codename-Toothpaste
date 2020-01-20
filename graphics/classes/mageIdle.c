@@ -14,7 +14,7 @@ int MIframeTime = 0;
 void initMageIdle(SDL_Renderer* sdlRenderer)
 {
     MIrenderer = sdlRenderer;
-    MIimage = IMG_Load("./sprites/mage.png");
+    MIimage = IMG_Load("./graphics/sprites/mage.png");
     SDL_SetColorKey(MIimage, SDL_TRUE, SDL_MapRGB (MIimage->format, 101, 141, 209));
     MItexture = SDL_CreateTextureFromSurface(MIrenderer, MIimage);
     MIframeTime = rand()%120 + 240;

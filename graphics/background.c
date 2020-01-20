@@ -11,9 +11,9 @@ int BGticks = 0;
 
 void initBackground(SDL_Renderer* sdlRenderer) {
     BGrenderer = sdlRenderer;
-    BGimage = IMG_Load("./sprites/grassbackground.png");
+    BGimage = IMG_Load("./graphics/sprites/grassbackground.png");
     BGtexture = SDL_CreateTextureFromSurface(BGrenderer, BGimage);
-    GBGimage = IMG_Load("./sprites/guibackground.png");
+    GBGimage = IMG_Load("./graphics/sprites/guibackground.png");
     GBGtexture = SDL_CreateTextureFromSurface(BGrenderer, GBGimage);
     }
 

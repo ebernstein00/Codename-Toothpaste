@@ -14,7 +14,7 @@ int BIframeTime  = 0;
 void initBonkersIdle(SDL_Renderer* sdlRenderer)
 {
     BIrenderer = sdlRenderer;
-    BIimage = IMG_Load("./sprites/chef.png");
+    BIimage = IMG_Load("./graphics/sprites/chef.png");
     SDL_SetColorKey(BIimage, SDL_TRUE, SDL_MapRGB (BIimage->format, 123, 198, 255));
     BItexture = SDL_CreateTextureFromSurface(BIrenderer, BIimage);
     BIframeTime = 36;

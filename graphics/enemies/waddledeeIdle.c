@@ -14,7 +14,7 @@ int WIframeTime  = 0;
 void initWaddledeeIdle(SDL_Renderer* sdlRenderer)
 {
     WIrenderer = sdlRenderer;
-    WIimage = IMG_Load("./sprites/waddledee.png");
+    WIimage = IMG_Load("./graphics/sprites/waddledee.png");
     SDL_SetColorKey(WIimage, SDL_TRUE, SDL_MapRGB (WIimage->format, 104, 184, 96));
     WItexture = SDL_CreateTextureFromSurface(WIrenderer, WIimage);
     WIframeTime = 32;

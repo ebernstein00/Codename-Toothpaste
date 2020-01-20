@@ -14,7 +14,7 @@ int OIframeTime  = 0;
 void initWaddledooIdle(SDL_Renderer* sdlRenderer)
 {
     OIrenderer = sdlRenderer;
-    OIimage = IMG_Load("./sprites/waddledoo.png");
+    OIimage = IMG_Load("./graphics/sprites/waddledoo.png");
     SDL_SetColorKey(OIimage, SDL_TRUE, SDL_MapRGB (OIimage->format, 84, 109, 142));
     OItexture = SDL_CreateTextureFromSurface(OIrenderer, OIimage);
     OIframeTime = 36;

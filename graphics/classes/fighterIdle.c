@@ -13,7 +13,7 @@ int FIframeTime  = 0;
 void initFighterIdle(SDL_Renderer* sdlRenderer)
 {
     FIrenderer = sdlRenderer;
-    FIimage = IMG_Load("./sprites/fighter.png");
+    FIimage = IMG_Load("./graphics/sprites/fighter.png");
     SDL_SetColorKey(FIimage, SDL_TRUE, SDL_MapRGB (FIimage->format, 0x78, 0xB8, 0x70));
     FItexture = SDL_CreateTextureFromSurface(FIrenderer, FIimage);
     FIframeTime = rand()%120 + 240;

@@ -15,7 +15,7 @@ int DIframeTime  = 0;
 void initDededeIdle(SDL_Renderer* sdlRenderer)
 {
     DIrenderer = sdlRenderer;
-    DIimage = IMG_Load("./sprites/dedede.png");
+    DIimage = IMG_Load("./graphics/sprites/dedede.png");
     SDL_SetColorKey(DIimage, SDL_TRUE, SDL_MapRGB (DIimage->format, 176, 160, 208));
     DItexture = SDL_CreateTextureFromSurface(DIrenderer, DIimage);
     DIframeTime = 28;

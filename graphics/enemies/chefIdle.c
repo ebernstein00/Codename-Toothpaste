@@ -13,7 +13,7 @@ int CIframeTime  = 0;
 void initChefIdle(SDL_Renderer* sdlRenderer)
 {
     CIrenderer = sdlRenderer;
-    CIimage = IMG_Load("./sprites/chef.png");
+    CIimage = IMG_Load("./graphics/sprites/chef.png");
     SDL_SetColorKey(CIimage, SDL_TRUE, SDL_MapRGB (CIimage->format, 123, 198, 255));
     CItexture = SDL_CreateTextureFromSurface(CIrenderer, CIimage);
     CIframeTime = rand()%120 + 240;

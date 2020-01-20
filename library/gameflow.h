@@ -11,7 +11,7 @@ int use_item(struct being * user, int item_index);
 int guard_start(struct being * user);
 int guard_end(struct being * user);
 int monsterturn( struct being *monster, struct game *game );
-int playerturn( struct being *player, struct game *game );
+int playerturn( struct being *player, struct game *game, int player_move);
 int freegame( struct game *game);
 struct game *newgame();
 void printgame( struct game *game );
