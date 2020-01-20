@@ -30,15 +30,17 @@ int coinflip() {
 
 int attack(struct being * attacker, struct being * target){
     int damage;
-    damage = attacker->attack - target->defense;
-    target->hp -= damage;    
-    printf("%s attacked %s for %d damage!\n", attacker->type, target->type, damage);
+    int currenthp;
+    damage = get_attack( attacker ) - get_defense( target );
+    currenthp = get_hp(target);
+    set_hp( target, (currenthp - damage));    
+    printf("*** ATTACK ***\n%s attacked %s for %d damage!\n*** ATTACK ***\n", attacker->type, target->type, damage);
     return 0;
 }
 
 int use_item(struct being *user, int item_index){
     printf("User is:[%ul]\n", user);
-    if( user->backpack[item_index] == NULL ){
+    if( get_backpack( user )[item_index] == NULL ){
 	printf("Nothing in that slot\n");
 	return 1;
     }
@@ -52,15 +54,15 @@ int use_item(struct being *user, int item_index){
 }
 
 int guard_start(struct being * user){
-    user->defense += 20;
-    user->is_guarding = 1;
+    set_defense( user, (get_defense(user) + 20));
+    guard(user);
     printf("Guard Initiated (Defense +20)\n");
     return 0;
 }
 
 int guard_end(struct being * user){
-    user->defense -= 20;
-    user->is_guarding = 0;
+    set_defense( user, (get_defense(user) - 20));
+    unguard(user);
     printf("Guard Ended (Defense -20)\n");
     return 0;
 }
@@ -91,12 +93,16 @@ int monsterturn( struct being *monster, struct game *game ) {
             return 1;
         }
         return 0;
+
+        // if only p1 is alive
     } else if (( game->player1 != NULL ) && ( game->player2 == NULL )) {
         attack( monster, game->player1 );
-        return 0;        
+        return 0;
+        // if only p2 is alive
     } else if (( game->player1 == NULL ) && ( game->player2 != NULL )) {
         attack( monster, game->player2 );
         return 0;
+        // if both are dead (should already be done by now, just in case tho)
     } else {
         printf("error: monster turn: all players dead\n");
         return 0;
@@ -109,13 +115,13 @@ int playerturn( struct being *player, struct game *game ) {
     int player_move;
     int selected_enemy;
 
-    /* printf("--- Attacking Player ---\n"); */
-    /* print_being( player ); */
+    printf("--- Attacking Player ---\n");
+    print_being( player );
     if( is_guarding( player ) ) {
 	guard_end( player );
     }
 
-    printf("%s[%ul] move:\n", player->type, player);
+    /* printf("%s hp[%d] a[%d] d[%d] move:\n", player->type, player->hp, player->attack, player->defense); */
     printf("Potion 1: [1]\n");
     printf("Potion 2: [2]\n");
     printf("Potion 3: [3]\n");
@@ -199,19 +205,19 @@ void printgame( struct game *game ) {
 
 
 int garbage_collector( struct game *game) {
-    if (game->player1->hp <= 0) {
+    if (get_hp(game->player1) <= 0) {
 	free_being( game->player1 );
 	game->player1 = NULL;
     }
-    if (game->player2->hp <= 0) {
+    if (get_hp(game->player2) <= 0) {
 	free_being( game->player2 );
 	game->player2 = NULL;
     }
-    if (game->monster1->hp <= 0) {
+    if (get_hp(game->monster1) <= 0) {
 	free_being( game->monster1 );
 	game->monster1 = NULL;
     }
-    if (game->monster2->hp <= 0) {
+    if (get_hp(game->monster2) <= 0) {
 	free_being( game->monster2 );
 	game->monster2 = NULL;
     }

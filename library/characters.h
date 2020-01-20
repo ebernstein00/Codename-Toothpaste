@@ -19,6 +19,18 @@ struct being * create_waddledoo( int level );
 struct being * free_being( struct being *pointer );
 
 int is_guarding(struct being *being);
+int set_hp(struct being *pointer, int new_hp);
+int set_attack(struct being *pointer, int new_attack);
+int set_defense(struct being *pointer, int new_defense);
+int guard(struct being *pointer);
+int unguard(struct being *pointer);
+
+
+int get_hp(struct being *pointer);
+int get_attack(struct being *pointer);
+int get_defense(struct being *pointer);
+struct item ** get_backpack(struct being *pointer);
+
 struct being * print_being( struct being *pointer);
 int remove_item ( struct being *being_ptr, int item_index );
 int add_item( struct being *being_ptr, struct item *item );

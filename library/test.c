@@ -27,14 +27,18 @@ int main() {
     game->player2 = create_knight(1);
     game->monster1 = create_dedede(1);
     game->monster2 = create_waddledee(1);
-
     struct item *woodsword = create_wood_sword();
-
-    /* print_being( game->player1 ); */
     add_item( game->player1, woodsword );
     printgame( game );
+
+
+
     playerturn( game->player1, game );
-    /* monsterturn( game->monster1, game ); */
+    garbage_collector( game );
+    printgame( game );
+
+    monsterturn( game->monster1, game );
+    printgame( game );
 
     freegame ( game );
     return 0;

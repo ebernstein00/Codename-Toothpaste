@@ -142,12 +142,12 @@ struct being * free_being( struct being *pointer ) {
 }
 
 struct being * print_being( struct being *pointer) {
-    printf("Type: [%s]\n", pointer->type);
-    printf("HP: [%d]\n", pointer->hp);
-    printf("Attack: [%d]\n", pointer->attack);
-    printf("Defense: [%d]\n", pointer->defense);
-    printf("Level: [%d]\n", pointer->level);
-    printf("Is Guarding? [%d]\n", pointer->is_guarding);
+    printf("Type[%s]\t", pointer->type);
+    printf("HP[%d]\t", pointer->hp);
+    printf("Att[%d]\t", pointer->attack);
+    printf("Def[%d]\t", pointer->defense);
+    printf("Lev[%d]\t", pointer->level);
+    printf("Guard?[%d]\n", pointer->is_guarding);
     print_backpack( pointer->backpack );
     return pointer;
 }
@@ -254,4 +254,41 @@ int add_item( struct being *being_ptr, struct item *item ) {
     default:
         return -1;
     }        	
+}
+
+int set_hp(struct being *pointer, int new_hp) {
+    pointer->hp = new_hp;
+    return 0;
+}
+
+int set_attack(struct being *pointer, int new_attack) {
+    pointer->attack = new_attack;
+    return 0;
+}
+int set_defense(struct being *pointer, int new_defense) {
+    pointer->defense = new_defense;
+    return 0;
+}
+
+int guard( struct being *pointer) {
+    pointer->is_guarding = 1;
+    return 0;
+}
+
+int unguard( struct being *pointer) {
+    pointer->is_guarding = 0;
+    return 0;
+}
+int get_hp(struct being *pointer) {
+    return pointer->hp;
+}
+int get_attack(struct being *pointer) {
+    return pointer->attack;
+}
+int get_defense(struct being *pointer) {
+    return pointer->defense;
+}
+
+struct item ** get_backpack( struct being *pointer ) {
+    return pointer->backpack;
 }
