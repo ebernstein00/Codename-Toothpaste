@@ -36,6 +36,7 @@ struct being * create_fighter( int level );
 struct being * create_dedede( int level );
 struct being * create_waddledee( int level );
 struct being * create_waddledoo( int level );
+struct being * create_knucklejoe( int level );
 struct being * free_being( struct being *pointer );
 
 int is_guarding(struct being *being);

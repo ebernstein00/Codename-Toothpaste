@@ -1,3 +1,0 @@
-SPRITERS RESOURCE
-BACKGROUND: ODICIA
-buttons: modified version of Spluff5's buttons

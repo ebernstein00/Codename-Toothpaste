@@ -104,14 +104,32 @@ struct being * create_waddledoo( int level ) {
 
     being_pointer->type = "waddledoo";
     being_pointer->id = 8;
-    being_pointer->hp = 50;
-    being_pointer->maxhp = 50;
-    being_pointer->attack = 15;
+    being_pointer->hp = 170;
+    being_pointer->maxhp = 170;
+    being_pointer->attack = 22;
     being_pointer->defense = 5;
     being_pointer->level = level;
     being_pointer->backpack = NULL;
     being_pointer->is_guarding = 0;
     being_pointer->rect = OIdstrect;
+
+    return being_pointer;
+
+}
+
+struct being * create_knucklejoe( int level ) {
+    struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
+
+    being_pointer->type = "knucklejoe";
+    being_pointer->id = 6;
+    being_pointer->hp = 120;
+    being_pointer->maxhp = 120;
+    being_pointer->attack = 30;
+    being_pointer->defense = 2;
+    being_pointer->level = level;
+    being_pointer->backpack = NULL;
+    being_pointer->is_guarding = 0;
+    being_pointer->rect = JIdstrect;
 
     return being_pointer;
 
