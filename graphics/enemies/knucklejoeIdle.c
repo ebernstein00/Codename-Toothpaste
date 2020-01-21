@@ -9,7 +9,7 @@ int JIsprite = 0;
 SDL_Renderer* JIrenderer = NULL;
 SDL_Surface* JIimage = NULL;
 SDL_Texture* JItexture = NULL;
-int JIframeTime  = 0;
+int JIframeTime  = 36;
 
 void initKnucklejoeIdle(SDL_Renderer* sdlRenderer)
 {

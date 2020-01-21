@@ -9,7 +9,7 @@ int OIsprite = 0;
 SDL_Renderer* OIrenderer = NULL;
 SDL_Surface* OIimage = NULL;
 SDL_Texture* OItexture = NULL;
-int OIframeTime  = 0;
+int OIframeTime  = 36;
 
 void initWaddledooIdle(SDL_Renderer* sdlRenderer)
 {

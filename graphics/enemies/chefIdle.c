@@ -8,7 +8,7 @@ int CIsprite = 0;
 SDL_Renderer* CIrenderer = NULL;
 SDL_Surface* CIimage = NULL;
 SDL_Texture* CItexture = NULL;
-int CIframeTime  = 0;
+int CIframeTime  = 300;
 
 void initChefIdle(SDL_Renderer* sdlRenderer)
 {

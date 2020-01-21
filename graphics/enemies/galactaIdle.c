@@ -9,7 +9,7 @@ int GIsprite = 0;
 SDL_Renderer* GIrenderer = NULL;
 SDL_Surface* GIimage = NULL;
 SDL_Texture* GItexture = NULL;
-int GIframeTime  = 0;
+int GIframeTime  = 70;
 
 void initGalactaIdle(SDL_Renderer* sdlRenderer)
 {

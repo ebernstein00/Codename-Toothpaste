@@ -9,7 +9,7 @@ int BIsprite = 0;
 SDL_Renderer* BIrenderer = NULL;
 SDL_Surface* BIimage = NULL;
 SDL_Texture* BItexture = NULL;
-int BIframeTime  = 0;
+int BIframeTime  = 36;
 
 void initBonkersIdle(SDL_Renderer* sdlRenderer)
 {

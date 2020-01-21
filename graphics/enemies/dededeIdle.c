@@ -10,7 +10,7 @@ int DIsprite = 0;
 SDL_Renderer* DIrenderer = NULL;
 SDL_Surface* DIimage = NULL;
 SDL_Texture* DItexture = NULL;
-int DIframeTime  = 0;
+int DIframeTime  = 28;
 
 void initDededeIdle(SDL_Renderer* sdlRenderer)
 {

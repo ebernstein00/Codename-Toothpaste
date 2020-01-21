@@ -9,7 +9,7 @@ int WIsprite = 0;
 SDL_Renderer* WIrenderer = NULL;
 SDL_Surface* WIimage = NULL;
 SDL_Texture* WItexture = NULL;
-int WIframeTime  = 0;
+int WIframeTime  = 32;
 
 void initWaddledeeIdle(SDL_Renderer* sdlRenderer)
 {
