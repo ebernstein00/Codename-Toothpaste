@@ -58,20 +58,24 @@ Uses SDL2 to render sprites against a background. Animates sprites based on fram
 * **display.c/h**: Renders Character sprites and handles animations
     * Responsive Health bars
     * Idle animations (i.e. blinking, shaking, etc.)
-    * Opens and interacts with bitmap and PNG spritesheets to animate sprite movement.
+    * Opens and interacts with bitmap and PNG spritesheets to animate sprite movement
+    * Renders characters given an ID, location, and health.
+    * Initializes all the characters and their spritemaps
+  **Character Files and Folders**: Contains spritemap data and rectangles for each frame of animation
+  Uses VSync to determine when a frame should be advanced
 
 ## GUI:
 Uses SDL to render buttons that can be clicked. Reads mouse input to show pressed buttons and to send signals to the gameflow. Reads keyboard input to pick up or leave items
 * **gui.c/h**: Renders and handles GUI buttons by means of which the user interacts with the game
     * Attack, Guard, Potion 1, Potion 2, Potion 3.
     * Tracks mouse position using SDL Rectangles
-
+    * Also handles targeting based on characters onscreen at a given moment
+    
 # Systems (MKS65) Components:
 ## Allocating Memory:
 * Each item, being, backpack, and game exists within a piece of allocated memory.
 * Each type of item, being, and backpack has its own create() function (ex. `create_strengthened_mithril_armor()`)
 * Each struct has its own free function.   
-* **AS OF 2020-01-20 21:00**: Valgrind --leak-check=full reports no memory leaks.
 ## Processes:
 * `execvp()` is used to use Ubuntu-native *aplay* to play the game soundtrack
 * PIDs are used in conjunction with signals to perpetuate soundtrack indefinitely. 
