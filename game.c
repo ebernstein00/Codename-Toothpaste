@@ -297,6 +297,7 @@ int main( int argc, char* args[] )
         if (stage == 3 ) {
 	        struct item *dropped_item1 = rand_item();
 	        struct item *dropped_item2 = rand_item();
+			printf("Player 1 Found an Item!\n");
 	        dropItem(dropped_item1);
 	        while (stage == 3) {
 	            if ( SDL_PollEvent( &e ) != 0 ) {
@@ -313,6 +314,7 @@ int main( int argc, char* args[] )
 	            }
 	        }
 			printgame(game);
+			printf("Player 2 Found an Item!\n");
 	        dropItem(dropped_item2);
 	        while (stage == 4) {
 	            if ( SDL_PollEvent( &e ) != 0 ) {

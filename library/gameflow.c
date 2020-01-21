@@ -96,7 +96,7 @@ struct item * rand_item() {
         rand_item = create_strength_potion();
         break;
     default:
-        return 1;
+        return NULL;
     }
     return rand_item;
 }
@@ -121,7 +121,6 @@ int attack(struct being * attacker, struct being * target){
 }
 
 int use_item(struct being *user, int item_index){
-    printf("User is:[%ul]\n", user);
     if( get_backpack( user )[item_index] == NULL ){
 	printf("Nothing in that slot\n");
 	return 1;
@@ -241,7 +240,6 @@ int playerturn( struct being *player, struct game *game , int player_move, int s
 }
 
 void dropItem(struct item *dropped_item) {
-    printf("You Found an Item!\n");
     print_item(dropped_item);
     printf("Pick Up the Item? (ENTER to pick up, BACKSPACE to leave it) \n");
 }
