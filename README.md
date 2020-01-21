@@ -1,4 +1,5 @@
 # Definitely Not Kirby
+<a href="https://fontmeme.com/kirby-super-star-font/"><img src="https://fontmeme.com/permalink/200121/b88b796c4346b4d02111d958a7f8b917.png" alt="kirby-super-star-font" border="0"></a>
 <img src="https://raw.githubusercontent.com/ebernstein00/Codename-Toothpaste/master/static/kirby.png" alt="Not Kirby"
 	title="Not Kirby" width="40%" height="auto" />
 
