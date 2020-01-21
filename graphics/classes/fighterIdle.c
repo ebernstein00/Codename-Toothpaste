@@ -8,7 +8,7 @@ int FIsprite = 0;
 SDL_Renderer* FIrenderer = NULL;
 SDL_Surface* FIimage = NULL;
 SDL_Texture* FItexture = NULL;
-int FIframeTime  = 0;
+int FIframeTime  = 150;
 
 void initFighterIdle(SDL_Renderer* sdlRenderer)
 {

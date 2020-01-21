@@ -8,7 +8,7 @@ int KIsprite = 0;
 SDL_Renderer* KIrenderer = NULL;
 SDL_Surface* KIimage = NULL;
 SDL_Texture* KItexture = NULL;
-int KIframeTime  = 0;
+int KIframeTime  = 150;
 
 void initKnightIdle(SDL_Renderer* sdlRenderer)
 {
