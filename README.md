@@ -108,11 +108,14 @@ Multiple data structures will be used.
 * Attack and damage animations (need to draw custom pixel art!)
 * More characters in combat at once
 
+# Bugs
+* Makefile sometimes compiles to root directory. Has no effect on actual compiling.
+*
 ## Credits
-Nintendo for the character of Kirby and all other Kirby-related characters
-The Spriters' Resource for all of the spritesheets ripped directly from Kirby Superstar Ultra
-Odicia for the grassy game background
-Nintendo LINE for the GUI background
-Spluff5 for the buttons as a base, and then modified with text later on
-LazyFoo's SDL2 Tutorial for a crash course on SDL
-Beej's Guide to Networking for a crash course on networking
+* Nintendo for the character of Kirby and all other Kirby-related characters
+* The Spriters' Resource for all of the spritesheets ripped directly from Kirby Superstar Ultra
+* Odicia for the grassy game background
+* Nintendo LINE for the GUI background
+* Spluff5 for the buttons as a base, and then modified with text later on
+* LazyFoo's SDL2 Tutorial for a crash course on SDL
+* Beej's Guide to Networking for a crash course on networking
