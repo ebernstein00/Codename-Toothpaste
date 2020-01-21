@@ -126,7 +126,7 @@ Uses SDL to render buttons that can be clicked. Reads mouse input to show presse
 * SDL2 Dev   
 `$ sudo apt-get install libsdl2-2.0`
 * SDL2 Image   
-`$ apt-get install libsdl2-image-dev`
+`$ sudo apt-get install libsdl2-image-dev`
 * You must also have a windowing system (such as X11) on your operating system, therefore this project is not compatable with non-gui subsystems such as Ubuntu for Windows (UFW)
 
 # Changes from Project Proposal
