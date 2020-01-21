@@ -3,20 +3,35 @@
 lamJas -- 2020-01-20 17:00
 Fully functional GUI and gameflow! Game works smooth as butter, with some minor bugs.
 
+yusufovJos -- 2020-01-20 12:30
+Item drops work beautifully, no lost memory, actually affect player stats. Nice.
+
 lamJas -- 2020-01-20-1:30
 Began refactoring graphics and gameflow code together. Dealing with seg fault and merge issues. Merged makefile. Consolidated excess headers.
+
+yusufovJos -- 2020-01-19 23:30
+Started item pool for random drops. Thinking to do it in main, but might factor somewhere else later to keep the code readable.
 
 lamJas -- 2020-01-18 15:30
 Now renders with a single command, instead of multiple commands. Added ID tags to characters. Consolidated make file to run off a single main file. Added Kirby-themed background to GUI.
 
+yusufovJos -- 2020-01-18 13:00
+started guard_start() and guard_end() fucntions, added in set and get functions for every being attribute. STUPID SEGFAULT THAT CAUSED ME DAYS OF STRIFE WAS FIXED BY SET AND GET FUNKS. Valgrind shows no lost memory. Rejoice.
+
 lamJas -- 2020-01-17 23:50
 Fixed bug with the GUI's first button. Added more enemy animations.
 
+yusufovJos -- 2020-01-16 15:30
+Added Fighter class, began garbagecollector() funk to purge detritus from the game, such as dead beings, and structs that need freeing. Function will also end the game when player or monster dies.
+
 lamJas -- 2020-01-15 23:50
 Finished three enemy animations.
-
+™¡
 lamJas -- 2020-01-15 13:15
 Started work on enemy animations. Also rendered a simple health bar under characters.
+
+yusufovJos -- 2020-01-15 10:00
+playerTurn is complete. Began monsterTurn, i.e. creating the CPU that decides whether or not to attack, whic player to attack, and so on and so forth. Yoinked coinflip() code from StackOverflow.
 
 lamJas -- 2020-01-14 20:30
 Finished all the player classes and their idle animations. Also rendered a background for the field.
@@ -28,12 +43,18 @@ random drop code.
 lamJas -- 2020-01-13 15:35
 GUI works, with functioning buttons that show animations when pressed. Also prints out to the command prompt which button is being pressed.
 
+yusufovJos -- 2020-01-13 15:30
+fixed add_item and remove_item bugs with swords not buffing attack, began player and monster turn functions.
+
 bernsteinEli -- 2020-01-13 15:30
 Created gameflow.c file for gameplay mechanics. Added attack(), use_item(), guard_start(), and guard_end()
 code.
 
 lamJas -- 2020-01-12 10:00
 Set up viewports, to split the GUI and the game. In addition, began work on a simple button press and made images for buttons.
+
+yusufovJos -- 2020-01-12 01:30
+Encountered gnarly bug when trying to add_item(). Segmentation fault, possibly because i free()'d somewhere and forgot about it (that's happened before, caused me anguish). Life goes on.
 
 lamJas -- 2020-01-11 01:30
 Rendered the first animated sprite into the renderer.
