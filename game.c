@@ -115,10 +115,10 @@ int main( int argc, char* args[] )
     srand(time(NULL));
 
     struct game *game = newgame();
-    game->player1 = create_mage(1);
-    game->player2 = create_knight(1);
-    game->monster1 = create_dedede(1);
-    game->monster2 = create_waddledee(1);
+    game->player1 = create_fighter(1);
+    game->player2 = create_rogue(1);
+    game->monster1 = create_waddledoo(1);
+    game->monster2 = create_knucklejoe(1);
 
     printgame(game);
 
@@ -130,6 +130,7 @@ int main( int argc, char* args[] )
 	SDL_Event e;
 	//While application is running
 	//&& garbage_collector(game) == 0
+	printf("Player 1, select your action: \n");
 	while( !quit && garbage_collector(game) == 0)
 	{
         while( SDL_PollEvent( &e ) != 0 )
@@ -161,7 +162,7 @@ int main( int argc, char* args[] )
         }
         if (game->monster2 != NULL) {
             displayCharacter(get_id(game->monster2),
-                ((double)get_hp(game->monster2))/get_maxhp(game->monster2), 500,625);
+                ((double)get_hp(game->monster2))/get_maxhp(game->monster2), 400,625);
         }
         // displayCharacter(800,700);
         // displayCharacter(600,500);
@@ -174,7 +175,6 @@ int main( int argc, char* args[] )
         //Update screen
         SDL_RenderPresent( renderer );
 		if (inputClick == 4) {
-			printf("GUI input: %d \n", inputClick);
 			printf("Please select a target \n");
 			while (target == 0) {
 				if ( SDL_PollEvent( &e ) != 0 ) {
@@ -198,18 +198,14 @@ int main( int argc, char* args[] )
                 inputClick = 0;
                 target = 0;
                 stage ++;
-				printf("stage 0 -> 1 \n");
-                // printgame( game );
-
+				printf("Player 2, select your action: \n");
             }
             else if (stage == 1) {
 				resetButtons();
-				printf("oh shit1");
                 playerturn( game->player2, game, inputClick, target);
                 inputClick = 0;
                 target = 0;
                 stage ++;
-				printf("stage 1 -> 2 \n");
                 // printgame( game );
 			}
             }
@@ -231,7 +227,6 @@ int main( int argc, char* args[] )
 						return 0;
 					}
                 }
-				printf("stage 2 -> 3 \n");
                 stage++;
             }
         if (stage == 3 ) {
@@ -252,7 +247,7 @@ int main( int argc, char* args[] )
 	                }
 	            }
 	        }
-			printf("stage 3 -> 4 \n");
+			printgame(game);
 	        dropItem(dropped_item2);
 	        while (stage == 4) {
 	            if ( SDL_PollEvent( &e ) != 0 ) {
@@ -268,7 +263,7 @@ int main( int argc, char* args[] )
 	                	}
 	            	}
 	        	}
-				printf("stage 4 -> 0 \n");
+				printgame(game);
 	        }
 		}
 	//Free resources and close SDL

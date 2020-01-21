@@ -91,7 +91,7 @@ int targetGUI (SDL_Event e, SDL_Rect enemy1, SDL_Rect enemy2) {
             }
         }
         if (enemy2.h != 0) {
-            if (mouseX > 500 && mouseX < 500 + enemy2.w && mouseY > 625 && mouseY < 625 + enemy2.h) {
+            if (mouseX > 400 && mouseX < 400 + enemy2.w && mouseY > 625 && mouseY < 625 + enemy2.h) {
                 return 2;
             }
         }
