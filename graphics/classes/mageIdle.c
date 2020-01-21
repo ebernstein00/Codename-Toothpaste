@@ -5,11 +5,11 @@ SDL_Rect MIframe2 = {32, 53, 30, 29};
 SDL_Rect MIframe3 = {63, 53, 30, 29};
 SDL_Rect MIdstrect = { 30, 200, 120, 116 };
 int MIframes = 4;
-int MIsprite = 150;
+int MIsprite = 0;
 SDL_Renderer* MIrenderer = NULL;
 SDL_Surface* MIimage = NULL;
 SDL_Texture* MItexture = NULL;
-int MIframeTime = 0;
+int MIframeTime = 150;
 
 void initMageIdle(SDL_Renderer* sdlRenderer)
 {
