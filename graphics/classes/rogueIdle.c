@@ -8,7 +8,7 @@ int RIsprite = 0;
 SDL_Renderer* RIrenderer = NULL;
 SDL_Surface* RIimage = NULL;
 SDL_Texture* RItexture = NULL;
-int RIframeTime  = 0;
+int RIframeTime  = 150;
 
 void initRogueIdle(SDL_Renderer* sdlRenderer)
 {
