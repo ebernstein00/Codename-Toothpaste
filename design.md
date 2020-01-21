@@ -3,7 +3,7 @@ Elias, Jason, and Joseph's final project for MKS65
 Period 10
 
 ## Project Statement/Proposal
-The project is a simple turn-based RPG game, where us It will use two main c files: one that the player will execute, and one that controls the enemies of the game, but many more C files that the user does. In order to interact with the game, SDL2 is used to create a GUI that allows the player to make decisions, and for visual representation of combat.
+The project is a simple turn-based RPG game, where us It will use two main c files: one that the player will execute, and one that controls the enemies of the game, but many more C files that the user does. In order to interact with the game, SDL2 is used to create a gui that allows the player to make decisions, and for visual representation of combat.
 Keep all of your Kirbys alive, and crush your opponents with style!
 
 ## Roles
@@ -49,7 +49,7 @@ Multiple data structures will be used.
 * Reads keyboard input to pick up or leave items
 
 ### Networking:
-* Up to two players can play at the same time.
+* Up to three players can play at the same time.
 * The GUI and any information given will be mirrored onto all computers.
 * All central information will be calculated on one computer and then sent.
 
@@ -93,20 +93,6 @@ Multiple data structures will be used.
 * SDL2 Image
 * apt-get install libsdl2-image-dev
 * You must also have a valid network setup, and a graphics interface (so it won't work with subsystems)
-
-## Changes from Project Proposal
-* Switched from GTK to SDL2
-* Held off on attack animations
-* Favored one-off gameplay rather than a linear set of battles
-* Removed item shops in favor of procedurally-generated drops
-
-## Future Additions
-* More enemies
-* More drops
-* More classes
-* Variety of attacks and items, not just the default ones
-* Attack and damage animations (need to draw custom pixel art!)
-* More characters in combat at once
 
 ## Credits
 Nintendo for the character of Kirby and all other Kirby-related characters

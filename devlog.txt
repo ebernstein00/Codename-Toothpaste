@@ -1,0 +1,66 @@
+### NEW ENTRIES AT TOP ###
+
+lamJas -- 2020-01-20 17:00
+Fully functional GUI and gameflow! Game works smooth as butter, with some minor bugs.
+
+lamJas -- 2020-01-20-1:30
+Began refactoring graphics and gameflow code together. Dealing with seg fault and merge issues. Merged makefile. Consolidated excess headers.
+
+lamJas -- 2020-01-18 15:30
+Now renders with a single command, instead of multiple commands. Added ID tags to characters. Consolidated make file to run off a single main file. Added Kirby-themed background to GUI.
+
+lamJas -- 2020-01-17 23:50
+Fixed bug with the GUI's first button. Added more enemy animations.
+
+lamJas -- 2020-01-15 23:50
+Finished three enemy animations.
+
+lamJas -- 2020-01-15 13:15
+Started work on enemy animations. Also rendered a simple health bar under characters.
+
+lamJas -- 2020-01-14 20:30
+Finished all the player classes and their idle animations. Also rendered a background for the field.
+
+bernsteinEli -- 2020-01-14 15:30
+Added beginnings of a create_item_pool() function to create an array of every item in items.c to use later in
+random drop code.
+
+lamJas -- 2020-01-13 15:35
+GUI works, with functioning buttons that show animations when pressed. Also prints out to the command prompt which button is being pressed.
+
+bernsteinEli -- 2020-01-13 15:30
+Created gameflow.c file for gameplay mechanics. Added attack(), use_item(), guard_start(), and guard_end()
+code.
+
+lamJas -- 2020-01-12 10:00
+Set up viewports, to split the GUI and the game. In addition, began work on a simple button press and made images for buttons.
+
+lamJas -- 2020-01-11 01:30
+Rendered the first animated sprite into the renderer.
+
+yusufovJos -- 2020-01-10 22:10
+add_item() and remove_item() functions in character.c work with limited functionality. Bug where swords don't actually buff defense, needs to be looked into, and adding a potion when potion slots are already full only empties one slot. Next up: networking.
+
+lamJas -- 2020-01-09 23:20
+Rendered a basic hello world window. Began work on cutting up spritesheet.
+
+yusufovJos -- 2020-01-09 22:00
+Basic game functionality works. Character has stats, backpack full of items, etc. Now, all thats left is the actual game mechanics. Possibly mechanics.c?
+
+yusufovJos -- 2020-01-09 10:20
+Began working on items.c file.
+
+lamJas -- 2020-01-07 23:00
+Began work on graphics, and decided on using SDL rather than GTK.
+
+yusufovJos -- 2020-01-07 00:30
+Finished character.c and character.h files to instantiate new beings, allocate memory for them,
+and print them.
+
+yusufovJos -- 2020-01-07 20:00
+Perused network.c and network.h files, I think I understand them. Server and
+client files still make absoultely no sense to me.
+
+bernsteinEli -- 2020-01-03 15:30
+Added functions to make different types of items as struct items in items.c such as armor, swords, potions, and
+enchanted items.
