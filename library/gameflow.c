@@ -136,16 +136,16 @@ int use_item(struct being *user, int item_index){
 }
 
 int guard_start(struct being * user){
-    set_defense( user, (get_defense(user) + 20));
+    set_defense( user, (get_defense(user) + 15));
     guard(user);
-    printf("*** GUARD ***\nGuard Initiated (Defense +20)\n*** GUARD ***\n");
+    printf("*** GUARD ***\nGuard Initiated (Defense +15)\n*** GUARD ***\n");
     return 0;
 }
 
 int guard_end(struct being * user){
-    set_defense( user, (get_defense(user) - 20));
+    set_defense( user, (get_defense(user) - 15));
     unguard(user);
-    printf("*** ENDGUARD ***\nGuard Ended (Defense -20)\n*** GUARDEND ***\n");
+    printf("*** ENDGUARD ***\nGuard Ended (Defense -15)\n*** GUARDEND ***\n");
     return 0;
 }
 
@@ -218,18 +218,17 @@ int playerturn( struct being *player, struct game *game , int player_move, int s
 	use_item( player, 2);
         break;
     case(4):
-	printf("Choose the enemy you wish to attack:\n");
-	switch( selected_enemy ) {
-	case(1):
-	    attack( player, game->monster1);
-	    break;
-	case(2):
-	    attack( player, game->monster2);
-	    break;
-	default:
-	    printf("Not a valid input\n");
-	    return 1;
-	}
+	   switch( selected_enemy ) {
+    	case(1):
+    	    attack( player, game->monster1);
+    	    break;
+    	case(2):
+    	    attack( player, game->monster2);
+    	    break;
+    	default:
+    	    printf("Not a valid input\n");
+    	    return 1;
+    	}
         break;
     case(5):
         guard_start( player );
@@ -244,17 +243,17 @@ int playerturn( struct being *player, struct game *game , int player_move, int s
 void dropItem(struct item *dropped_item) {
     printf("You Found an Item!\n");
     print_item(dropped_item);
-    printf("Pick Up the Item? (y/n) ");
+    printf("Pick Up the Item? (ENTER to pick up, BACKSPACE to leave it) \n");
 }
 
 void addItem(struct being *player, struct item *dropped_item, int input) {
     if(input) {
         add_item(player, dropped_item);
-        printf("item added\n");
+        printf("Item added\n");
     }
     else {
         free(dropped_item);
-        printf("item not added\n");
+        printf("Item not added\n");
     }
 }
 
@@ -290,23 +289,36 @@ void printgame( struct game *game ) {
 
 
 int garbage_collector( struct game *game ) {
-    if (get_hp(game->player1) <= 0) {
-	free_being( game->player1 );
-	game->player1 = NULL;
+    if (game->player1 != NULL) {
+        if (get_hp(game->player1) <= 0) {
+    	free_being( game->player1 );
+    	game->player1 = NULL;
+        }
     }
-    if (get_hp(game->player2) <= 0) {
-	free_being( game->player2 );
-	game->player2 = NULL;
+    if (game->player2 != NULL) {
+        if (get_hp(game->player2) <= 0) {
+    	free_being( game->player2 );
+    	game->player2 = NULL;
+        }
     }
-    if (get_hp(game->monster1) <= 0) {
-	free_being( game->monster1 );
-	game->monster1 = NULL;
+    if (game->monster1 != NULL) {
+        if (get_hp(game->monster1) <= 0) {
+    	free_being( game->monster1 );
+    	game->monster1 = NULL;
+        }
     }
-    if (get_hp(game->monster2) <= 0) {
-	free_being( game->monster2 );
-	game->monster2 = NULL;
+    if (game->monster2 != NULL) {
+        if (get_hp(game->monster2) <= 0) {
+    	free_being( game->monster2 );
+    	game->monster2 = NULL;
+        }
     }
-    if ((get_hp(game->player1) == NULL) && (get_hp(game->player2) == NULL)) {
+    if (game->player1 == NULL || game->player2 == NULL) {
+        printf ("You lost. Better luck next time! \n");
+        return 1;
+    }
+    else if (game->monster1 == NULL && game->monster2 == NULL) {
+        printf("Congratulations! You won the battle! \n");
         return 1;
     }
 

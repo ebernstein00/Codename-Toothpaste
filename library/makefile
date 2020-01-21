@@ -13,4 +13,4 @@ gameflow.o: gameflow.c items.h characters.h
 clean:
 	rm -rf *.o
 	rm -rf *.dsYM
-	rm  -rf *~
+	rm  -rf *~ *.gch

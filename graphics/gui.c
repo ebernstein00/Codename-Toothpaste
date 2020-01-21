@@ -53,16 +53,17 @@ void resetButtons() {
     GUIsrcrect5.x = 0;
 }
 int inputGUI(SDL_Event e) {
-    if (e.type == SDL_MOUSEBUTTONUP) {
-        resetButtons();
-    }
-    else if (e.type == SDL_MOUSEBUTTONDOWN) {
+    // if (e.type == SDL_MOUSEBUTTONUP) {
+    //     resetButtons();
+    // }
+    // else
+    if (e.type == SDL_MOUSEBUTTONDOWN) {
         int mouseX, mouseY;
         SDL_GetMouseState(&mouseX, &mouseY);
         // printf("%d,%d", mouseX, mouseY);
         int index = 1;
         for (; index < 6; index++ ) {
-            if (mouseX > 908 && mouseX < 1292 && mouseY > (30+ index * 120) && mouseY < (122+ index * 120)) {
+            if (mouseX > 708 && mouseX < 1092 && mouseY > (30+ index * 120) && mouseY < (122+ index * 120)) {
                 printf("%d \n", index);
                 if (index > 5) {
                     return 1;
@@ -78,21 +79,23 @@ int inputGUI(SDL_Event e) {
 }
 int targetGUI (SDL_Event e, SDL_Rect enemy1, SDL_Rect enemy2) {
     if (e.type == SDL_MOUSEBUTTONDOWN) {
-        enemy1.x = 650;
+        enemy1.x = 450;
         enemy1.y = 350;
-        enemy2.x = 600;
+        enemy2.x = 500;
         enemy2.y = 625;
         int mouseX, mouseY;
         SDL_GetMouseState(&mouseX, &mouseY);
-        printf("Mouse click: %d,%d \n", mouseX, mouseY);
-        printf("enemy1: %d, %d, %d, %d \n", enemy1.x, enemy1.y, enemy1.w, enemy1.h);
-        if (mouseX > enemy1.x && mouseX < enemy1.x + enemy1.w && mouseY > enemy1.y && mouseY < enemy1.y + enemy1.h) {
-            return 1;
+        if (enemy1.h != 0) {
+            if (mouseX > 450 && mouseX < 450 + enemy1.w && mouseY > 350 && mouseY < 350 + enemy1.h) {
+                return 1;
+            }
         }
-        if (mouseX > enemy2.x && mouseX < enemy2.x + enemy2.w && mouseY > enemy2.y && mouseY < enemy2.y + enemy2.h) {
-            return 2;
+        if (enemy2.h != 0) {
+            if (mouseX > 500 && mouseX < 500 + enemy2.w && mouseY > 625 && mouseY < 625 + enemy2.h) {
+                return 2;
+            }
         }
-    }
+        }
     return 0;
 }
 

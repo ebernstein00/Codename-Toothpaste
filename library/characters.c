@@ -4,9 +4,9 @@
 struct being * create_mage( int level ) {
     struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
     being_pointer->type = "mage";
-    being_pointer->id = 0;
-    being_pointer->hp = 50;
-    being_pointer->maxhp =50;
+    being_pointer->id = 2;
+    being_pointer->hp = 60;
+    being_pointer->maxhp =60;
     being_pointer->attack = 25;
     being_pointer->defense = 0;
     being_pointer->level = level;
@@ -22,8 +22,8 @@ struct being * create_knight( int level ) {
 	being_pointer->id = 1;
     being_pointer->hp = 100;
     being_pointer->maxhp = 100;
-    being_pointer->attack = 10;
-    being_pointer->defense = 0;
+    being_pointer->attack = 18;
+    being_pointer->defense = 10;
     being_pointer->level = level;
     being_pointer->backpack = create_backpack();
     being_pointer->is_guarding = 0;
@@ -34,11 +34,11 @@ struct being * create_knight( int level ) {
 struct being * create_rogue( int level ) {
     struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
     being_pointer->type = "rogue";
-	being_pointer->id = 2;
+	being_pointer->id = 3;
     being_pointer->hp = 70;
     being_pointer->maxhp = 70;
-    being_pointer->attack = 20;
-    being_pointer->defense = 0;
+    being_pointer->attack = 22;
+    being_pointer->defense = 6;
     being_pointer->level = level;
     being_pointer->backpack = create_backpack();
     being_pointer->is_guarding = 0;
@@ -49,11 +49,11 @@ struct being * create_rogue( int level ) {
 struct being * create_fighter( int level ) {
     struct being *being_pointer = (struct being *)calloc(1, sizeof(struct being));
     being_pointer->type = "fighter";
-	being_pointer->id = 3;
+	being_pointer->id = 0;
     being_pointer->hp = 85;
     being_pointer->maxhp = 85;
-    being_pointer->attack = 15;
-    being_pointer->defense = 0;
+    being_pointer->attack = 20;
+    being_pointer->defense = 8;
     being_pointer->level = level;
     being_pointer->backpack = create_backpack();
     being_pointer->is_guarding = 0;
@@ -69,9 +69,9 @@ struct being * create_dedede( int level ) {
 
     being_pointer->type = "dedede";
     being_pointer->id = 5;
-    being_pointer->hp = 100;
-    being_pointer->maxhp = 100;
-    being_pointer->attack = 10;
+    being_pointer->hp = 200;
+    being_pointer->maxhp = 200;
+    being_pointer->attack = 25;
     being_pointer->defense = 5;
     being_pointer->level = level;
 
@@ -87,10 +87,10 @@ struct being * create_waddledee( int level ) {
 
     being_pointer->type = "waddledee";
     being_pointer->id = 7;
-    being_pointer->hp = 75;
-    being_pointer->maxhp = 75;
-    being_pointer->attack = 5;
-    being_pointer->defense = 15;
+    being_pointer->hp = 150;
+    being_pointer->maxhp = 150;
+    being_pointer->attack = 20;
+    being_pointer->defense = 3;
     being_pointer->level = level;
     being_pointer->backpack = NULL;
     being_pointer->is_guarding = 0;
@@ -124,7 +124,7 @@ int is_guarding( struct being *being ) {
     return being->is_guarding;
 }
 struct being * free_being( struct being *pointer ) {
-    free_backpack(pointer->backpack);
+    // free_backpack(pointer->backpack);
     free(pointer);
     return pointer;
 }
@@ -203,11 +203,11 @@ int add_item( struct being *being_ptr, struct item *item ) {
             being_ptr->defense += item->defense_buff;
         } else {
             printf("not-null\n");
-	    print_backpack( being_ptr->backpack );
+	        print_backpack( being_ptr->backpack );
             int r = remove_item( being_ptr, 3);
             if (r == -1) {
                 printf("error: remove item\n");
-		return 1;
+		        return 1;
             }
             being_ptr->backpack[3] = item;
             being_ptr->hp += item->hp_buff;

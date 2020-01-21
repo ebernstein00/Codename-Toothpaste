@@ -24,15 +24,16 @@
 #define ARMOR_TYPE 3;
 #define NUM_ITEMS 34;
 
-#define SCREEN_WIDTH 1300
+#define SCREEN_WIDTH 1100
 #define SCREEN_HEIGHT 900
 
 SDL_Window* window = NULL;
 
 SDL_Renderer* renderer = NULL;
 
-SDL_Rect field = {0, 0 , 900, SCREEN_HEIGHT };
-SDL_Rect gui = {900, 0, 500, SCREEN_HEIGHT};
+SDL_Rect field = {0, 0 , 700, SCREEN_HEIGHT };
+SDL_Rect gui = {700, 0, 500, SCREEN_HEIGHT};
+SDL_Rect defaultRect = {0,0,0,0};
 
 bool init()
 {
@@ -128,6 +129,7 @@ int main( int argc, char* args[] )
 	//Event handler
 	SDL_Event e;
 	//While application is running
+	//&& garbage_collector(game) == 0
 	while( !quit && garbage_collector(game) == 0)
 	{
         while( SDL_PollEvent( &e ) != 0 )
@@ -138,18 +140,6 @@ int main( int argc, char* args[] )
                 quit = true;
             }
             inputClick = inputGUI(e);
-            if (inputClick == 4) {
-                printf("GUI input: %d \n", inputClick);
-                printf("Please select a target \n");
-                while (target == 0) {
-                    if ( SDL_PollEvent( &e ) != 0 ) {
-                        target = targetGUI(e, game->monster1->rect, game->monster2->rect);
-                        printf("%d \n", target);
-                    }
-
-                }
-
-            }
         }
         //Clear screen
         SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
@@ -167,11 +157,11 @@ int main( int argc, char* args[] )
         }
         if (game->monster1 != NULL) {
             displayCharacter(get_id(game->monster1),
-                ((double)get_hp(game->monster1))/get_maxhp(game->monster1), 650,350);
+                ((double)get_hp(game->monster1))/get_maxhp(game->monster1), 450,350);
         }
         if (game->monster2 != NULL) {
             displayCharacter(get_id(game->monster2),
-                ((double)get_hp(game->monster2))/get_maxhp(game->monster2), 600,625);
+                ((double)get_hp(game->monster2))/get_maxhp(game->monster2), 500,625);
         }
         // displayCharacter(800,700);
         // displayCharacter(600,500);
@@ -183,76 +173,104 @@ int main( int argc, char* args[] )
         displayGUI(inputClick);
         //Update screen
         SDL_RenderPresent( renderer );
+		if (inputClick == 4) {
+			printf("GUI input: %d \n", inputClick);
+			printf("Please select a target \n");
+			while (target == 0) {
+				if ( SDL_PollEvent( &e ) != 0 ) {
+					if (game->monster1 == NULL) {
+						target = targetGUI(e, defaultRect, game->monster2->rect);
+					}
+					else if (game->monster2 == NULL) {
+						target = targetGUI(e, game->monster1->rect, defaultRect);
+					}
+					else {
+						target = targetGUI(e, game->monster1->rect, game->monster2->rect);
+						resetButtons();
+					}
+				}
+			}
+		}
         if (inputClick > 0 ) {
             if (stage == 0) {
+				resetButtons();
                 playerturn( game->player1, game, inputClick, target);
                 inputClick = 0;
                 target = 0;
                 stage ++;
-                garbage_collector( game );
-                printgame( game );
+				printf("stage 0 -> 1 \n");
+                // printgame( game );
 
             }
             else if (stage == 1) {
+				resetButtons();
+				printf("oh shit1");
                 playerturn( game->player2, game, inputClick, target);
                 inputClick = 0;
                 target = 0;
                 stage ++;
-                garbage_collector( game );
-                printgame( game );
+				printf("stage 1 -> 2 \n");
+                // printgame( game );
+			}
             }
             else if (stage == 2) {
-                printf("We should be getting dicked here \n");
-                if (game ->monster1 != NULL) {
+                if (game->monster1 != NULL) {
                     monsterturn( game->monster1, game );
-                    garbage_collector( game );
-                    printgame( game );
+					if (garbage_collector(game)) {
+						freegame(game);
+						windowClose();
+						return 0;
+					}
                 }
 
-                if (game ->monster2 != NULL) {
+                if (game->monster2 != NULL) {
                     monsterturn( game->monster2, game );
-                    garbage_collector( game );
-                    printgame( game );
+					if (garbage_collector(game)) {
+						freegame(game);
+						windowClose();
+						return 0;
+					}
                 }
-                stage = 3;
+				printf("stage 2 -> 3 \n");
+                stage++;
             }
-            else if (stage == 3 ) {
-                struct item *dropped_item1 = rand_item();
-                struct item *dropped_item2 = rand_item();
-                dropItem(dropped_item1);
-                while (stage == 3) {
-                    if ( SDL_PollEvent( &e ) != 0 ) {
-                        if (e.type == SDL_KEYDOWN) {
-                            if (e.key.keysym.sym == SDLK_RETURN) {
-                                addItem(game->player1, dropped_item1, 1);
-                                stage = 4;
-                            }
-                            else if (e.key.keysym.sym == SDLK_BACKSPACE) {
-                                addItem(game->player1, dropped_item1, 0);
-                                stage = 4;
-                            }
-                        }
-                    }
-                }
-                dropItem(dropped_item2);
-                while (stage == 4) {
-                    if ( SDL_PollEvent( &e ) != 0 ) {
-                        if (e.type == SDL_KEYDOWN) {
-                            if (e.key.keysym.sym == SDLK_RETURN) {
-                                addItem(game->player2, dropped_item1, 1);
-                                stage = 0;
-                            }
-                            else if (e.key.keysym.sym == SDLK_BACKSPACE) {
-                                addItem(game->player2, dropped_item1, 0);
-                                stage = 0;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-	}
-
+        if (stage == 3 ) {
+	        struct item *dropped_item1 = rand_item();
+	        struct item *dropped_item2 = rand_item();
+	        dropItem(dropped_item1);
+	        while (stage == 3) {
+	            if ( SDL_PollEvent( &e ) != 0 ) {
+	                if (e.type == SDL_KEYDOWN) {
+	                    if (e.key.keysym.sym == SDLK_RETURN) {
+	                        addItem(game->player1, dropped_item1, 1);
+	                        stage++;
+	                    }
+	                    else if (e.key.keysym.sym == SDLK_BACKSPACE) {
+	                        addItem(game->player1, dropped_item1, 0);
+	                        stage ++;
+	                    }
+	                }
+	            }
+	        }
+			printf("stage 3 -> 4 \n");
+	        dropItem(dropped_item2);
+	        while (stage == 4) {
+	            if ( SDL_PollEvent( &e ) != 0 ) {
+	                if (e.type == SDL_KEYDOWN) {
+	                    if (e.key.keysym.sym == SDLK_RETURN) {
+	                        addItem(game->player2, dropped_item2, 1);
+	                        stage = 0;
+	                    }
+	                    else if (e.key.keysym.sym == SDLK_BACKSPACE) {
+	                        addItem(game->player2, dropped_item2, 0);
+	                        stage = 0;
+	                    	}
+	                	}
+	            	}
+	        	}
+				printf("stage 4 -> 0 \n");
+	        }
+		}
 	//Free resources and close SDL
     freegame(game);
 	windowClose();
