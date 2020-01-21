@@ -7,8 +7,10 @@
 #include <sys/shm.h>
 #include <sys/sem.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <signal.h>
 #include <stdbool.h>
 #include <time.h>
 #include <SDL2/SDL.h>
@@ -108,18 +110,81 @@ void windowClose()
 	SDL_Quit();
 }
 
+void randomize( struct game *game) {
+	int player1 = rand()%4;
+	int player2 = rand()%4;
+	while (player2 == player1) {
+		player2 = rand()%4;
+	}
+	switch (player1)
+	{
+    case 0: game->player1 = create_fighter(1);
+        break;
+    case 1: game->player1 = create_knight(1);
+        break;
+	case 2: game->player1 = create_mage(1);
+		break;
+    default: game->player1 = create_rogue(1);
+		break;
+	}
+	switch (player2)
+	{
+    case 0: game->player2 = create_fighter(1);
+        break;
+    case 1: game->player2 = create_knight(1);
+        break;
+	case 2: game->player2 = create_mage(1);
+		break;
+    default: game->player2 = create_rogue(1);
+		break;
+	}
+
+	int monster1 = rand()%4;
+	int monster2 = rand()%4;
+	while (monster2 == monster1) {
+		monster2 = rand()%4;
+	}
+	switch (player1)
+	{
+    case 0: game->monster1 = create_dedede(1);
+        break;
+    case 1: game->monster1 = create_knucklejoe(1);
+        break;
+	case 2: game->monster1 = create_waddledee(1);
+		break;
+    default: game->monster1 = create_waddledoo(1);
+		break;
+	}
+	switch (player2)
+	{
+    case 0: game->monster2 = create_dedede(1);
+        break;
+    case 1: game->monster2 = create_knucklejoe(1);
+        break;
+	case 2: game->monster2 = create_waddledee(1);
+		break;
+    default: game->monster2 = create_waddledoo(1);
+		break;
+	}
+}
+void sighandler() {
+	execlp("killall", "killall", "aplay", NULL);
+}
+
 int main( int argc, char* args[] )
 {
+	int id = 0;
     init();
 	//Start up SDL and create window
     srand(time(NULL));
-
+	int d = fork();
+	if (!d ) {
+		printf("HELP ME GOD %d", getpid());
+		execlp("aplay", "aplay", "greengreens.wav", NULL);
+		signal(SIGHUP, sighandler);
+	}
     struct game *game = newgame();
-    game->player1 = create_fighter(1);
-    game->player2 = create_rogue(1);
-    game->monster1 = create_waddledoo(1);
-    game->monster2 = create_knucklejoe(1);
-
+    randomize(game);
     printgame(game);
 
 	bool quit = false;
@@ -266,9 +331,11 @@ int main( int argc, char* args[] )
 				printgame(game);
 	        }
 		}
-	//Free resources and close SDL
+	//Free resources and close SDLprintf("--------------------- \n KILL ME \n ------------------ \n");
+	// execlp("killall", "killall", "aplay", NULL);
+	// signal(SIGHUP, sighandler);
+	kill(getppid() + 5, SIGTERM);
     freegame(game);
 	windowClose();
-
-	return 0;
+	exit(0);
 }

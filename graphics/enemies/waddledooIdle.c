@@ -3,7 +3,7 @@
 SDL_Rect OIframe1 = {715, 53, 24, 27 }; //45 370
 SDL_Rect OIframe2 = {687, 53, 25, 27 };//128 368
 SDL_Rect OIframe3 = {657, 51, 27, 29 };// 211 369
-SDL_Rect OIdstrect = {0,0,0,0};
+SDL_Rect OIdstrect = {0,0,100,108};
 SDL_Rect OIhealthrect = {0,0,0,0};
 int OIsprite = 0;
 SDL_Renderer* OIrenderer = NULL;
